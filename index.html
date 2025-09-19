@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeysson Rostran - Cybersecurity Specialist & IT Leader</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #000000 0%, #001628 50%, #001E3A 100%);
+            color: #e6e7e8;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header Styles */
+        .header {
+            text-align: center;
+            padding: 60px 0;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, rgba(253, 185, 19, 0.1) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 0.3;
+            }
+
+            50% {
+                opacity: 0.6;
+            }
+        }
+
+        .name {
+            font-size: 3.5em;
+            font-weight: 700;
+            background: linear-gradient(45deg, #fdb913, #ffde2f, #fdb913);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+            text-shadow: 0 0 20px rgba(253, 185, 19, 0.3);
+        }
+
+        .credentials {
+            font-size: 1.1em;
+            color: #b0b0b0;
+            margin-bottom: 10px;
+            font-weight: 400;
+        }
+
+        .tagline {
+            font-size: 1.4em;
+            color: #e6e7e8;
+            margin-bottom: 35px;
+            font-weight: 500;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #fdb913;
+            text-decoration: none;
+            padding: 12px 24px;
+            border: 2px solid rgba(253, 185, 19, 0.3);
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            font-weight: 500;
+        }
+
+        .contact-item:hover {
+            background: rgba(253, 185, 19, 0.1);
+            border-color: #fdb913;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(253, 185, 19, 0.2);
+        }
+
+        /* Section Styles */
+        .section {
+            margin: 50px 0;
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 20px;
+            padding: 40px;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #fdb913, #ffde2f, transparent);
+            animation: shimmer 4s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0% {
+                left: -100%;
+            }
+
+            100% {
+                left: 100%;
+            }
+        }
+
+        .section h2 {
+            font-size: 2.1em;
+            color: #fdb913;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-weight: 600;
+        }
+
+        .section h2::before {
+            content: '▶';
+            color: #ffde2f;
+            font-size: 0.7em;
+        }
+
+        .summary {
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: #e6e7e8;
+            text-align: justify;
+            font-weight: 400;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .skill-category {
+            background: rgba(253, 185, 19, 0.05);
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 4px solid #fdb913;
+            border-top: 1px solid rgba(253, 185, 19, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateX(8px);
+            background: rgba(253, 185, 19, 0.08);
+            box-shadow: 0 5px 20px rgba(253, 185, 19, 0.1);
+        }
+
+        .skill-category h3 {
+            color: #ffde2f;
+            margin-bottom: 18px;
+            font-size: 1.2em;
+            font-weight: 600;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-tag {
+            background: rgba(0, 22, 40, 0.6);
+            color: #e6e7e8;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            border: 1px solid rgba(253, 185, 19, 0.3);
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .skill-tag:hover {
+            background: rgba(253, 185, 19, 0.2);
+            border-color: #fdb913;
+            color: #fdb913;
+            transform: scale(1.05);
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .project-card {
+            background: rgba(0, 22, 40, 0.3);
+            padding: 35px;
+            border-radius: 15px;
+            border: 1px solid rgba(253, 185, 19, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #fdb913, #ffde2f);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(253, 185, 19, 0.15);
+            border-color: #fdb913;
+        }
+
+        .project-title {
+            color: #fdb913;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .project-description {
+            color: #d0d0d0;
+            line-height: 1.7;
+            font-weight: 400;
+        }
+
+        /* Stats */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 25px;
+            background: rgba(253, 185, 19, 0.08);
+            border-radius: 15px;
+            border: 1px solid rgba(253, 185, 19, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: scale(1.05);
+            background: rgba(253, 185, 19, 0.12);
+            border-color: #fdb913;
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            color: #fdb913;
+            font-weight: 700;
+            display: block;
+        }
+
+        .stat-label {
+            color: #c0c0c0;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        .highlight-box {
+            background: rgba(253, 185, 19, 0.1);
+            border-left: 4px solid #fdb913;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-top: 1px solid rgba(253, 185, 19, 0.2);
+        }
+
+        /* Experience */
+        .experience-item {
+            border-left: 3px solid #fdb913;
+            padding-left: 20px;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+        }
+
+        .experience-title {
+            color: #fdb913;
+            font-size: 1.2em;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .experience-company {
+            color: #ffde2f;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .experience-description {
+            color: #d0d0d0;
+            line-height: 1.6;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            background: linear-gradient(135deg, rgba(253, 185, 19, 0.1), rgba(255, 222, 47, 0.05));
+            border-radius: 20px;
+            padding: 50px;
+            margin: 50px 0;
+            border: 1px solid rgba(253, 185, 19, 0.3);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #fdb913, #ffde2f);
+            color: #000000;
+            padding: 15px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(253, 185, 19, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(253, 185, 19, 0.4);
+            background: linear-gradient(45deg, #ffde2f, #fdb913);
+        }
+
+        /* Navigation */
+        .nav-container {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            background: rgba(0, 22, 40, 0.8);
+            border-bottom: 1px solid rgba(253, 185, 19, 0.2);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: center;
+            padding: 15px 0;
+        }
+
+        .nav-item {
+            color: #e6e7e8;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 0 5px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-item:hover {
+            background: rgba(253, 185, 19, 0.1);
+            color: #fdb913;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .name {
+                font-size: 2.5em;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .section {
+                padding: 25px;
+                margin: 30px 0;
+            }
+
+            .skills-grid,
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav {
+                flex-wrap: wrap;
+            }
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #001628;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #fdb913;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ffde2f;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="nav-container">
+        <div class="container">
+            <nav class="nav">
+                <a href="#about" class="nav-item">About</a>
+                <a href="#experience" class="nav-item">Experience</a>
+                <a href="#skills" class="nav-item">Skills</a>
+                <a href="#projects" class="nav-item">Projects</a>
+                <a href="#contact" class="nav-item">Contact</a>
+            </nav>
+        </div>
+    </div>
+
+    <div class="container">
+        <header class="header" id="about">
+            <h1 class="name">Jeysson Rostran</h1>
+            <p class="credentials">Cybersecurity Specialist • IT Infrastructure Leader • Cloud Security Architect</p>
+            <p class="tagline">Securing Enterprise Systems at NIH & Beyond</p>
+            <div class="contact-info">
+                <a href="mailto:amjeysson@gmail.com" class="contact-item">
+                    <i class="fas fa-envelope"></i> Contact Me
+                </a>
+                <a href="https://www.linkedin.com/in/jeysson-rostran-57a197164/" class="contact-item" target="_blank">
+                    <i class="fab fa-linkedin"></i> LinkedIn
+                </a>
+                <a href="http://blcksnake.com" class="contact-item" target="_blank">
+                    <i class="fas fa-briefcase"></i> Portfolio
+                </a>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2><i class="fas fa-user"></i> Professional Summary</h2>
+            <div class="summary">
+                Senior IT and Cybersecurity professional with extensive experience managing enterprise infrastructure
+                for 500+ users at the National Institutes of Health. Proven expertise in implementing robust security
+                frameworks, leading IT teams, and architecting scalable solutions in highly regulated government
+                healthcare environments. Combines deep technical knowledge with strategic leadership to deliver
+                secure, efficient, and compliant systems that support critical research missions.
+            </div>
+
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-number">10+</span>
+                    <span class="stat-label">Years Experience</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">500+</span>
+                    <span class="stat-label">Users Supported</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">97%</span>
+                    <span class="stat-label">Satisfaction Rate</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Project Success</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="experience">
+            <h2><i class="fas fa-briefcase"></i> Professional Experience</h2>
+
+            <div class="experience-item">
+                <div class="experience-title">Desktop Support Manager</div>
+                <div class="experience-company">NIH National Institute on Aging (NIA) • DLH Corp/GRSi • 2022 - Present
+                </div>
+                <div class="experience-description">
+                    Lead IT operations for NIH Bethesda Campus, managing infrastructure and supervising IT professionals
+                    across multiple projects.
+                    <ul style="margin-top: 10px; padding-left: 20px;">
+                        <li>Achieved 97% customer satisfaction through ITIL best practices and ServiceNow implementation
+                        </li>
+                        <li>Managed hardware/software replacement projects ensuring federal security compliance</li>
+                        <li>Generated executive KPI reports on incident resolution, service fulfillment, and system
+                            uptime</li>
+                        <li>Provided performance management and professional development for direct reports</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-title">Lead Information Security Analyst</div>
+                <div class="experience-company">NIH National Institute of Arthritis (NIAMS) • Octo Consulting • 2019 -
+                    2021</div>
+                <div class="experience-description">
+                    Implemented and managed enterprise security systems, significantly improving threat detection and
+                    response capabilities.
+                    <ul style="margin-top: 10px; padding-left: 20px;">
+                        <li>Deployed SIEM systems (Splunk, Tenable) enhancing security monitoring</li>
+                        <li>Developed security policies ensuring compliance with federal regulatory requirements</li>
+                        <li>Conducted vulnerability assessments and penetration testing, reducing attack surface</li>
+                        <li>Led incident response efforts and provided security awareness training</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="skills">
+            <h2><i class="fas fa-tools"></i> Technical Expertise</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3><i class="fas fa-shield-alt"></i> Cybersecurity</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">SIEM Implementation</span>
+                        <span class="skill-tag">Wazuh</span>
+                        <span class="skill-tag">Splunk</span>
+                        <span class="skill-tag">Tenable</span>
+                        <span class="skill-tag">CrowdSec</span>
+                        <span class="skill-tag">Threat Detection</span>
+                        <span class="skill-tag">Penetration Testing</span>
+                        <span class="skill-tag">Vulnerability Assessment</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3><i class="fas fa-cloud"></i> Cloud & Virtualization</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">AWS Architecture</span>
+                        <span class="skill-tag">Azure Administration</span>
+                        <span class="skill-tag">Google Cloud Platform</span>
+                        <span class="skill-tag">Oracle Cloud</span>
+                        <span class="skill-tag">VMware vSphere</span>
+                        <span class="skill-tag">Proxmox</span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">Infrastructure as Code</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3><i class="fas fa-network-wired"></i> Network Engineering</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">VLAN Design</span>
+                        <span class="skill-tag">Firewall Configuration</span>
+                        <span class="skill-tag">VPN Implementation</span>
+                        <span class="skill-tag">DNS/DHCP Management</span>
+                        <span class="skill-tag">Network Segmentation</span>
+                        <span class="skill-tag">UniFi Enterprise</span>
+                        <span class="skill-tag">10Gb Infrastructure</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3><i class="fas fa-server"></i> System Administration</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Active Directory</span>
+                        <span class="skill-tag">Group Policy</span>
+                        <span class="skill-tag">M365/O365</span>
+                        <span class="skill-tag">Windows Server</span>
+                        <span class="skill-tag">Linux Administration</span>
+                        <span class="skill-tag">PowerShell</span>
+                        <span class="skill-tag">Bash Scripting</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="projects">
+            <h2><i class="fas fa-code-branch"></i> Key Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-title">Custom RAT Detection System</div>
+                    <div class="project-description">
+                        Developed and deployed a Python-based Remote Access Trojan detection tool for enterprise client
+                        networks.
+                        Provides real-time alerts and detailed threat assessment reports for incident response teams.
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-title">Enterprise SIEM Implementation</div>
+                    <div class="project-description">
+                        Designed and implemented comprehensive security monitoring infrastructure using Wazuh SIEM
+                        across
+                        multiple client environments with automated threat detection rules and executive dashboards.
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-title">Multi-Cloud Security Architecture</div>
+                    <div class="project-description">
+                        Architected secure cloud infrastructure across AWS, Azure, and GCP platforms with IAM policies,
+                        automated backup systems, and cross-platform monitoring procedures.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section" id="contact">
+            <h2>Ready to Enhance Your Security Infrastructure?</h2>
+            <p style="margin: 20px 0; color: #d0d0d0; font-size: 1.1em;">
+                Looking for a cybersecurity specialist who combines deep technical expertise with proven implementation
+                experience? Let's discuss how I can help secure and optimize your enterprise infrastructure.
+            </p>
+            <a href="mailto:amjeysson@gmail.com" class="cta-button">
+                <i class="fas fa-envelope"></i> Contact Me Today
+            </a>
+        </section>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Smooth scrolling for navigation
+            document.querySelectorAll('.nav-item').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // Professional interaction effects
+            const skillTags = document.querySelectorAll('.skill-tag');
+            skillTags.forEach(tag => {
+                tag.addEventListener('mouseenter', function () {
+                    this.style.transform = 'scale(1.05)';
+                    this.style.boxShadow = '0 4px 12px rgba(253, 185, 19, 0.2)';
+                });
+                tag.addEventListener('mouseleave', function () {
+                    this.style.transform = 'scale(1)';
+                    this.style.boxShadow = 'none';
+                });
+            });
+
+            // Animate stats
+            const statItems = document.querySelectorAll('.stat-item');
+            statItems.forEach(item => {
+                item.addEventListener('mouseenter', function () {
+                    this.style.transform = 'scale(1.05)';
+                });
+                item.addEventListener('mouseleave', function () {
+                    this.style.transform = 'scale(1)';
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
