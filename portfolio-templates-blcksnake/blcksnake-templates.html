@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BLCKSNAKE Portfolio Templates</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Orbitron:wght@400;500;600;700&family=Raleway:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #FDB913;
+            --secondary: #FFDE2F;
+            --dark: #001628;
+            --black: #000000;
+            --light: #EBE7E8;
+            --accent: #001E5A;
+            --cyber-cyan: #00f3ff;
+            --cyber-magenta: #ff00ff;
+            --cyber-green: #00ff66;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, var(--dark) 0%, var(--accent) 100%);
+            color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            padding: 20px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(0, 22, 40, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--light);
+            text-transform: uppercase;
+        }
+
+        .logo-text span {
+            color: var(--primary);
+        }
+
+        /* Navigation */
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            position: relative;
+            text-transform: uppercase;
+        }
+
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 160px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            color: var(--light);
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: var(--light);
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--dark);
+            box-shadow: 0 4px 20px rgba(253, 185, 19, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(253, 185, 19, 0.5);
+            background: var(--secondary);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: var(--dark);
+        }
+
+        /* Filter Section */
+        .filter-section {
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .filter-btn {
+            padding: 8px 20px;
+            background: rgba(0, 30, 58, 0.6);
+            color: var(--light);
+            border: 1px solid rgba(253, 185, 19, 0.3);
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--primary);
+            color: var(--dark);
+        }
+
+        /* Templates Grid */
+        .templates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            padding: 60px 0;
+        }
+
+        .template-card {
+            background: rgba(0, 30, 58, 0.6);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(253, 185, 19, 0.2);
+            position: relative;
+        }
+
+        .template-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            border-color: var(--primary);
+        }
+
+        .template-img {
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .template-img:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(0,0,0,0.2)"/></svg>');
+            background-size: 100% 100%;
+        }
+
+        .template-img i {
+            font-size: 60px;
+            z-index: 2;
+        }
+
+        .template-content {
+            padding: 25px;
+        }
+
+        .template-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        .template-content p {
+            color: var(--light);
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .template-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .tag {
+            background: rgba(253, 185, 19, 0.15);
+            color: var(--primary);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* Template Specific Styles */
+        .cyber {
+            background: linear-gradient(135deg, #000 0%, #111 100%);
+        }
+
+        .cyber .template-img {
+            background: linear-gradient(45deg, var(--cyber-cyan), var(--cyber-magenta));
+        }
+
+        .cyber .template-img i {
+            color: #000;
+        }
+
+        .cyber h3 {
+            color: var(--cyber-cyan);
+        }
+
+        .minimal {
+            background: linear-gradient(135deg, #f8f8f8 0%, #e8e8e8 100%);
+        }
+
+        .minimal .template-img {
+            background: linear-gradient(45deg, #4a90e2, #7b68ee);
+        }
+
+        .minimal .template-img i {
+            color: #fff;
+        }
+
+        .minimal h3,
+        .minimal p {
+            color: #333;
+        }
+
+        .creative {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ff8e53 100%);
+        }
+
+        .creative .template-img {
+            background: linear-gradient(45deg, #ff0080, #ff8c00);
+        }
+
+        .creative .template-img i {
+            color: #fff;
+        }
+
+        .creative h3 {
+            color: #fff;
+        }
+
+        .corporate {
+            background: linear-gradient(135deg, #192a56 0%, #273c75 100%);
+        }
+
+        .corporate .template-img {
+            background: linear-gradient(45deg, #2f3640, #192a56);
+        }
+
+        .corporate .template-img i {
+            color: #fff;
+        }
+
+        .corporate h3 {
+            color: #fff;
+        }
+
+        .gaming {
+            background: linear-gradient(135deg, #000 0%, #2d3436 100%);
+        }
+
+        .gaming .template-img {
+            background: linear-gradient(45deg, #fd79a8, #e84393);
+        }
+
+        .gaming .template-img i {
+            color: #000;
+        }
+
+        .gaming h3 {
+            color: #fd79a8;
+        }
+
+        .photography {
+            background: linear-gradient(135deg, #2c2c54 0%, #40407a 100%);
+        }
+
+        .photography .template-img {
+            background: linear-gradient(45deg, #ff5252, #ff793f);
+        }
+
+        .photography .template-img i {
+            color: #fff;
+        }
+
+        .photography h3 {
+            color: #fff;
+        }
+
+        .startup {
+            background: linear-gradient(135deg, #0652DD 0%, #1B1464 100%);
+        }
+
+        .startup .template-img {
+            background: linear-gradient(45deg, #ff9f43, #feca57);
+        }
+
+        .startup .template-img i {
+            color: #000;
+        }
+
+        .startup h3 {
+            color: #fff;
+        }
+
+        .medical {
+            background: linear-gradient(135deg, #006266 0%, #005a5f 100%);
+        }
+
+        .medical .template-img {
+            background: linear-gradient(45deg, #00d2d3, #54a0ff);
+        }
+
+        .medical .template-img i {
+            color: #fff;
+        }
+
+        .medical h3 {
+            color: #fff;
+        }
+
+        .music {
+            background: linear-gradient(135deg, #341f97 0%, #5f27cd 100%);
+        }
+
+        .music .template-img {
+            background: linear-gradient(45deg, #ff9ff3, #f368e0);
+        }
+
+        .music .template-img i {
+            color: #000;
+        }
+
+        .music h3 {
+            color: #ff9ff3;
+        }
+
+        .software {
+            background: linear-gradient(135deg, #000 0%, #2d3436 100%);
+        }
+
+        .software .template-img {
+            background: linear-gradient(45deg, #00d8d6, #00cec9);
+        }
+
+        .software .template-img i {
+            color: #000;
+        }
+
+        .software h3 {
+            color: #00d8d6;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(0, 22, 40, 0.95);
+            padding: 60px 0 30px;
+            border-top: 2px solid var(--primary);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+            text-transform: uppercase;
+        }
+
+        .footer-column p {
+            color: var(--light);
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: var(--light);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(253, 185, 19, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            color: var(--dark);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(253, 185, 19, 0.2);
+            color: var(--light);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .templates-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <a href="#" class="logo">
+                <img src="https://i.imgur.com/abr5HR1.png" alt="BLCK SNAKE Logo">
+                <div class="logo-text">BLCK <span>SNAKE</span></div>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Templates</a></li>
+                    <li><a href="#">Categories</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>Complete Portfolio <span>Templates</span></h1>
+            <p>30 professionally designed portfolio templates for every profession and style. Showcase your work with
+                our stunning, fully responsive HTML templates.</p>
+            <div class="hero-buttons">
+                <a href="#" class="btn btn-primary">View All Templates</a>
+                <a href="#" class="btn btn-secondary">Download Collection</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="filter-section">
+        <div class="container">
+            <div class="filter-buttons">
+                <button class="filter-btn active">All Templates</button>
+                <button class="filter-btn">Cyber</button>
+                <button class="filter-btn">Minimal</button>
+                <button class="filter-btn">Creative</button>
+                <button class="filter-btn">Corporate</button>
+                <button class="filter-btn">Gaming</button>
+                <button class="filter-btn">Photography</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Templates Grid -->
+    <section class="container">
+        <div class="templates-grid">
+            <!-- Template 1 -->
+            <div class="template-card cyber">
+                <div class="template-img">
+                    <i class="fas fa-terminal"></i>
+                </div>
+                <div class="template-content">
+                    <h3>Cyber Dark Theme</h3>
+                    <p>Dark cyberpunk theme with matrix effects and glitch animations. Perfect for developers and tech
+                        professionals.</p>
+                    <div class="template-tags">
+                        <span class="tag">Cyber</span>
+                        <span class="tag">Dark</span>
+                        <span class="tag">Tech</span>
+                    </div>
+                    <a href="#" class="btn btn-secondary">Preview</a>
+                </div>
+            </div>
+
+            <!-- Template 2 -->
+            <div class="template-card minimal">
+                <div class="template-img">
+                    <i class="fas fa-pencil-alt"></i>
+                </div>
+                <div class="template-content">
+                    <h3>Minimal Clean</h3>
+                    <p>Clean minimalist design with subtle animations. Ideal for designers and creative professionals.
+                    </p>
+                    <div class="template-tags">
+                        <span class="tag">Minimal</span>
+                        <span class="tag">Clean</span>
+                        <span class="tag">Design</span>
+                    </div>
+                    <a href="#" class="btn btn-secondary">Preview</a>
+                </div>
+            </div>
+
+            <!-- Template 3 -->
+            <div class="template-card creative">
+                <div class="template-img">
+                    <i class="fas fa-paint-brush"></i>
+                </div>
+                <div class="template-content">
+                    <h3>Creative Vibrant</h3>
+                    <p>Bold gradients with dynamic animations and floating elements. Great for artists and creative
+                        directors.</p>
+                    <div class="template-tags">
+                        <span class="tag">Creative</span>
+                        <span class="tag">Vibrant</span>
+                        <span class="tag">Art</span>
+                    </div>
+                    <a href="#" class="btn btn-secondary">Preview</a>
+                </div>
+            </div>
+
+            <!-- Template 4 -->
+            <div class="template-card corporate">
+                <div class="template-img">
+                    <i class="fas fa-briefcase"></i>
+                </div>
+                <div class="template-content">
+                    <h3>Corporate Professional</h3>
+                    <p>Professional corporate design with testimonials and case studies. Perfect for business
+                        consultants.</p>
+                    <div class="template-tags">
+                        <span class="tag">Corporate</span>
+                        <span class="tag">Professional</span>
+                        <span class="tag">Business</span>
+                    </div>
+                    <a href="#" class="btn btn-secondary">Preview</a>
+                </div>
+            </div>
+
+            <!-- Template 5 -->
+            <div class="template-card gaming">
+                <div class="template-img">
+                    <i class="fas fa-gamepad"></i>
+                </div>
+                <div class="template-content">
+                    <h3>Gaming Retro 80s</h3>
+                    <p>Neon 80s synthwave theme with retro gaming aesthetics. Excellent for game developers.</p>
+                    <div class="template-tags">
+                        <span class="tag">Gaming</span>
+                        <span class="tag">Retro</span>
+                        <span class="tag">80s</span>
+                    </div>
+                    <a href="#" class="btn btn-secondary">Preview</a>
+                </div>
+            </div>
+
+            <!-- Template 6 -->
+            <div class="template-card photography">
+                <div class="template-img">
+                    <i class="fas fa-camera"></i>
+                </div>
+                <div class="template-content">
+                    <h3>Photography Portfolio</h3>
+                    <p>Gallery-focused design with lightbox and elegant typography. Ideal for photographers.</p>
+                    <div class="template-tags">
+                        <span class="tag">Photography</span>
+                        <span class="tag">Gallery</span>
+                        <span class="tag">Visual</span>
+                    </div>
+                    <a href="#" class="btn btn-secondary">Preview</a>
+                </div>
+            </div>
+
+            <!-- Template 7 -->
+            <div class="template-card startup">
+                <div class="template-img">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <div class="template-content">
+                    <h3>Startup Modern</h3>
+                    <p>Bold, dynamic startup aesthetic with animated metrics. Perfect for entrepreneurs.</p>
+                    <div class="template-tags">
+                        <span class="tag">Startup</span>
+                        <span class="tag">Modern</span>
+                        <span class="tag">Dynamic</span>
+                    </div>
+                    <a href="#" class="btn btn-secondary">Preview</a>
+                </div>
+            </div>
+
+            <!-- Template 8 -->
+            <div class="template-card medical">
+                <div class="template-img">
+                    <i class="fas fa-heartbeat"></i>
+                </div>
+                <div class="template-content">
+                    <h3>Medical Healthcare</h3>
+                    <p>Clean, trustworthy medical design with appointment booking. Great for healthcare professionals.
+                    </p>
+                    <div class="template-tags">
+                        <span class="tag">Medical</span>
+                        <span class="tag">Healthcare</span>
+                        <span class="tag">Clean</span>
+                    </div>
+                    <a href="#" class="btn btn-secondary">Preview</a>
+                </div>
+            </div>
+
+            <!-- Template 9 -->
+            <div class="template-card music">
+                <div class="template-img">
+                    <i class="fas fa-music"></i>
+                </div>
+                <div class="template-content">
+                    <h3>Music Producer DJ</h3>
+                    <p>Audio-visual theme with DJ console and waveform graphics. Perfect for musicians and DJs.</p>
+                    <div class="template-tags">
+                        <span class="tag">Music</span>
+                        <span class="tag">Audio</span>
+                        <span class="tag">DJ</span>
+                    </div>
+                    <a href="#" class="btn btn-secondary">Preview</a>
+                </div>
+            </div>
+
+            <!-- Template 10 -->
+            <div class="template-card software">
+                <div class="template-img">
+                    <i class="fas fa-code"></i>
+                </div>
+                <div class="template-content">
+                    <h3>Software Engineer Terminal</h3>
+                    <p>Terminal/code aesthetic with GitHub integration. Excellent for software engineers.</p>
+                    <div class="template-tags">
+                        <span class="tag">Software</span>
+                        <span class="tag">Terminal</span>
+                        <span class="tag">Code</span>
+                    </div>
+                    <a href="#" class="btn btn-secondary">Preview</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>About BLCK SNAKE</h3>
+                    <p>We create premium portfolio templates for professionals across all industries to showcase their
+                        work effectively.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Templates</a></li>
+                        <li><a href="#">Categories</a></li>
+                        <li><a href="#">Pricing</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-links">
+                        <li><a href="mailto:info@blcksnake.com">info@blcksnake.com</a></li>
+                        <li><a href="#">Support Center</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>Copyright © 2023 blcksnake.com. Design by Jeysson Rostran. Contact: info@blcksnake.com</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Filter functionality
+        document.addEventListener('DOMContentLoaded', function () {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+
+                    // Add active class to clicked button
+                    button.classList.add('active');
+
+                    // Here you would normally filter the templates
+                    // For this demo, we'll just show an alert
+                    alert(`Filtering by: ${button.textContent}`);
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

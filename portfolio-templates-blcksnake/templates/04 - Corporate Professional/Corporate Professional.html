@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>David Mitchell - Business Consultant</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #ffffff;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid #e1e8ed;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1e3a8a;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-menu a {
+            color: #2c3e50;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: #1e3a8a;
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .nav-menu a:hover {
+            color: #1e3a8a;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 30%, rgba(30, 58, 138, 0.05) 50%, transparent 70%);
+            transform: skewX(-15deg);
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-content .subtitle {
+            font-size: 1.3rem;
+            color: #64748b;
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: #475569;
+            margin-bottom: 3rem;
+            line-height: 1.7;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: #1e3a8a;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #1e40af;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(30, 58, 138, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #1e3a8a;
+            border: 2px solid #1e3a8a;
+        }
+
+        .btn-secondary:hover {
+            background: #1e3a8a;
+            color: white;
+        }
+
+        .hero-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .profile-section {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #1e3a8a, #3b82f6, #06b6d4);
+        }
+
+        .profile-pic {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+            margin: 0 auto 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            color: white;
+            box-shadow: 0 15px 35px rgba(30, 58, 138, 0.3);
+        }
+
+        .profile-info h3 {
+            font-size: 1.8rem;
+            color: #1e3a8a;
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-info p {
+            color: #64748b;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1e3a8a;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #64748b;
+            font-weight: 500;
+        }
+
+        .section {
+            padding: 6rem 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #64748b;
+            margin-bottom: 4rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 3rem 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #1e3a8a, #3b82f6);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            margin: 0 auto 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.1);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1e3a8a;
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        .about-section {
+            background: #f8fafc;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-pic {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+            color: white;
+            box-shadow: 0 20px 40px rgba(30, 58, 138, 0.2);
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #1e3a8a;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            color: #475569;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .skills-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .skill-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #1e3a8a;
+            font-weight: 500;
+        }
+
+        .skill-item i {
+            color: #3b82f6;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-image {
+            height: 220px;
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6, #06b6d4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(30, 58, 138, 0.9);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+
+        .project-btn {
+            padding: 0.8rem 1.5rem;
+            background: white;
+            color: #1e3a8a;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            transform: translateY(20px);
+        }
+
+        .project-card:hover .project-btn {
+            transform: translateY(0);
+        }
+
+        .project-btn:hover {
+            background: #f1f5f9;
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-content h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #1e3a8a;
+            margin-bottom: 1rem;
+        }
+
+        .project-content p {
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            padding: 0.4rem 1rem;
+            background: #e0f2fe;
+            color: #0369a1;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .testimonials-section {
+            background: #1e3a8a;
+            color: white;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2.5rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .testimonial-text {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #3b82f6, #06b6d4);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: white;
+        }
+
+        .author-info h4 {
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+        }
+
+        .author-info p {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .contact-section {
+            background: #f8fafc;
+        }
+
+        .contact-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .form-group {
+            position: relative;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 1.2rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+            background: white;
+            color: #2c3e50;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #1e3a8a;
+            box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.1);
+        }
+
+        .form-input::placeholder {
+            color: #94a3b8;
+        }
+
+        .submit-button {
+            grid-column: 1 / -1;
+            justify-self: center;
+            padding: 1.2rem 3rem;
+            background: #1e3a8a;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-button:hover {
+            background: #1e40af;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(30, 58, 138, 0.3);
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .contact-item {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            margin: 0 auto 1rem;
+        }
+
+        .contact-item h4 {
+            font-weight: 600;
+            color: #1e3a8a;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-item p {
+            color: #64748b;
+        }
+
+        .footer {
+            background: #1e3a8a;
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: white;
+            color: #1e3a8a;
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .contact-form {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                justify-content: center;
+            }
+        }
+
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo">David Mitchell</a>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Business Consultant & Strategic Advisor</h1>
+                <p class="subtitle">Driving Growth Through Strategic Excellence</p>
+                <p>With over 10 years of experience, I help businesses optimize operations, increase profitability, and
+                    achieve sustainable growth through data-driven strategies and innovative solutions.</p>
+                <div class="cta-buttons">
+                    <a href="#contact" class="btn btn-primary">Get Consultation</a>
+                    <a href="#projects" class="btn btn-secondary">View Case Studies</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="profile-section">
+                    <div class="profile-pic">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <div class="profile-info">
+                        <h3>David Mitchell</h3>
+                        <p>Senior Business Consultant</p>
+                        <div class="stats">
+                            <div class="stat-item">
+                                <span class="stat-number">150+</span>
+                                <span class="stat-label">Projects</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">10+</span>
+                                <span class="stat-label">Years</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">95%</span>
+                                <span class="stat-label">Success Rate</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="section">
+        <div class="container">
+            <h2 class="section-title">Services</h2>
+            <p class="section-subtitle">Comprehensive business solutions tailored to your unique challenges and growth
+                objectives.</p>
+            <div class="services-grid">
+                <div class="service-card fade-up">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Strategic Planning</h3>
+                    <p>Develop comprehensive business strategies that align with your vision and drive sustainable
+                        growth through market analysis and competitive positioning.</p>
+                </div>
+                <div class="service-card fade-up">
+                    <div class="service-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3>Process Optimization</h3>
+                    <p>Streamline operations and improve efficiency through process analysis, automation
+                        recommendations, and workflow optimization.</p>
+                </div>
+                <div class="service-card fade-up">
+                    <div class="service-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Change Management</h3>
+                    <p>Guide your organization through transformation with structured change management processes and
+                        stakeholder engagement strategies.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section about-section">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-image">
+                    <div class="about-pic">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                </div>
+                <div class="about-text">
+                    <h3>About David Mitchell</h3>
+                    <p>I'm a seasoned business consultant with a proven track record of helping organizations achieve
+                        their strategic objectives. My approach combines analytical rigor with practical implementation
+                        to deliver measurable results.</p>
+                    <p>Having worked with companies ranging from startups to Fortune 500 enterprises, I bring diverse
+                        industry experience and a deep understanding of business dynamics across various sectors.</p>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <i class="fas fa-check"></i>
+                            <span>Strategic Planning</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-check"></i>
+                            <span>Financial Analysis</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-check"></i>
+                            <span>Market Research</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-check"></i>
+                            <span>Process Improvement</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-check"></i>
+                            <span>Leadership Development</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-check"></i>
+                            <span>Digital Transformation</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="section">
+        <div class="container">
+            <h2 class="section-title">Case Studies</h2>
+            <p class="section-subtitle">Real results from strategic partnerships with forward-thinking organizations.
+            </p>
+            <div class="projects-grid">
+                <div class="project-card fade-up">
+                    <div class="project-image">
+                        <i class="fas fa-industry"></i>
+                        <div class="project-overlay">
+                            <a href="#" class="project-btn">View Details</a>
+                            <a href="#" class="project-btn">Download PDF</a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Manufacturing Efficiency Optimization</h3>
+                        <p>Led a comprehensive operational review that resulted in 35% cost reduction and 40%
+                            improvement in production efficiency for a mid-size manufacturer.</p>
+                        <div class="project-tags">
+                            <span class="tag">Operations</span>
+                            <span class="tag">Cost Reduction</span>
+                            <span class="tag">Manufacturing</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card fade-up">
+                    <div class="project-image">
+                        <i class="fas fa-rocket"></i>
+                        <div class="project-overlay">
+                            <a href="#" class="project-btn">View Details</a>
+                            <a href="#" class="project-btn">Download PDF</a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Tech Startup Scale-Up Strategy</h3>
+                        <p>Developed go-to-market strategy and operational framework that enabled 300% revenue growth
+                            and successful Series B funding round.</p>
+                        <div class="project-tags">
+                            <span class="tag">Strategy</span>
+                            <span class="tag">Growth</span>
+                            <span class="tag">Technology</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card fade-up">
+                    <div class="project-image">
+                        <i class="fas fa-chart-pie"></i>
+                        <div class="project-overlay">
+                            <a href="#" class="project-btn">View Details</a>
+                            <a href="#" class="project-btn">Download PDF</a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Digital Transformation Initiative</h3>
+                        <p>Orchestrated company-wide digital transformation resulting in improved customer satisfaction
+                            and 25% increase in operational efficiency.</p>
+                        <div class="project-tags">
+                            <span class="tag">Digital</span>
+                            <span class="tag">Transformation</span>
+                            <span class="tag">Innovation</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="section testimonials-section">
+        <div class="container">
+            <h2 class="section-title">Client Testimonials</h2>
+            <p class="section-subtitle">What clients say about working with me.</p>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"David's strategic insights and hands-on approach transformed our
+                        business operations. His recommendations led to significant cost savings and improved market
+                        position."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>Sarah Williams</h4>
+                            <p>CEO, TechStart Inc.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Working with David was a game-changer for our company. His analytical
+                        approach and practical solutions helped us achieve our growth targets ahead of schedule."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>Michael Chen</h4>
+                            <p>COO, Global Manufacturing</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"David's expertise in change management was invaluable during our
+                        digital transformation. He made the complex process seamless and achieved buy-in from all
+                        stakeholders."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>Emily Rodriguez</h4>
+                            <p>Director, Innovation Labs</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section contact-section">
+        <div class="container">
+            <div class="contact-content">
+                <h2 class="section-title">Let's Discuss Your Business Goals</h2>
+                <p class="section-subtitle">Ready to take your business to the next level? Let's start with a
+                    consultation.</p>
+
+                <div class="contact-form">
+                    <div class="form-group">
+                        <input type="text" class="form-input" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-input" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-input" placeholder="Company Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" class="form-input" placeholder="Phone Number">
+                    </div>
+                    <div class="form-group full-width">
+                        <textarea class="form-input" rows="5"
+                            placeholder="Tell me about your business challenges and goals..." required></textarea>
+                    </div>
+                    <button type="submit" class="submit-button">Schedule Consultation</button>
+                </div>
+
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <h4>Phone</h4>
+                        <p>+1 (555) 123-4567</p>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h4>Email</h4>
+                        <p>david@businessconsult.com</p>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h4>Location</h4>
+                        <p>New York, NY</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-medium"></i></a>
+            </div>
+            <p>&copy; 2024 David Mitchell. All rights reserved. | Business Consultant & Strategic Advisor</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-up').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Form submission
+        document.querySelector('.contact-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for your inquiry! I will get back to you within 24 hours to schedule your consultation.');
+        });
+    </script>
+</body>
+
+</html>

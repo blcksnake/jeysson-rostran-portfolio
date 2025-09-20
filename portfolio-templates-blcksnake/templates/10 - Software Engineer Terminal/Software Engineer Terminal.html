@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Rivera - Full Stack Software Engineer</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'JetBrains Mono', 'Fira Code', monospace;
+            background: #0d1117;
+            color: #c9d1d9;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .terminal-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(0, 255, 65, 0.03) 2px,
+                    rgba(0, 255, 65, 0.03) 4px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .code-rain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.1;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 0;
+            background: rgba(13, 17, 23, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid #21262d;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #58a6ff;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo::before {
+            content: '>';
+            color: #7ee787;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: #c9d1d9;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-menu a::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background: #7ee787;
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::before {
+            width: 100%;
+        }
+
+        .nav-menu a:hover {
+            color: #7ee787;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 2rem;
+            margin-top: 80px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-content {
+            animation: slideInLeft 1s ease-out;
+        }
+
+        .hero-prompt {
+            color: #7ee787;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            opacity: 0;
+            animation: typewriter 1s steps(20, end) 0.5s forwards;
+        }
+
+        .hero-prompt::before {
+            content: '$ ';
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 900;
+            margin-bottom: 1rem;
+            color: #58a6ff;
+            opacity: 0;
+            animation: typewriter 2s steps(30, end) 1.5s forwards;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            color: #8b949e;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 3s forwards;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 3.5s forwards;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #7ee787;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #8b949e;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 4s forwards;
+        }
+
+        .btn {
+            padding: 0.8rem 2rem;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-family: inherit;
+            border: 1px solid transparent;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: #238636;
+            color: white;
+            border-color: #2ea043;
+        }
+
+        .btn-primary:hover {
+            background: #2ea043;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(35, 134, 54, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #f0f6fc;
+            border-color: #30363d;
+        }
+
+        .btn-secondary:hover {
+            border-color: #8b949e;
+            background: #21262d;
+        }
+
+        .hero-terminal {
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            box-shadow: 0 16px 32px rgba(1, 4, 9, 0.85);
+            animation: slideInRight 1s ease-out 0.8s both;
+        }
+
+        .terminal-header {
+            background: #161b22;
+            padding: 0.8rem;
+            border-bottom: 1px solid #30363d;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border-radius: 6px 6px 0 0;
+        }
+
+        .terminal-dots {
+            display: flex;
+            gap: 0.3rem;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .dot:nth-child(1) {
+            background: #ff5f56;
+        }
+
+        .dot:nth-child(2) {
+            background: #ffbd2e;
+        }
+
+        .dot:nth-child(3) {
+            background: #27ca3f;
+        }
+
+        .terminal-title {
+            margin-left: auto;
+            color: #8b949e;
+            font-size: 0.9rem;
+        }
+
+        .terminal-body {
+            padding: 1.5rem;
+            font-size: 0.9rem;
+            min-height: 300px;
+        }
+
+        .terminal-line {
+            margin-bottom: 0.5rem;
+            opacity: 0;
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+
+        .terminal-line:nth-child(1) {
+            animation-delay: 1.5s;
+        }
+
+        .terminal-line:nth-child(2) {
+            animation-delay: 2s;
+        }
+
+        .terminal-line:nth-child(3) {
+            animation-delay: 2.5s;
+        }
+
+        .terminal-line:nth-child(4) {
+            animation-delay: 3s;
+        }
+
+        .terminal-line:nth-child(5) {
+            animation-delay: 3.5s;
+        }
+
+        .prompt {
+            color: #7ee787;
+        }
+
+        .command {
+            color: #79c0ff;
+        }
+
+        .output {
+            color: #c9d1d9;
+            margin-left: 2rem;
+        }
+
+        .cursor {
+            background: #7ee787;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes typewriter {
+            from {
+                width: 0;
+                opacity: 1;
+            }
+
+            to {
+                width: 100%;
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes blink {
+
+            0%,
+            50% {
+                opacity: 1;
+            }
+
+            51%,
+            100% {
+                opacity: 0;
+            }
+        }
+
+        .section {
+            padding: 6rem 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #58a6ff;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .section-title::before {
+            content: '// ';
+            color: #7ee787;
+        }
+
+        .section-subtitle {
+            color: #8b949e;
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .skill-category {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            border-color: #58a6ff;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(88, 166, 255, 0.15);
+        }
+
+        .skill-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-icon {
+            width: 40px;
+            height: 40px;
+            background: #238636;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .skill-category h3 {
+            color: #f0f6fc;
+            font-size: 1.3rem;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            padding: 0.3rem 0.8rem;
+            background: #21262d;
+            color: #58a6ff;
+            border: 1px solid #30363d;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: #58a6ff;
+            color: #0d1117;
+            border-color: #58a6ff;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            border-color: #58a6ff;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(88, 166, 255, 0.15);
+        }
+
+        .project-header {
+            background: #161b22;
+            padding: 1rem;
+            border-bottom: 1px solid #30363d;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .project-icon {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #7ee787;
+        }
+
+        .project-title {
+            color: #f0f6fc;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-content h3 {
+            color: #58a6ff;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-description {
+            color: #8b949e;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-tag {
+            padding: 0.2rem 0.6rem;
+            background: #21262d;
+            color: #7ee787;
+            border: 1px solid #30363d;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-family: inherit;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-link {
+            color: #58a6ff;
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            transition: color 0.3s ease;
+        }
+
+        .project-link:hover {
+            color: #79c0ff;
+        }
+
+        .contact-section {
+            background: #161b22;
+            border-top: 1px solid #30363d;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-label {
+            display: block;
+            color: #f0f6fc;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.8rem;
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            color: #c9d1d9;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #58a6ff;
+            box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.1);
+        }
+
+        .form-input::placeholder {
+            color: #6e7681;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: #238636;
+            color: white;
+            border: 1px solid #2ea043;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: #2ea043;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(35, 134, 54, 0.3);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            background: #21262d;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            color: #8b949e;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: #30363d;
+            color: #58a6ff;
+            border-color: #58a6ff;
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+
+            .hero-stats {
+                justify-content: center;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .terminal-body {
+                font-size: 0.8rem;
+                padding: 1rem;
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .github-contribution {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            padding: 2rem;
+            margin: 3rem 0;
+        }
+
+        .contribution-grid {
+            display: grid;
+            grid-template-columns: repeat(53, 1fr);
+            gap: 3px;
+            margin-top: 1rem;
+        }
+
+        .contribution-day {
+            width: 10px;
+            height: 10px;
+            background: #161b22;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .contribution-day.level-1 {
+            background: #0e4429;
+        }
+
+        .contribution-day.level-2 {
+            background: #006d32;
+        }
+
+        .contribution-day.level-3 {
+            background: #26a641;
+        }
+
+        .contribution-day.level-4 {
+            background: #39d353;
+        }
+
+        .contribution-day:hover {
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="terminal-bg"></div>
+    <canvas class="code-rain" id="codeRain"></canvas>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">alex.rivera</div>
+            <ul class="nav-menu">
+                <li><a href="#home">~/home</a></li>
+                <li><a href="#skills">~/skills</a></li>
+                <li><a href="#projects">~/projects</a></li>
+                <li><a href="#contact">~/contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-prompt">whoami</div>
+                <h1 class="hero-title">Full Stack Developer</h1>
+                <p class="hero-description">
+                    Passionate software engineer with 5+ years of experience building scalable web applications,
+                    APIs, and distributed systems. I love solving complex problems with clean, efficient code.
+                </p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">50+</span>
+                        <span class="stat-label">Projects</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">1M+</span>
+                        <span class="stat-label">Lines of Code</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">99.9%</span>
+                        <span class="stat-label">Uptime</span>
+                    </div>
+                </div>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary">View Projects</a>
+                    <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+                </div>
+            </div>
+
+            <div class="hero-terminal">
+                <div class="terminal-header">
+                    <div class="terminal-dots">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                    <div class="terminal-title">alex@macbook ~ %</div>
+                </div>
+                <div class="terminal-body">
+                    <div class="terminal-line">
+                        <span class="prompt">$</span> <span class="command">cat about.txt</span>
+                    </div>
+                    <div class="terminal-line">
+                        <div class="output">Name: Alex Rivera</div>
+                    </div>
+                    <div class="terminal-line">
+                        <div class="output">Role: Senior Full Stack Developer</div>
+                    </div>
+                    <div class="terminal-line">
+                        <div class="output">Location: San Francisco, CA</div>
+                    </div>
+                    <div class="terminal-line">
+                        <div class="output">Languages: JavaScript, Python, Go, Rust</div>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="prompt">$</span> <span class="command">ls -la skills/</span>
+                    </div>
+                    <div class="terminal-line">
+                        <div class="output">drwxr-xr-x frontend/</div>
+                    </div>
+                    <div class="terminal-line">
+                        <div class="output">drwxr-xr-x backend/</div>
+                    </div>
+                    <div class="terminal-line">
+                        <div class="output">drwxr-xr-x devops/</div>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="prompt">$</span> <span class="cursor">█</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="section">
+        <div class="container">
+            <h2 class="section-title fade-in">Technical Stack</h2>
+            <p class="section-subtitle fade-in">Technologies and tools I work with</p>
+
+            <div class="skills-grid">
+                <div class="skill-category fade-in">
+                    <div class="skill-header">
+                        <div class="skill-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3>Frontend</h3>
+                    </div>
+                    <div class="skill-list">
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">Vue.js</span>
+                        <span class="skill-tag">TypeScript</span>
+                        <span class="skill-tag">Next.js</span>
+                        <span class="skill-tag">Tailwind CSS</span>
+                        <span class="skill-tag">SASS</span>
+                        <span class="skill-tag">Webpack</span>
+                        <span class="skill-tag">Vite</span>
+                    </div>
+                </div>
+
+                <div class="skill-category fade-in">
+                    <div class="skill-header">
+                        <div class="skill-icon">
+                            <i class="fas fa-server"></i>
+                        </div>
+                        <h3>Backend</h3>
+                    </div>
+                    <div class="skill-list">
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Go</span>
+                        <span class="skill-tag">Express</span>
+                        <span class="skill-tag">FastAPI</span>
+                        <span class="skill-tag">GraphQL</span>
+                        <span class="skill-tag">REST APIs</span>
+                        <span class="skill-tag">Microservices</span>
+                    </div>
+                </div>
+
+                <div class="skill-category fade-in">
+                    <div class="skill-header">
+                        <div class="skill-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <h3>Database</h3>
+                    </div>
+                    <div class="skill-list">
+                        <span class="skill-tag">PostgreSQL</span>
+                        <span class="skill-tag">MongoDB</span>
+                        <span class="skill-tag">Redis</span>
+                        <span class="skill-tag">Elasticsearch</span>
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">DynamoDB</span>
+                    </div>
+                </div>
+
+                <div class="skill-category fade-in">
+                    <div class="skill-header">
+                        <div class="skill-icon">
+                            <i class="fas fa-cloud"></i>
+                        </div>
+                        <h3>DevOps & Cloud</h3>
+                    </div>
+                    <div class="skill-list">
+                        <span class="skill-tag">AWS</span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">Kubernetes</span>
+                        <span class="skill-tag">CI/CD</span>
+                        <span class="skill-tag">Terraform</span>
+                        <span class="skill-tag">GitHub Actions</span>
+                        <span class="skill-tag">Nginx</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="github-contribution fade-in">
+                <h3>GitHub Activity</h3>
+                <div class="contribution-grid" id="contributionGrid"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="section">
+        <div class="container">
+            <h2 class="section-title fade-in">Featured Projects</h2>
+            <p class="section-subtitle fade-in">Some of my recent work</p>
+
+            <div class="projects-grid">
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <div class="project-icon"></div>
+                        <div class="project-title">microservices-api</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Distributed E-commerce Platform</h3>
+                        <p class="project-description">
+                            Scalable microservices architecture handling 1M+ daily transactions. Built with Node.js,
+                            Kubernetes, and event-driven architecture patterns.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">Kubernetes</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">Redis</span>
+                            <span class="tech-tag">Docker</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">
+                                <i class="fab fa-github"></i> Code
+                            </a>
+                            <a href="#" class="project-link">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <div class="project-icon"></div>
+                        <div class="project-title">ml-data-pipeline</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Real-time Analytics Dashboard</h3>
+                        <p class="project-description">
+                            Real-time data processing pipeline with ML-powered insights. Processes 100GB+ data daily
+                            with sub-second query response times.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Apache Kafka</span>
+                            <span class="tech-tag">Elasticsearch</span>
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">D3.js</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">
+                                <i class="fab fa-github"></i> Code
+                            </a>
+                            <a href="#" class="project-link">
+                                <i class="fas fa-chart-line"></i> Analytics
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <div class="project-icon"></div>
+                        <div class="project-title">blockchain-voting</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Decentralized Voting System</h3>
+                        <p class="project-description">
+                            Blockchain-based voting platform ensuring transparency and immutability.
+                            Built with Ethereum smart contracts and modern web technologies.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Solidity</span>
+                            <span class="tech-tag">Ethereum</span>
+                            <span class="tech-tag">Web3.js</span>
+                            <span class="tech-tag">Next.js</span>
+                            <span class="tech-tag">IPFS</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">
+                                <i class="fab fa-github"></i> Code
+                            </a>
+                            <a href="#" class="project-link">
+                                <i class="fas fa-vote-yea"></i> Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <div class="project-icon"></div>
+                        <div class="project-title">ai-code-assistant</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>AI-Powered Code Assistant</h3>
+                        <p class="project-description">
+                            VS Code extension with AI-powered code completion and bug detection.
+                            Used by 10,000+ developers worldwide with 4.8/5 rating.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">TypeScript</span>
+                            <span class="tech-tag">VS Code API</span>
+                            <span class="tech-tag">OpenAI API</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">Jest</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">
+                                <i class="fab fa-github"></i> Code
+                            </a>
+                            <a href="#" class="project-link">
+                                <i class="fas fa-download"></i> Extension
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section contact-section">
+        <div class="container">
+            <h2 class="section-title fade-in">Get In Touch</h2>
+            <p class="section-subtitle fade-in">Let's build something amazing together</p>
+
+            <div class="contact-form fade-in">
+                <div class="form-group">
+                    <label class="form-label" for="name">Name</label>
+                    <input type="text" id="name" class="form-input" placeholder="Your name" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="email">Email</label>
+                    <input type="email" id="email" class="form-input" placeholder="your.email@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="subject">Subject</label>
+                    <input type="text" id="subject" class="form-input" placeholder="Project collaboration" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="message">Message</label>
+                    <textarea id="message" class="form-input" rows="6" placeholder="Tell me about your project..."
+                        required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </div>
+
+            <div class="social-links fade-in">
+                <a href="#" class="social-link" title="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="#" class="social-link" title="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="#" class="social-link" title="Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" class="social-link" title="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Code rain effect
+        const canvas = document.getElementById('codeRain');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*(){}[]|\\:";\'<>?,./`~';
+        const fontSize = 14;
+        const columns = canvas.width / fontSize;
+        const drops = [];
+
+        for (let x = 0; x < columns; x++) {
+            drops[x] = 1;
+        }
+
+        function drawCodeRain() {
+            ctx.fillStyle = 'rgba(13, 17, 23, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = '#7ee787';
+            ctx.font = fontSize + 'px monospace';
+
+            for (let i = 0; i < drops.length; i++) {
+                const text = characters[Math.floor(Math.random() * characters.length)];
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+        }
+
+        setInterval(drawCodeRain, 35);
+
+        // Resize handler
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        // GitHub contribution grid
+        function generateContributionGrid() {
+            const grid = document.getElementById('contributionGrid');
+            if (!grid) return;
+
+            for (let i = 0; i < 371; i++) { // ~53 weeks * 7 days
+                const day = document.createElement('div');
+                day.className = 'contribution-day';
+
+                const level = Math.floor(Math.random() * 5);
+                if (level > 0) {
+                    day.classList.add(`level-${level}`);
+                    day.title = `${level} contribution${level > 1 ? 's' : ''} on this day`;
+                }
+
+                grid.appendChild(day);
+            }
+        }
+
+        // Terminal typing effect
+        function typeInTerminal() {
+            const terminalLines = document.querySelectorAll('.terminal-line');
+            terminalLines.forEach((line, index) => {
+                line.style.animationDelay = `${1.5 + index * 0.5}s`;
+            });
+        }
+
+        // Form submission
+        document.querySelector('.contact-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            // Simulate terminal output
+            const submitBtn = e.target.querySelector('.submit-btn');
+            const originalText = submitBtn.textContent;
+
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+
+            setTimeout(() => {
+                submitBtn.textContent = '✓ Message Sent!';
+                setTimeout(() => {
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                    e.target.reset();
+                }, 2000);
+            }, 1500);
+        });
+
+        // Skill tag interactions
+        document.querySelectorAll('.skill-tag').forEach(tag => {
+            tag.addEventListener('mouseenter', () => {
+                tag.style.transform = 'scale(1.05)';
+            });
+
+            tag.addEventListener('mouseleave', () => {
+                tag.style.transform = 'scale(1)';
+            });
+        });
+
+        // Terminal cursor blink
+        function animateTerminalCursor() {
+            const cursor = document.querySelector('.cursor');
+            if (cursor) {
+                setInterval(() => {
+                    cursor.style.opacity = cursor.style.opacity === '0' ? '1' : '0';
+                }, 500);
+            }
+        }
+
+        // Project card hover effects
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                const icon = card.querySelector('.project-icon');
+                icon.style.background = '#58a6ff';
+            });
+
+            card.addEventListener('mouseleave', () => {
+                const icon = card.querySelector('.project-icon');
+                icon.style.background = '#7ee787';
+            });
+        });
+
+        // Easter egg: Konami code for terminal mode
+        const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'KeyB', 'KeyA'];
+        let konamiIndex = 0;
+
+        document.addEventListener('keydown', (e) => {
+            if (e.code === konamiCode[konamiIndex]) {
+                konamiIndex++;
+                if (konamiIndex === konamiCode.length) {
+                    // Activate terminal mode
+                    document.body.style.filter = 'sepia(1) hue-rotate(90deg)';
+                    setTimeout(() => {
+                        document.body.style.filter = 'none';
+                        alert('🚀 Developer mode activated! 🚀');
+                    }, 2000);
+                    konamiIndex = 0;
+                }
+            } else {
+                konamiIndex = 0;
+            }
+        });
+
+        // Typing sound effect simulation
+        let typingSound = false;
+        document.addEventListener('keydown', (e) => {
+            if (e.target.matches('input, textarea') && !typingSound) {
+                typingSound = true;
+                // Create subtle typing feedback
+                e.target.style.borderColor = '#7ee787';
+                setTimeout(() => {
+                    e.target.style.borderColor = '#30363d';
+                    typingSound = false;
+                }, 100);
+            }
+        });
+
+        // Initialize everything
+        document.addEventListener('DOMContentLoaded', () => {
+            generateContributionGrid();
+            typeInTerminal();
+            animateTerminalCursor();
+        });
+
+        // Performance monitoring
+        window.addEventListener('load', () => {
+            const loadTime = performance.now();
+            console.log(`%c⚡ Page loaded in ${Math.round(loadTime)}ms`, 'color: #7ee787; font-weight: bold;');
+        });
+    </script>
+</body>
+
+</html>

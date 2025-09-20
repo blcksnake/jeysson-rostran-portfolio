@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Amanda Foster - Cardiologist & Medical Consultant</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #ffffff;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 0;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(44, 62, 80, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #2980b9;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo i {
+            color: #27ae60;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-menu a {
+            color: #2c3e50;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #27ae60;
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .nav-menu a:hover {
+            color: #27ae60;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #f8fbff 0%, #e8f4fd 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 60%;
+            height: 150%;
+            background: linear-gradient(135deg, rgba(39, 174, 96, 0.1), rgba(41, 128, 185, 0.1));
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            z-index: 2;
+            position: relative;
+        }
+
+        .hero-content {
+            animation: slideInLeft 1s ease-out;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+            color: white;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: #2c3e50;
+        }
+
+        .hero-title .highlight {
+            color: #27ae60;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: #7f8c8d;
+            margin-bottom: 2rem;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: #5d6d7e;
+            margin-bottom: 3rem;
+            line-height: 1.7;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #229954, #27ae60);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(39, 174, 96, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #2980b9;
+            border: 2px solid #2980b9;
+        }
+
+        .btn-secondary:hover {
+            background: #2980b9;
+            color: white;
+        }
+
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: slideInRight 1s ease-out 0.5s both;
+        }
+
+        .doctor-card {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position: relative;
+            max-width: 400px;
+        }
+
+        .doctor-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #27ae60, #2980b9);
+            border-radius: 20px 20px 0 0;
+        }
+
+        .doctor-avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #2980b9, #27ae60);
+            margin: 0 auto 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+            box-shadow: 0 15px 30px rgba(41, 128, 185, 0.3);
+        }
+
+        .credentials {
+            margin-top: 2rem;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .credential-item {
+            text-align: center;
+            padding: 1rem;
+            background: #f8fafc;
+            border-radius: 10px;
+        }
+
+        .credential-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #27ae60;
+            display: block;
+        }
+
+        .credential-label {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+            font-weight: 500;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .section {
+            padding: 6rem 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .section-title .highlight {
+            color: #27ae60;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #7f8c8d;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 3rem 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(39, 174, 96, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #27ae60, #2980b9);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 15px;
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+            margin: 0 auto 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: #7f8c8d;
+            line-height: 1.6;
+        }
+
+        .about-section {
+            background: linear-gradient(135deg, #f8fbff 0%, #e8f4fd 100%);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-pic {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, #2980b9, #27ae60);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+            color: white;
+            box-shadow: 0 20px 40px rgba(41, 128, 185, 0.2);
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            color: #5d6d7e;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .certifications {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .certification {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #27ae60;
+            font-weight: 500;
+        }
+
+        .certification i {
+            color: #2ecc71;
+        }
+
+        .testimonials-section {
+            background: #2c3e50;
+            color: white;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2.5rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .testimonial-text {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #27ae60, #2980b9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: white;
+        }
+
+        .author-info h4 {
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+        }
+
+        .author-info p {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .contact-section {
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+            color: white;
+        }
+
+        .contact-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-section .section-title {
+            color: white;
+        }
+
+        .contact-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .form-group {
+            position: relative;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 1.2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            color: white;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .form-input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .submit-btn {
+            grid-column: 1 / -1;
+            justify-self: center;
+            padding: 1.2rem 3rem;
+            background: white;
+            color: #27ae60;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: #f8f9fa;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.2);
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .contact-item {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #27ae60;
+            margin: 0 auto 1rem;
+        }
+
+        .contact-item h4 {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-item p {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .contact-form {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(39, 174, 96, 0.7);
+            }
+
+            70% {
+                box-shadow: 0 0 0 10px rgba(39, 174, 96, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(39, 174, 96, 0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-heartbeat"></i>
+                Dr. Amanda Foster
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">🩺 Compassionate Care</div>
+                <h1 class="hero-title">
+                    Your Heart's <span class="highlight">Health</span><br>
+                    Is My Priority
+                </h1>
+                <p class="hero-subtitle">Board-Certified Cardiologist & Medical Consultant</p>
+                <p class="hero-description">
+                    With over 15 years of experience in cardiovascular medicine, I provide comprehensive cardiac care,
+                    preventive medicine, and expert medical consultation to help you maintain optimal heart health.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">Book Appointment</a>
+                    <a href="#services" class="btn btn-secondary">Learn More</a>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="doctor-card">
+                    <div class="doctor-avatar pulse">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    <h3>Dr. Amanda Foster, MD</h3>
+                    <p>Interventional Cardiologist</p>
+                    <div class="credentials">
+                        <div class="credential-item">
+                            <span class="credential-number">15+</span>
+                            <span class="credential-label">Years</span>
+                        </div>
+                        <div class="credential-item">
+                            <span class="credential-number">5000+</span>
+                            <span class="credential-label">Patients</span>
+                        </div>
+                        <div class="credential-item">
+                            <span class="credential-number">50+</span>
+                            <span class="credential-label">Awards</span>
+                        </div>
+                        <div class="credential-item">
+                            <span class="credential-number">98%</span>
+                            <span class="credential-label">Success</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title fade-in">Medical <span class="highlight">Services</span></h2>
+                <p class="section-subtitle fade-in">Comprehensive cardiovascular care tailored to your unique needs</p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <h3>Cardiac Consultation</h3>
+                    <p>Comprehensive cardiac evaluations, risk assessments, and personalized treatment plans for optimal
+                        heart health.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-procedures"></i>
+                    </div>
+                    <h3>Interventional Cardiology</h3>
+                    <p>Advanced catheter-based procedures including angioplasty, stent placement, and minimally invasive
+                        treatments.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Preventive Medicine</h3>
+                    <p>Proactive cardiovascular risk reduction through lifestyle counseling and evidence-based
+                        prevention strategies.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-stethoscope"></i>
+                    </div>
+                    <h3>Diagnostic Testing</h3>
+                    <p>State-of-the-art cardiac imaging, stress testing, and advanced diagnostic procedures for accurate
+                        diagnosis.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                    <h3>Second Opinions</h3>
+                    <p>Expert medical consultation and second opinions for complex cardiovascular conditions and
+                        treatment decisions.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Heart Disease Management</h3>
+                    <p>Comprehensive management of coronary artery disease, heart failure, and other cardiovascular
+                        conditions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section about-section">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-image fade-in">
+                    <div class="about-pic">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                </div>
+                <div class="about-text fade-in">
+                    <h3>About Dr. Amanda Foster</h3>
+                    <p>Dr. Amanda Foster is a board-certified interventional cardiologist with over 15 years of
+                        experience in cardiovascular medicine. She completed her medical degree at Johns Hopkins
+                        University School of Medicine, followed by residency in Internal Medicine and fellowship in
+                        Cardiology at Massachusetts General Hospital.</p>
+                    <p>Dr. Foster specializes in complex coronary interventions and has performed over 3,000 cardiac
+                        catheterization procedures. She is passionate about preventive cardiology and believes in
+                        empowering patients through education and personalized care.</p>
+                    <p>She has published over 50 peer-reviewed articles and is actively involved in clinical research
+                        focusing on women's heart health and innovative treatment approaches.</p>
+
+                    <div class="certifications">
+                        <div class="certification">
+                            <i class="fas fa-certificate"></i>
+                            <span>Board Certified - Internal Medicine</span>
+                        </div>
+                        <div class="certification">
+                            <i class="fas fa-certificate"></i>
+                            <span>Board Certified - Cardiovascular Disease</span>
+                        </div>
+                        <div class="certification">
+                            <i class="fas fa-certificate"></i>
+                            <span>Board Certified - Interventional Cardiology</span>
+                        </div>
+                        <div class="certification">
+                            <i class="fas fa-award"></i>
+                            <span>Fellow - American College of Cardiology</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="section testimonials-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title fade-in">Patient <span class="highlight"
+                        style="color: #27ae60;">Testimonials</span></h2>
+                <p class="section-subtitle fade-in" style="color: rgba(255,255,255,0.8);">What patients say about their
+                    care experience</p>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card fade-in">
+                    <p class="testimonial-text">"Dr. Foster saved my life. Her expertise and compassionate care during
+                        my heart attack recovery were exceptional. She explained everything clearly and made me feel
+                        confident in my treatment plan."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>Robert Johnson</h4>
+                            <p>Heart Attack Survivor</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card fade-in">
+                    <p class="testimonial-text">"The preventive care program Dr. Foster designed for me has completely
+                        changed my approach to heart health. Her thorough explanations and personalized recommendations
+                        are invaluable."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>Maria Santos</h4>
+                            <p>Preventive Care Patient</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card fade-in">
+                    <p class="testimonial-text">"As a fellow physician, I can appreciate Dr. Foster's exceptional
+                        clinical skills and attention to detail. I trusted her with my own cardiac care and couldn't be
+                        happier with the results."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user-md"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>Dr. Michael Chen</h4>
+                            <p>Colleague & Patient</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section contact-section">
+        <div class="container">
+            <div class="contact-content">
+                <h2 class="section-title">Schedule Your Consultation</h2>
+                <p class="section-subtitle" style="color: rgba(255,255,255,0.9);">Take the first step towards better
+                    heart health. Contact us today to schedule your appointment.</p>
+
+                <div class="contact-form">
+                    <div class="form-group">
+                        <input type="text" class="form-input" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-input" placeholder="Email Address" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" class="form-input" placeholder="Phone Number" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="date" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-input" required>
+                            <option value="">Select Service</option>
+                            <option value="consultation">Initial Consultation</option>
+                            <option value="followup">Follow-up Appointment</option>
+                            <option value="second-opinion">Second Opinion</option>
+                            <option value="emergency">Urgent Consultation</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-input" required>
+                            <option value="">Insurance Provider</option>
+                            <option value="medicare">Medicare</option>
+                            <option value="blue-cross">Blue Cross Blue Shield</option>
+                            <option value="aetna">Aetna</option>
+                            <option value="cigna">Cigna</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group full-width">
+                        <textarea class="form-input" rows="4" placeholder="Please describe your symptoms or concerns..."
+                            required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Schedule Appointment</button>
+                </div>
+
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <h4>Phone</h4>
+                        <p>+1 (555) 123-HEART</p>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h4>Email</h4>
+                        <p>info@drfostercardiology.com</p>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h4>Location</h4>
+                        <p>Medical Center Plaza<br>Boston, MA</p>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h4>Hours</h4>
+                        <p>Mon-Fri: 8AM-6PM<br>Emergency: 24/7</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Animated counters for credentials
+        function animateCounters() {
+            const counters = document.querySelectorAll('.credential-number');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const target = entry.target;
+                        const text = target.textContent;
+                        const number = parseInt(text.replace(/[^\d]/g, ''));
+                        const suffix = text.replace(/[\d]/g, '');
+
+                        if (number > 0) {
+                            let current = 0;
+                            const increment = number / 30;
+                            const timer = setInterval(() => {
+                                current += increment;
+                                if (current >= number) {
+                                    current = number;
+                                    clearInterval(timer);
+                                }
+                                target.textContent = Math.floor(current) + suffix;
+                            }, 50);
+                        }
+
+                        observer.unobserve(target);
+                    }
+                });
+            });
+
+            counters.forEach(counter => {
+                observer.observe(counter);
+            });
+        }
+
+        // Form submission with medical context
+        document.querySelector('.contact-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            // Create confirmation message
+            const confirmationModal = document.createElement('div');
+            confirmationModal.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.8);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 10000;
+            `;
+
+            confirmationModal.innerHTML = `
+                <div style="background: white; padding: 3rem; border-radius: 15px; text-align: center; max-width: 500px; margin: 2rem;">
+                    <div style="font-size: 3rem; color: #27ae60; margin-bottom: 1rem;">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3 style="color: #2c3e50; margin-bottom: 1rem;">Appointment Request Received</h3>
+                    <p style="color: #7f8c8d; margin-bottom: 2rem;">Thank you for choosing Dr. Foster for your cardiac care. Our team will contact you within 24 hours to confirm your appointment and provide pre-visit instructions.</p>
+                    <button onclick="this.parentElement.parentElement.remove()" style="background: #27ae60; color: white; border: none; padding: 1rem 2rem; border-radius: 8px; font-weight: 600; cursor: pointer;">Close</button>
+                </div>
+            `;
+
+            document.body.appendChild(confirmationModal);
+        });
+
+        // Health tips ticker
+        const healthTips = [
+            "💓 Tip: Regular exercise can reduce heart disease risk by up to 35%",
+            "🥗 Tip: A Mediterranean diet is one of the best for heart health",
+            "🚭 Tip: Quitting smoking reduces heart attack risk within just one year",
+            "😴 Tip: 7-8 hours of quality sleep supports cardiovascular health",
+            "🧘 Tip: Stress management through meditation can lower blood pressure"
+        ];
+
+        let currentTip = 0;
+        function rotateTips() {
+            // This would create a subtle health tip banner if desired
+            // Implementation would go here
+        }
+
+        // Pulse animation for urgent elements
+        function addPulseToUrgent() {
+            const urgentElements = document.querySelectorAll('.pulse');
+            urgentElements.forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    el.style.animationDuration = '0.5s';
+                });
+                el.addEventListener('mouseleave', () => {
+                    el.style.animationDuration = '2s';
+                });
+            });
+        }
+
+        // Emergency contact highlight
+        function highlightEmergencyInfo() {
+            const emergencyNote = document.createElement('div');
+            emergencyNote.style.cssText = `
+                position: fixed;
+                top: 80px;
+                right: 20px;
+                background: linear-gradient(135deg, #e74c3c, #c0392b);
+                color: white;
+                padding: 1rem;
+                border-radius: 10px;
+                font-size: 0.9rem;
+                font-weight: 600;
+                box-shadow: 0 10px 30px rgba(231, 76, 60, 0.3);
+                z-index: 999;
+                max-width: 250px;
+                animation: slideIn 0.5s ease-out;
+            `;
+
+            emergencyNote.innerHTML = `
+                <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <strong>Medical Emergency?</strong>
+                </div>
+                <p style="font-size: 0.8rem; margin: 0;">Call 911 immediately or go to the nearest emergency room</p>
+                <button onclick="this.parentElement.remove()" style="position: absolute; top: 5px; right: 8px; background: none; border: none; color: white; cursor: pointer; font-size: 1.2rem;">&times;</button>
+            `;
+
+            document.body.appendChild(emergencyNote);
+
+            // Auto-hide after 10 seconds
+            setTimeout(() => {
+                if (emergencyNote.parentElement) {
+                    emergencyNote.remove();
+                }
+            }, 10000);
+        }
+
+        // Initialize all features
+        document.addEventListener('DOMContentLoaded', () => {
+            animateCounters();
+            addPulseToUrgent();
+
+            // Show emergency info after 3 seconds
+            setTimeout(highlightEmergencyInfo, 3000);
+        });
+    </script>
+</body>
+
+</html>

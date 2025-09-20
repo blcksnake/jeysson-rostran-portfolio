@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marcus Chen - Startup Founder & Product Strategist</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #ffffff;
+            color: #1a1a1a;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(26, 26, 26, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-menu a {
+            color: #1a1a1a;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            transform: translateX(-50%);
+            transition: width 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            padding: 0 2rem;
+            margin-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 80%;
+            height: 200%;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            border-radius: 50%;
+            z-index: -1;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(5deg);
+            }
+        }
+
+        .hero-content {
+            max-width: 600px;
+            z-index: 2;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            animation: slideInLeft 1s ease-out;
+        }
+
+        .hero-title {
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            animation: slideInLeft 1s ease-out 0.2s both;
+        }
+
+        .hero-title .highlight {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-description {
+            font-size: 1.3rem;
+            color: #666666;
+            margin-bottom: 3rem;
+            line-height: 1.6;
+            animation: slideInLeft 1s ease-out 0.4s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            animation: slideInLeft 1s ease-out 0.6s both;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #1a1a1a;
+            border: 2px solid #1a1a1a;
+        }
+
+        .btn-secondary:hover {
+            background: #1a1a1a;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .hero-visual {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .visual-card {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            position: relative;
+            animation: slideInRight 1s ease-out 0.8s both;
+            max-width: 400px;
+        }
+
+        .visual-card::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 23px;
+            z-index: -1;
+        }
+
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            margin: 0 auto 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+        }
+
+        .visual-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666666;
+            font-weight: 600;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .section {
+            padding: 6rem 2rem;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #666666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(102, 126, 234, 0.1);
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(102, 126, 234, 0.2);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            margin: 0 auto 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+
+        .feature-card p {
+            color: #666666;
+            line-height: 1.6;
+        }
+
+        .projects-section {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-image {
+            height: 250px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.9), rgba(118, 75, 162, 0.9));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+
+        .project-btn {
+            padding: 0.8rem 1.5rem;
+            background: white;
+            color: #667eea;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            transform: translateY(20px);
+        }
+
+        .project-card:hover .project-btn {
+            transform: translateY(0);
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-content h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+
+        .project-content p {
+            color: #666666;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            padding: 0.4rem 1rem;
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .metrics-section {
+            background: #1a1a1a;
+            color: white;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .metric-item {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .metric-number {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-label {
+            color: #cccccc;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .contact-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .contact-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-section .section-title {
+            color: white;
+            background: none;
+            -webkit-text-fill-color: white;
+        }
+
+        .contact-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .form-group {
+            position: relative;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 1.2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            color: white;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .form-input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .submit-btn {
+            grid-column: 1 / -1;
+            justify-self: center;
+            padding: 1.2rem 3rem;
+            background: white;
+            color: #667eea;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(255, 255, 255, 0.3);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .social-link {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .social-link:hover {
+            background: white;
+            color: #667eea;
+            transform: translateY(-5px);
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 3rem;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .contact-form {
+                grid-template-columns: 1fr;
+            }
+
+            .visual-stats {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 1rem;
+            }
+
+            .stat {
+                padding: 0.5rem;
+            }
+
+            .stat-number {
+                font-size: 1.5rem;
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">Marcus</div>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#metrics">Metrics</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">🚀 Building the Future</div>
+            <h1 class="hero-title">
+                Turning <span class="highlight">Ideas</span><br>
+                Into Reality
+            </h1>
+            <p class="hero-description">
+                I'm Marcus Chen, a startup founder and product strategist who helps ambitious companies scale from
+                concept to market leadership through innovative solutions and data-driven strategies.
+            </p>
+            <div class="hero-buttons">
+                <a href="#projects" class="btn btn-primary">View Projects</a>
+                <a href="#contact" class="btn btn-secondary">Let's Talk</a>
+            </div>
+        </div>
+
+        <div class="hero-visual">
+            <div class="visual-card">
+                <div class="avatar">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <h3>Marcus Chen</h3>
+                <p>Startup Founder & Product Strategist</p>
+                <div class="visual-stats">
+                    <div class="stat">
+                        <span class="stat-number" id="counter1">5</span>
+                        <span class="stat-label">Startups</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" id="counter2">$50M</span>
+                        <span class="stat-label">Raised</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" id="counter3">100+</span>
+                        <span class="stat-label">Team Size</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" id="counter4">3</span>
+                        <span class="stat-label">Exits</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title fade-in">What I Do</h2>
+                <p class="section-subtitle fade-in">Comprehensive startup and product strategy services</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Idea Validation</h3>
+                    <p>Transform concepts into viable business models through market research, competitive analysis, and
+                        customer validation frameworks.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Growth Strategy</h3>
+                    <p>Scale your business with data-driven growth strategies, performance optimization, and sustainable
+                        expansion plans.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Team Building</h3>
+                    <p>Build high-performing teams, establish company culture, and create organizational structures for
+                        rapid scaling.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <h3>Fundraising</h3>
+                    <p>Navigate the fundraising landscape with pitch deck optimization, investor relations, and
+                        valuation strategies.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3>Product Strategy</h3>
+                    <p>Develop winning product strategies, roadmaps, and go-to-market plans that resonate with your
+                        target audience.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Exit Planning</h3>
+                    <p>Strategic exit planning and M&A preparation to maximize company value and ensure successful
+                        transitions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="section projects-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title fade-in">Success Stories</h2>
+                <p class="section-subtitle fade-in">Companies I've helped build and scale</p>
+            </div>
+
+            <div class="projects-grid">
+                <div class="project-card fade-in">
+                    <div class="project-image">
+                        <i class="fas fa-shopping-cart"></i>
+                        <div class="project-overlay">
+                            <a href="#" class="project-btn">Case Study</a>
+                            <a href="#" class="project-btn">Live Site</a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>EcoMarket - Sustainable E-commerce</h3>
+                        <p>Led product strategy and fundraising for eco-friendly marketplace. Achieved $10M Series A and
+                            300% YoY growth.</p>
+                        <div class="project-tags">
+                            <span class="tag">E-commerce</span>
+                            <span class="tag">Sustainability</span>
+                            <span class="tag">Series A</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
+                    <div class="project-image">
+                        <i class="fas fa-brain"></i>
+                        <div class="project-overlay">
+                            <a href="#" class="project-btn">Case Study</a>
+                            <a href="#" class="project-btn">Live Site</a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>MindFlow - AI Productivity Suite</h3>
+                        <p>Co-founded AI-powered productivity platform. Scaled to 100K users and successful acquisition
+                            by Microsoft.</p>
+                        <div class="project-tags">
+                            <span class="tag">AI/ML</span>
+                            <span class="tag">Productivity</span>
+                            <span class="tag">Exit</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
+                    <div class="project-image">
+                        <i class="fas fa-heartbeat"></i>
+                        <div class="project-overlay">
+                            <a href="#" class="project-btn">Case Study</a>
+                            <a href="#" class="project-btn">Live Site</a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>HealthSync - Telemedicine Platform</h3>
+                        <p>Strategic advisor for healthcare startup. Helped navigate regulatory challenges and scale to
+                            50K patients.</p>
+                        <div class="project-tags">
+                            <span class="tag">Healthcare</span>
+                            <span class="tag">B2B</span>
+                            <span class="tag">Regulatory</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="metrics" class="section metrics-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title fade-in">Impact by Numbers</h2>
+                <p class="section-subtitle fade-in" style="color: #cccccc;">Measurable results across portfolio
+                    companies</p>
+            </div>
+
+            <div class="metrics-grid">
+                <div class="metric-item fade-in">
+                    <span class="metric-number">$150M+</span>
+                    <span class="metric-label">Total Funding Raised</span>
+                </div>
+                <div class="metric-item fade-in">
+                    <span class="metric-number">500K+</span>
+                    <span class="metric-label">Users Acquired</span>
+                </div>
+                <div class="metric-item fade-in">
+                    <span class="metric-number">8</span>
+                    <span class="metric-label">Companies Founded</span>
+                </div>
+                <div class="metric-item fade-in">
+                    <span class="metric-number">25+</span>
+                    <span class="metric-label">Startups Advised</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section contact-section">
+        <div class="container">
+            <div class="contact-content">
+                <h2 class="section-title">Ready to Scale?</h2>
+                <p class="section-subtitle" style="color: rgba(255,255,255,0.8);">Let's discuss how we can accelerate
+                    your startup's growth</p>
+
+                <div class="contact-form">
+                    <div class="form-group">
+                        <input type="text" class="form-input" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-input" placeholder="Email Address" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-input" placeholder="Company Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-input" placeholder="Funding Stage" required>
+                    </div>
+                    <div class="form-group full-width">
+                        <textarea class="form-input" rows="5"
+                            placeholder="Tell me about your startup and how I can help..." required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Schedule Strategy Call</button>
+                </div>
+
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-medium"></i></a>
+                    <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Animated counters
+        function animateCounters() {
+            const counters = document.querySelectorAll('.metric-number');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const target = entry.target;
+                        const text = target.textContent;
+                        const number = parseInt(text.replace(/[^\d]/g, ''));
+                        const suffix = text.replace(/[\d]/g, '');
+
+                        let current = 0;
+                        const increment = number / 50;
+                        const timer = setInterval(() => {
+                            current += increment;
+                            if (current >= number) {
+                                current = number;
+                                clearInterval(timer);
+                            }
+                            target.textContent = Math.floor(current) + suffix;
+                        }, 50);
+
+                        observer.unobserve(target);
+                    }
+                });
+            });
+
+            counters.forEach(counter => {
+                observer.observe(counter);
+            });
+        }
+
+        // Form submission
+        document.querySelector('.contact-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you! I\'ll get back to you within 24 hours to schedule our strategy call.');
+        });
+
+        // Typing animation for hero title
+        function typeWriter(element, text, speed = 100) {
+            let i = 0;
+            element.innerHTML = '';
+
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            type();
+        }
+
+        // Parallax effect
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.hero::before');
+
+            parallaxElements.forEach(element => {
+                const speed = 0.5;
+                element.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+
+        // Initialize animations
+        document.addEventListener('DOMContentLoaded', () => {
+            animateCounters();
+
+            // Stagger animations for feature cards
+            const featureCards = document.querySelectorAll('.feature-card');
+            featureCards.forEach((card, index) => {
+                card.style.animationDelay = `${index * 0.1}s`;
+            });
+        });
+
+        // Interactive hover effects for project cards
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+
+                const rotateX = (y - centerY) / 10;
+                const rotateY = (centerX - x) / 10;
+
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+            });
+        });
+
+        // Dynamic background particles
+        function createParticles() {
+            const hero = document.querySelector('.hero');
+            const particleCount = 20;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.style.position = 'absolute';
+                particle.style.width = Math.random() * 4 + 2 + 'px';
+                particle.style.height = particle.style.width;
+                particle.style.background = 'rgba(102, 126, 234, 0.3)';
+                particle.style.borderRadius = '50%';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.pointerEvents = 'none';
+                particle.style.animation = `float ${Math.random() * 3 + 2}s ease-in-out infinite`;
+                particle.style.animationDelay = Math.random() * 2 + 's';
+
+                hero.appendChild(particle);
+            }
+        }
+
+        // Smooth reveal animations
+        const revealElements = document.querySelectorAll('.feature-card, .project-card');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, index * 100);
+                }
+            });
+        });
+
+        revealElements.forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease';
+            revealObserver.observe(el);
+        });
+
+        // Initialize particles
+        createParticles();
+    </script>
+</body>
+
+</html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marcus Chen - Startup Founder & Product Strategist</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"

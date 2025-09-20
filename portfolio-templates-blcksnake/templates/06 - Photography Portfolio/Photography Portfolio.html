@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elena Vasquez - Visual Storyteller</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: #000000;
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 0;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(0, 0, 0, 0.95);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: normal;
+            color: #ffffff;
+            font-style: italic;
+            letter-spacing: 2px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 3rem;
+        }
+
+        .nav-menu a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: #ffffff;
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23222" width="1200" height="800"/><circle cx="300" cy="200" r="100" fill="%23444" opacity="0.3"/><circle cx="800" cy="400" r="150" fill="%23333" opacity="0.2"/><circle cx="500" cy="600" r="80" fill="%23555" opacity="0.4"/></svg>');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 300;
+            margin-bottom: 1rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.5s forwards;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            font-style: italic;
+            color: #cccccc;
+            margin-bottom: 3rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 1s forwards;
+        }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #ffffff;
+            text-align: center;
+            animation: bounce 2s infinite;
+        }
+
+        .hero-scroll i {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateX(-50%) translateY(0);
+            }
+
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+
+        .section {
+            padding: 6rem 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 300;
+            text-align: center;
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .section-title.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #cccccc;
+            font-style: italic;
+            margin-bottom: 4rem;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease 0.2s;
+        }
+
+        .section-subtitle.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            align-items: center;
+            margin-top: 4rem;
+        }
+
+        .about-image {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(45deg, #333, #666);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+            color: #ffffff;
+            transition: transform 0.3s ease;
+        }
+
+        .about-image:hover .profile-img {
+            transform: scale(1.05);
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+            color: #ffffff;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            color: #cccccc;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            border-color: rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 300;
+            color: #ffffff;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #cccccc;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            margin-top: 4rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.02);
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #222, #444, #666);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #ffffff;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, transparent 60%, rgba(0, 0, 0, 0.8));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: flex-end;
+            padding: 2rem;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-info h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #ffffff;
+        }
+
+        .gallery-info p {
+            color: #cccccc;
+            font-size: 0.9rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .service-card {
+            text-align: center;
+            padding: 3rem 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .service-card:hover::before {
+            left: 100%;
+        }
+
+        .service-card:hover {
+            border-color: rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-10px);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: #ffffff;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+
+        .service-card p {
+            color: #cccccc;
+            line-height: 1.6;
+        }
+
+        .contact-section {
+            background: rgba(255, 255, 255, 0.03);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .contact-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .form-group {
+            position: relative;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 0;
+            color: #ffffff;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .form-input::placeholder {
+            color: #999999;
+        }
+
+        .submit-btn {
+            grid-column: 1 / -1;
+            justify-self: center;
+            padding: 1rem 3rem;
+            background: transparent;
+            color: #ffffff;
+            border: 2px solid #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: #ffffff;
+            color: #000000;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #ffffff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: #ffffff;
+            color: #000000;
+            border-color: #ffffff;
+        }
+
+        /* Lightbox Modal */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .lightbox.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+        }
+
+        .lightbox-image {
+            width: 600px;
+            height: 400px;
+            background: linear-gradient(45deg, #333, #666);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: #ffffff;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            color: #ffffff;
+            font-size: 2rem;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .lightbox-close:hover {
+            background: #ffffff;
+            color: #000000;
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #ffffff;
+            font-size: 2rem;
+            cursor: pointer;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .lightbox-nav:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .lightbox-prev {
+            left: -70px;
+        }
+
+        .lightbox-next {
+            right: -70px;
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .hero-title {
+                font-size: 3rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .contact-form {
+                grid-template-columns: 1fr;
+            }
+
+            .lightbox-nav {
+                display: none;
+            }
+
+            .lightbox-image {
+                width: 90vw;
+                height: 60vh;
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">Elena Vasquez</div>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Visual Storyteller</h1>
+            <p class="hero-subtitle">Capturing moments that matter</p>
+        </div>
+        <div class="hero-scroll">
+            <i class="fas fa-chevron-down"></i>
+            <span>Scroll</span>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">About Elena</h2>
+            <p class="section-subtitle">Professional photographer with a passion for authentic storytelling</p>
+
+            <div class="about-content">
+                <div class="about-image fade-in">
+                    <div class="profile-img">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                </div>
+                <div class="about-text fade-in">
+                    <h3>My Journey</h3>
+                    <p>With over 8 years of experience behind the lens, I specialize in capturing the raw beauty of
+                        human emotion and natural landscapes. My work has been featured in numerous publications and
+                        exhibitions worldwide.</p>
+                    <p>I believe that photography is more than just clicking a button – it's about freezing time,
+                        preserving memories, and telling stories that resonate with the soul.</p>
+                    <p>Every project is a new adventure, and I approach each one with fresh eyes and boundless
+                        creativity.</p>
+                </div>
+            </div>
+
+            <div class="stats-grid fade-in">
+                <div class="stat-item">
+                    <span class="stat-number">500+</span>
+                    <span class="stat-label">Projects</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">50+</span>
+                    <span class="stat-label">Awards</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">8</span>
+                    <span class="stat-label">Years</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="section">
+        <div class="container">
+            <h2 class="section-title">Featured Work</h2>
+            <p class="section-subtitle">A curated selection of my favorite captures</p>
+
+            <div class="gallery-grid">
+                <div class="gallery-item fade-in" data-image="portrait">
+                    <div class="gallery-image">
+                        <i class="fas fa-portrait"></i>
+                    </div>
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <h4>Portrait Series</h4>
+                            <p>Intimate portraits capturing authentic emotions</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item fade-in" data-image="landscape">
+                    <div class="gallery-image">
+                        <i class="fas fa-mountain"></i>
+                    </div>
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <h4>Landscape Collection</h4>
+                            <p>Natural beauty from around the world</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item fade-in" data-image="wedding">
+                    <div class="gallery-image">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <h4>Wedding Photography</h4>
+                            <p>Love stories beautifully documented</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item fade-in" data-image="street">
+                    <div class="gallery-image">
+                        <i class="fas fa-city"></i>
+                    </div>
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <h4>Street Photography</h4>
+                            <p>Life unfolding in urban environments</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item fade-in" data-image="fashion">
+                    <div class="gallery-image">
+                        <i class="fas fa-tshirt"></i>
+                    </div>
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <h4>Fashion Shoots</h4>
+                            <p>Editorial and commercial fashion work</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item fade-in" data-image="nature">
+                    <div class="gallery-image">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <h4>Nature Photography</h4>
+                            <p>Wildlife and natural environments</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="section">
+        <div class="container">
+            <h2 class="section-title">Services</h2>
+            <p class="section-subtitle">Professional photography services tailored to your needs</p>
+
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h3>Portrait Photography</h3>
+                    <p>Professional headshots, family portraits, and personal branding photography that captures your
+                        unique personality.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-ring"></i>
+                    </div>
+                    <h3>Wedding Photography</h3>
+                    <p>Complete wedding coverage from engagement to reception, preserving your special day with artistic
+                        flair.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3>Commercial Photography</h3>
+                    <p>Product photography, corporate events, and commercial shoots that elevate your brand image.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-camera-retro"></i>
+                    </div>
+                    <h3>Fine Art Prints</h3>
+                    <p>Limited edition prints and custom artwork for collectors and interior design projects.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section contact-section">
+        <div class="container">
+            <div class="contact-content">
+                <h2 class="section-title">Let's Create Together</h2>
+                <p class="section-subtitle">Ready to capture something beautiful? Get in touch.</p>
+
+                <div class="contact-form">
+                    <div class="form-group">
+                        <input type="text" class="form-input" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-input" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-input" placeholder="Project Type" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="date" class="form-input" required>
+                    </div>
+                    <div class="form-group full-width">
+                        <textarea class="form-input" rows="5" placeholder="Tell me about your vision..."
+                            required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Inquiry</button>
+                </div>
+
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-flickr"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-500px"></i></a>
+                    <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-content">
+            <div class="lightbox-close" id="lightboxClose">
+                <i class="fas fa-times"></i>
+            </div>
+            <div class="lightbox-nav lightbox-prev" id="lightboxPrev">
+                <i class="fas fa-chevron-left"></i>
+            </div>
+            <div class="lightbox-nav lightbox-next" id="lightboxNext">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="lightbox-image" id="lightboxImage">
+                <i class="fas fa-image"></i>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in, .section-title, .section-subtitle').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Lightbox functionality
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImage = document.getElementById('lightboxImage');
+        const lightboxClose = document.getElementById('lightboxClose');
+        const lightboxPrev = document.getElementById('lightboxPrev');
+        const lightboxNext = document.getElementById('lightboxNext');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+
+        let currentIndex = 0;
+        const images = [
+            { icon: 'fas fa-portrait', title: 'Portrait Series' },
+            { icon: 'fas fa-mountain', title: 'Landscape Collection' },
+            { icon: 'fas fa-heart', title: 'Wedding Photography' },
+            { icon: 'fas fa-city', title: 'Street Photography' },
+            { icon: 'fas fa-tshirt', title: 'Fashion Shoots' },
+            { icon: 'fas fa-leaf', title: 'Nature Photography' }
+        ];
+
+        galleryItems.forEach((item, index) => {
+            item.addEventListener('click', () => {
+                currentIndex = index;
+                openLightbox();
+            });
+        });
+
+        function openLightbox() {
+            lightbox.classList.add('active');
+            updateLightboxImage();
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function updateLightboxImage() {
+            const currentImage = images[currentIndex];
+            lightboxImage.innerHTML = `<i class="${currentImage.icon}"></i>`;
+        }
+
+        lightboxClose.addEventListener('click', closeLightbox);
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        lightboxNext.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % images.length;
+            updateLightboxImage();
+        });
+
+        lightboxPrev.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            updateLightboxImage();
+        });
+
+        // Keyboard navigation for lightbox
+        document.addEventListener('keydown', (e) => {
+            if (lightbox.classList.contains('active')) {
+                if (e.key === 'Escape') {
+                    closeLightbox();
+                } else if (e.key === 'ArrowRight') {
+                    currentIndex = (currentIndex + 1) % images.length;
+                    updateLightboxImage();
+                } else if (e.key === 'ArrowLeft') {
+                    currentIndex = (currentIndex - 1 + images.length) % images.length;
+                    updateLightboxImage();
+                }
+            }
+        });
+
+        // Form submission
+        document.querySelector('.contact-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for your inquiry! I will get back to you within 24 hours.');
+        });
+
+        // Parallax effect for hero
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+    </script>
+</body>
+
+</html>
