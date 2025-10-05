@@ -1,0 +1,1716 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sophia Martinez - E-commerce Growth Specialist</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #ffffff;
+            color: #2c3e50;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .shopping-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(255, 107, 107, 0.03) 0%, rgba(78, 205, 196, 0.03) 50%, rgba(69, 183, 209, 0.03) 100%);
+            z-index: -1;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(44, 62, 80, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo::after {
+            content: '🛒';
+            -webkit-text-fill-color: #ff6b6b;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-menu a {
+            color: #2c3e50;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #ff6b6b, #4ecdc4);
+            transition: width 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .nav-menu a:hover {
+            color: #ff6b6b;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #2c3e50;
+            cursor: pointer;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 2rem;
+            margin-top: 80px;
+            position: relative;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-content {
+            animation: slideInLeft 1s ease-out;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            color: #ffffff;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.3);
+        }
+
+        .hero-title {
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, #2c3e50, #34495e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-title .highlight {
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: #7f8c8d;
+            margin-bottom: 2rem;
+            font-weight: 500;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            line-height: 1.7;
+            margin-bottom: 3rem;
+            max-width: 550px;
+            color: #5d6d7e;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1.2rem 2.5rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            color: #ffffff;
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(255, 107, 107, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #2c3e50;
+            border: 2px solid #2c3e50;
+        }
+
+        .btn-secondary:hover {
+            background: #2c3e50;
+            color: #ffffff;
+            transform: translateY(-3px);
+        }
+
+        .hero-dashboard {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            animation: slideInRight 1s ease-out 0.3s both;
+            border: 1px solid rgba(255, 107, 107, 0.1);
+        }
+
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .dashboard-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+
+        .dashboard-period {
+            background: rgba(255, 107, 107, 0.1);
+            color: #ff6b6b;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .metric-card {
+            background: linear-gradient(135deg, #f8f9fa, #ffffff);
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid rgba(255, 107, 107, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 107, 107, 0.3);
+            box-shadow: 0 10px 25px rgba(255, 107, 107, 0.15);
+        }
+
+        .metric-number {
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-label {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .conversion-rate {
+            background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+            color: #ffffff;
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .conversion-number {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 0.5rem;
+        }
+
+        .conversion-label {
+            font-size: 1rem;
+            font-weight: 600;
+            opacity: 0.9;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .section {
+            padding: 6rem 2rem;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #2c3e50, #34495e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            font-size: 1.3rem;
+            color: #7f8c8d;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .service-card {
+            background: #ffffff;
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 107, 107, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #ff6b6b, #4ecdc4);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.12);
+            border-color: rgba(255, 107, 107, 0.3);
+        }
+
+        .service-icon {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            margin: 0 auto 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: #ffffff;
+            transition: all 0.4s ease;
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.1) rotateY(360deg);
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .service-description {
+            color: #7f8c8d;
+            line-height: 1.7;
+        }
+
+        .case-studies-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+        }
+
+        .case-studies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .case-study-card {
+            background: #ffffff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 107, 107, 0.1);
+        }
+
+        .case-study-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .case-study-header {
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            color: #ffffff;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .case-study-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            animation: rotate 10s linear infinite;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .case-study-company {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .case-study-industry {
+            font-size: 1rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 2;
+        }
+
+        .case-study-content {
+            padding: 2.5rem;
+        }
+
+        .case-study-challenge {
+            font-size: 1.1rem;
+            color: #5d6d7e;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .result-item {
+            text-align: center;
+            padding: 1.5rem 1rem;
+            background: rgba(255, 107, 107, 0.05);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 107, 107, 0.1);
+        }
+
+        .result-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #ff6b6b;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .result-label {
+            font-size: 0.85rem;
+            color: #7f8c8d;
+            font-weight: 600;
+        }
+
+        .case-study-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #ff6b6b;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .case-study-link:hover {
+            color: #e55555;
+            transform: translateX(5px);
+        }
+
+        .skills-section {
+            background: #2c3e50;
+            color: #ffffff;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .skill-category {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 107, 107, 0.5);
+        }
+
+        .skill-category h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #4ecdc4;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .skill-tag {
+            padding: 0.5rem 1rem;
+            background: rgba(255, 107, 107, 0.2);
+            color: #ffffff;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: 1px solid rgba(255, 107, 107, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: #ff6b6b;
+            transform: scale(1.05);
+        }
+
+        .tools-section {
+            background: linear-gradient(135deg, #4ecdc4, #44a08d);
+            color: #ffffff;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .tool-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .tool-card:hover {
+            transform: scale(1.05);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .tool-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+
+        .tool-name {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .tool-category {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .contact-section {
+            background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+            color: #ffffff;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .contact-info h3 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 2rem;
+        }
+
+        .contact-description {
+            font-size: 1.2rem;
+            line-height: 1.7;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(10px);
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            color: #ffffff;
+        }
+
+        .contact-item h4 {
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+
+        .contact-item p {
+            opacity: 0.8;
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .form-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            color: #ffffff;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: rgba(255, 255, 255, 0.6);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+        }
+
+        .form-input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1.2rem;
+            background: #ffffff;
+            color: #ff6b6b;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .submit-btn:hover {
+            background: rgba(255, 255, 255, 0.9);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.2);
+        }
+
+        footer {
+            background: #2c3e50;
+            color: #ffffff;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            text-align: left;
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-logo::after {
+            content: '🛒';
+            -webkit-text-fill-color: #ff6b6b;
+        }
+
+        .footer-about {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links h4 {
+            color: #4ecdc4;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #ff6b6b;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            color: #ffffff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: #ff6b6b;
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        @media (max-width: 1024px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background: rgba(255, 255, 255, 0.98);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+                padding: 2rem 0;
+                gap: 0;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-menu li {
+                margin: 1.5rem 0;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero-title {
+                font-size: 2.8rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .metrics-grid,
+            .results-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tools-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .section {
+                padding: 4rem 1.5rem;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .shopping-cart-animation {
+            position: relative;
+            overflow: hidden;
+            height: 60px;
+            margin: 2rem 0;
+        }
+
+        .cart-items {
+            display: flex;
+            animation: cartScroll 15s linear infinite;
+        }
+
+        .cart-item {
+            min-width: 100px;
+            text-align: center;
+            margin: 0 1rem;
+            font-size: 2rem;
+        }
+
+        @keyframes cartScroll {
+            0% {
+                transform: translateX(100%);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="shopping-bg"></div>
+
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">Sophia Martinez</div>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#case-studies">Case Studies</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#tools">Tools</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">🚀 E-commerce Growth Expert</div>
+                <h1 class="hero-title">
+                    Driving <span class="highlight">Sales Growth</span><br>
+                    Through Data
+                </h1>
+                <p class="hero-subtitle">E-commerce Conversion Specialist</p>
+                <p class="hero-description">
+                    I help online businesses maximize their revenue through strategic conversion optimization,
+                    data-driven marketing, and user experience improvements. With 8+ years of experience,
+                    I've generated over $50M in additional revenue for my clients.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#case-studies" class="btn btn-primary">View Results</a>
+                    <a href="#contact" class="btn btn-secondary">Grow Your Store</a>
+                </div>
+            </div>
+
+            <div class="hero-dashboard">
+                <div class="dashboard-header">
+                    <h3 class="dashboard-title">Performance Dashboard</h3>
+                    <div class="dashboard-period">Last 30 Days</div>
+                </div>
+
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <span class="metric-number" id="revenue-counter">$2.8M</span>
+                        <span class="metric-label">Revenue Generated</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-number" id="orders-counter">15.4K</span>
+                        <span class="metric-label">Orders Processed</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-number" id="visitors-counter">186K</span>
+                        <span class="metric-label">Unique Visitors</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-number" id="stores-counter">45</span>
+                        <span class="metric-label">Active Stores</span>
+                    </div>
+                </div>
+
+                <div class="conversion-rate">
+                    <div class="conversion-number">4.7%</div>
+                    <div class="conversion-label">Average Conversion Rate</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title fade-in">Specialized Services</h2>
+                <p class="section-subtitle fade-in">Comprehensive e-commerce growth solutions tailored to your business
+                    needs</p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="service-title">Conversion Rate Optimization</h3>
+                    <p class="service-description">Data-driven strategies to increase your website's conversion rate
+                        through A/B testing, user behavior analysis, and UX improvements.</p>
+                </div>
+
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <h3 class="service-title">E-commerce Strategy</h3>
+                    <p class="service-description">Comprehensive planning for product positioning, pricing strategies,
+                        and sales funnel optimization to maximize revenue.</p>
+                </div>
+
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-funnel-dollar"></i>
+                    </div>
+                    <h3 class="service-title">Sales Funnel Optimization</h3>
+                    <p class="service-description">End-to-end analysis and improvement of your customer journey from
+                        awareness to purchase and retention.</p>
+                </div>
+
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="service-title">Customer Retention</h3>
+                    <p class="service-description">Strategies to increase customer lifetime value through loyalty
+                        programs, email marketing, and personalized experiences.</p>
+                </div>
+
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-analytics"></i>
+                    </div>
+                    <h3 class="service-title">Data Analytics</h3>
+                    <p class="service-description">In-depth analysis of your e-commerce metrics to identify
+                        opportunities for growth and optimization.</p>
+                </div>
+
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-ad"></i>
+                    </div>
+                    <h3 class="service-title">Digital Advertising</h3>
+                    <p class="service-description">Strategic management of PPC, social media, and retargeting campaigns
+                        to drive qualified traffic and sales.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="case-studies" class="section case-studies-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title fade-in">Success Stories</h2>
+                <p class="section-subtitle fade-in">Real results from e-commerce businesses I've helped grow</p>
+            </div>
+
+            <div class="case-studies-grid">
+                <div class="case-study-card fade-in">
+                    <div class="case-study-header">
+                        <h3 class="case-study-company">FashionForward</h3>
+                        <p class="case-study-industry">Fashion E-commerce</p>
+                    </div>
+                    <div class="case-study-content">
+                        <p class="case-study-challenge">FashionForward was struggling with a 1.2% conversion rate and
+                            high cart abandonment despite strong traffic numbers.</p>
+                        <div class="results-grid">
+                            <div class="result-item">
+                                <span class="result-number">+187%</span>
+                                <span class="result-label">Conversion Rate</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-number">-42%</span>
+                                <span class="result-label">Cart Abandonment</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-number">$3.2M</span>
+                                <span class="result-label">Additional Revenue</span>
+                            </div>
+                        </div>
+                        <a href="#" class="case-study-link">Read Full Case Study <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="case-study-card fade-in">
+                    <div class="case-study-header">
+                        <h3 class="case-study-company">TechGadgets</h3>
+                        <p class="case-study-industry">Electronics Retail</p>
+                    </div>
+                    <div class="case-study-content">
+                        <p class="case-study-challenge">TechGadgets had strong product demand but was losing customers
+                            during the checkout process with a complicated flow.</p>
+                        <div class="results-grid">
+                            <div class="result-item">
+                                <span class="result-number">+223%</span>
+                                <span class="result-label">Checkout Completion</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-number">+35%</span>
+                                <span class="result-label">Average Order Value</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-number">$5.7M</span>
+                                <span class="result-label">Additional Revenue</span>
+                            </div>
+                        </div>
+                        <a href="#" class="case-study-link">Read Full Case Study <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="case-study-card fade-in">
+                    <div class="case-study-header">
+                        <h3 class="case-study-company">HomeEssentials</h3>
+                        <p class="case-study-industry">Home Goods</p>
+                    </div>
+                    <div class="case-study-content">
+                        <p class="case-study-challenge">HomeEssentials had low customer retention and struggled to
+                            convert one-time buyers into repeat customers.</p>
+                        <div class="results-grid">
+                            <div class="result-item">
+                                <span class="result-number">+312%</span>
+                                <span class="result-label">Repeat Purchases</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-number">+45%</span>
+                                <span class="result-label">Customer Lifetime Value</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-number">$2.1M</span>
+                                <span class="result-label">Additional Revenue</span>
+                            </div>
+                        </div>
+                        <a href="#" class="case-study-link">Read Full Case Study <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="section skills-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title fade-in">Areas of Expertise</h2>
+                <p class="section-subtitle fade-in">Comprehensive skills to drive your e-commerce growth</p>
+            </div>
+
+            <div class="skills-grid">
+                <div class="skill-category fade-in">
+                    <h3>Analytics & Data</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">Google Analytics</span>
+                        <span class="skill-tag">Data Visualization</span>
+                        <span class="skill-tag">A/B Testing</span>
+                        <span class="skill-tag">KPI Development</span>
+                        <span class="skill-tag">Conversion Tracking</span>
+                        <span class="skill-tag">Customer Segmentation</span>
+                    </div>
+                </div>
+
+                <div class="skill-category fade-in">
+                    <h3>Marketing</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">SEO</span>
+                        <span class="skill-tag">PPC</span>
+                        <span class="skill-tag">Email Marketing</span>
+                        <span class="skill-tag">Social Media Ads</span>
+                        <span class="skill-tag">Retargeting</span>
+                        <span class="skill-tag">Influencer Marketing</span>
+                    </div>
+                </div>
+
+                <div class="skill-category fade-in">
+                    <h3>UX/UI Optimization</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">User Research</span>
+                        <span class="skill-tag">Wireframing</span>
+                        <span class="skill-tag">Prototyping</span>
+                        <span class="skill-tag">Usability Testing</span>
+                        <span class="skill-tag">Information Architecture</span>
+                        <span class="skill-tag">Mobile Optimization</span>
+                    </div>
+                </div>
+
+                <div class="skill-category fade-in">
+                    <h3>E-commerce Platforms</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">Shopify</span>
+                        <span class="skill-tag">WooCommerce</span>
+                        <span class="skill-tag">Magento</span>
+                        <span class="skill-tag">BigCommerce</span>
+                        <span class="skill-tag">Salesforce Commerce</span>
+                        <span class="skill-tag">Shopify Plus</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="tools" class="section tools-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title fade-in">Tools & Technologies</h2>
+                <p class="section-subtitle fade-in">The digital toolkit I use to drive e-commerce growth</p>
+            </div>
+
+            <div class="tools-grid">
+                <div class="tool-card fade-in">
+                    <div class="tool-icon">
+                        <i class="fab fa-google"></i>
+                    </div>
+                    <h4 class="tool-name">Google Analytics</h4>
+                    <p class="tool-category">Analytics</p>
+                </div>
+
+                <div class="tool-card fade-in">
+                    <div class="tool-icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <h4 class="tool-name">Hotjar</h4>
+                    <p class="tool-category">Behavior Analytics</p>
+                </div>
+
+                <div class="tool-card fade-in">
+                    <div class="tool-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h4 class="tool-name">Optimizely</h4>
+                    <p class="tool-category">A/B Testing</p>
+                </div>
+
+                <div class="tool-card fade-in">
+                    <div class="tool-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h4 class="tool-name">Klaviyo</h4>
+                    <p class="tool-category">Email Marketing</p>
+                </div>
+
+                <div class="tool-card fade-in">
+                    <div class="tool-icon">
+                        <i class="fab fa-shopify"></i>
+                    </div>
+                    <h4 class="tool-name">Shopify</h4>
+                    <p class="tool-category">E-commerce Platform</p>
+                </div>
+
+                <div class="tool-card fade-in">
+                    <div class="tool-icon">
+                        <i class="fas fa-ad"></i>
+                    </div>
+                    <h4 class="tool-name">Google Ads</h4>
+                    <p class="tool-category">Advertising</p>
+                </div>
+
+                <div class="tool-card fade-in">
+                    <div class="tool-icon">
+                        <i class="fab fa-facebook"></i>
+                    </div>
+                    <h4 class="tool-name">Facebook Ads</h4>
+                    <p class="tool-category">Advertising</p>
+                </div>
+
+                <div class="tool-card fade-in">
+                    <div class="tool-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h4 class="tool-name">Ahrefs</h4>
+                    <p class="tool-category">SEO</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section contact-section">
+        <div class="container">
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Ready to Grow Your E-commerce Business?</h3>
+                    <p class="contact-description">
+                        Let's discuss how we can work together to increase your conversion rates, boost sales, and
+                        create exceptional shopping experiences for your customers.
+                    </p>
+
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4>Email</h4>
+                                <p>sophia@ecomgrowth.com</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4>Phone</h4>
+                                <p>(555) 123-4567</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h4>Location</h4>
+                                <p>San Francisco, CA</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div>
+                                <h4>Availability</h4>
+                                <p>Mon-Fri, 9AM-5PM PST</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <h3 class="form-title">Send a Message</h3>
+                    <div class="form-group">
+                        <input type="text" class="form-input" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-input" placeholder="Email Address" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-input" placeholder="Company Name">
+                    </div>
+                    <div class="form-group">
+                        <select class="form-input" required>
+                            <option value="">I'm interested in...</option>
+                            <option value="cro">Conversion Rate Optimization</option>
+                            <option value="strategy">E-commerce Strategy</option>
+                            <option value="analytics">Data Analytics</option>
+                            <option value="advertising">Digital Advertising</option>
+                            <option value="consultation">General Consultation</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-input" rows="4"
+                            placeholder="Tell me about your e-commerce challenges and goals..." required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </div>
+            </div>
+
+            <div class="social-links">
+                <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-dribbble"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-about">
+                <div class="footer-logo">Sophia Martinez</div>
+                <p class="footer-about">E-commerce growth specialist helping online businesses increase conversion
+                    rates, maximize revenue, and create exceptional customer experiences.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#case-studies">Case Studies</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#tools">Tools</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="#">Conversion Optimization</a></li>
+                    <li><a href="#">E-commerce Strategy</a></li>
+                    <li><a href="#">Data Analytics</a></li>
+                    <li><a href="#">Digital Advertising</a></li>
+                    <li><a href="#">UX/UI Optimization</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links">
+                <h4>Contact Info</h4>
+                <ul>
+                    <li><i class="fas fa-envelope"></i> sophia@ecomgrowth.com</li>
+                    <li><i class="fas fa-phone"></i> (555) 123-4567</li>
+                    <li><i class="fas fa-map-marker-alt"></i> San Francisco, CA</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>&copy; 2023 Sophia Martinez | E-commerce Growth Specialist. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+
+                // Close mobile menu if open
+                navMenu.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navMenu = document.querySelector('.nav-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navMenu.classList.contains('active')
+                ? '<i class="fas fa-times"></i>'
+                : '<i class="fas fa-bars"></i>';
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Animated counters for metrics
+        function animateCounters() {
+            const counters = document.querySelectorAll('.metric-number');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const target = entry.target;
+                        const text = target.textContent;
+
+                        // Extract number from text (remove $, K, etc.)
+                        let number = parseFloat(text.replace(/[^\d.]/g, ''));
+                        if (text.includes('K')) number *= 1000;
+                        if (text.includes('M')) number *= 1000000;
+
+                        const suffix = text.replace(/[\d.]/g, '');
+
+                        if (number > 0) {
+                            let current = 0;
+                            const increment = number / 50;
+                            const timer = setInterval(() => {
+                                current += increment;
+                                if (current >= number) {
+                                    current = number;
+                                    clearInterval(timer);
+                                }
+
+                                // Format number based on original format
+                                let displayNum;
+                                if (text.includes('M')) {
+                                    displayNum = (current / 1000000).toFixed(1) + 'M';
+                                } else if (text.includes('K')) {
+                                    displayNum = (current / 1000).toFixed(1) + 'K';
+                                } else if (text.includes('$')) {
+                                    displayNum = '$' + Math.floor(current).toLocaleString();
+                                } else {
+                                    displayNum = Math.floor(current).toLocaleString();
+                                }
+
+                                target.textContent = displayNum;
+                            }, 50);
+                        }
+
+                        observer.unobserve(target);
+                    }
+                });
+            });
+
+            counters.forEach(counter => {
+                observer.observe(counter);
+            });
+        }
+
+        // Form submission
+        document.querySelector('.contact-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const submitBtn = e.target.querySelector('.submit-btn');
+            const originalText = submitBtn.textContent;
+
+            submitBtn.textContent = 'Sending...';
+            submitBtn.style.background = '#27ae60';
+
+            setTimeout(() => {
+                submitBtn.textContent = '✓ Message Sent!';
+                submitBtn.style.background = '#27ae60';
+
+                setTimeout(() => {
+                    submitBtn.textContent = originalText;
+                    submitBtn.style.background = '#ffffff';
+                    e.target.reset();
+
+                    // Show success modal
+                    showSuccessModal();
+                }, 3000);
+            }, 2000);
+        });
+
+        // Success modal
+        function showSuccessModal() {
+            const modal = document.createElement('div');
+            modal.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.8);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 10000;
+                animation: fadeIn 0.3s ease;
+            `;
+
+            modal.innerHTML = `
+                <div style="background: white; padding: 3rem; border-radius: 20px; text-align: center; max-width: 500px; margin: 2rem;">
+                    <div style="font-size: 4rem; color: #ff6b6b; margin-bottom: 1rem;">🚀</div>
+                    <h3 style="color: #2c3e50; margin-bottom: 1rem; font-size: 1.5rem;">Thank You!</h3>
+                    <p style="color: #5d6d7e; margin-bottom: 2rem;">I'll contact you within 24 hours to discuss your e-commerce growth strategy.</p>
+                    <button onclick="this.parentElement.parentElement.remove()" style="background: #ff6b6b; color: white; border: none; padding: 1rem 2rem; border-radius: 8px; font-weight: 600; cursor: pointer;">Close</button>
+                </div>
+            `;
+
+            document.body.appendChild(modal);
+        }
+
+        // Shopping cart animation
+        function createShoppingCartAnimation() {
+            const cartItems = ['🛍️', '👕', '👖', '👟', '👜', '👓', '⌚', '🧢'];
+            const cartContainer = document.createElement('div');
+            cartContainer.className = 'shopping-cart-animation';
+
+            const cartItemsElement = document.createElement('div');
+            cartItemsElement.className = 'cart-items';
+
+            // Add multiple sets of items for continuous scrolling
+            for (let i = 0; i < 3; i++) {
+                cartItems.forEach(item => {
+                    const cartItem = document.createElement('div');
+                    cartItem.className = 'cart-item';
+                    cartItem.textContent = item;
+                    cartItemsElement.appendChild(cartItem);
+                });
+            }
+
+            cartContainer.appendChild(cartItemsElement);
+            document.querySelector('.hero-content').appendChild(cartContainer);
+        }
+
+        // Initialize all features
+        document.addEventListener('DOMContentLoaded', () => {
+            animateCounters();
+            createShoppingCartAnimation();
+        });
+    </script>
+</body>
+
+</html>

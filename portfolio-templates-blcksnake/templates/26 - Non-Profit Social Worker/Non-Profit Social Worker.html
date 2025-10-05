@@ -1,0 +1,1459 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maria Santos - Community Organizer & Social Justice Advocate</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #fefefe;
+            color: #2c3e50;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .hope-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(46, 204, 113, 0.03) 0%, rgba(52, 152, 219, 0.03) 50%, rgba(155, 89, 182, 0.03) 100%);
+            z-index: -1;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 0;
+            background: rgba(254, 254, 254, 0.95);
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(46, 204, 113, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #27ae60;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo::before {
+            content: '🤝';
+            font-size: 2rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-menu a {
+            color: #2c3e50;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #27ae60, #2ecc71);
+            transition: width 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .nav-menu a:hover {
+            color: #27ae60;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 4px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #27ae60;
+            transition: all 0.3s ease;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 2rem;
+            margin-top: 80px;
+            position: relative;
+            background: linear-gradient(135deg, rgba(46, 204, 113, 0.1), rgba(52, 152, 219, 0.1));
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .hero-content {
+            animation: slideInLeft 1s ease-out;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+            color: #ffffff;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 8px 25px rgba(39, 174, 96, 0.3);
+        }
+
+        .hero-title {
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: #2c3e50;
+        }
+
+        .hero-title .highlight {
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.6rem;
+            color: #7f8c8d;
+            margin-bottom: 2rem;
+            font-weight: 600;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 3rem;
+            max-width: 580px;
+            color: #5d6d7e;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1.2rem 2.5rem;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+            color: #ffffff;
+            box-shadow: 0 8px 25px rgba(39, 174, 96, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #229954, #27ae60);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(39, 174, 96, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #27ae60;
+            border: 3px solid #27ae60;
+        }
+
+        .btn-secondary:hover {
+            background: #27ae60;
+            color: #ffffff;
+            transform: translateY(-3px);
+        }
+
+        .hero-impact {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            animation: slideInRight 1s ease-out 0.3s both;
+            border: 2px solid rgba(39, 174, 96, 0.1);
+        }
+
+        .impact-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #27ae60;
+            margin-bottom: 2rem;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .impact-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .impact-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(46, 204, 113, 0.1), rgba(39, 174, 96, 0.1));
+            border-radius: 15px;
+            border: 1px solid rgba(39, 174, 96, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .impact-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(39, 174, 96, 0.2);
+            border-color: #27ae60;
+        }
+
+        .impact-number {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #27ae60;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .impact-label {
+            color: #5d6d7e;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .mission-quote {
+            text-align: center;
+            font-style: italic;
+            color: #7f8c8d;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            border-top: 2px solid rgba(39, 174, 96, 0.2);
+            padding-top: 2rem;
+            margin-top: 2rem;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .section {
+            padding: 6rem 2rem;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #27ae60, #2ecc71);
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            font-size: 1.3rem;
+            color: #7f8c8d;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .causes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .cause-card {
+            background: #ffffff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            border: 2px solid transparent;
+            position: relative;
+        }
+
+        .cause-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #27ae60, #2ecc71);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .cause-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .cause-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            border-color: rgba(39, 174, 96, 0.3);
+        }
+
+        .cause-image {
+            height: 200px;
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: #ffffff;
+            position: relative;
+        }
+
+        .cause-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #27ae60;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .cause-content {
+            padding: 2.5rem;
+        }
+
+        .cause-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .cause-description {
+            color: #5d6d7e;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+
+        .cause-progress {
+            margin-bottom: 2rem;
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .progress-bar-container {
+            width: 100%;
+            height: 8px;
+            background: #ecf0f1;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #27ae60, #2ecc71);
+            border-radius: 10px;
+            transition: width 1s ease;
+        }
+
+        .cause-action {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cause-btn {
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .cause-btn:hover {
+            background: linear-gradient(135deg, #229954, #27ae60);
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(39, 174, 96, 0.3);
+        }
+
+        .volunteers-needed {
+            color: #e74c3c;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .programs-section {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: #ffffff;
+        }
+
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .program-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 3rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .program-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.15);
+            border-color: #27ae60;
+        }
+
+        .program-icon {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #ffffff;
+            margin: 0 auto 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .program-card:hover .program-icon {
+            transform: scale(1.1) rotateY(360deg);
+        }
+
+        .program-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+
+        .program-description {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+
+        .program-stats {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 2rem;
+        }
+
+        .program-stat {
+            text-align: center;
+        }
+
+        .program-stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #27ae60;
+            display: block;
+        }
+
+        .program-stat-label {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .testimonials-section {
+            background: linear-gradient(135deg, #ecf0f1, #ffffff);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .testimonial-card {
+            background: #ffffff;
+            padding: 3rem 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border-left: 5px solid #27ae60;
+            position: relative;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.12);
+        }
+
+        .testimonial-quote {
+            font-size: 1.2rem;
+            line-height: 1.7;
+            color: #5d6d7e;
+            margin-bottom: 2rem;
+            font-style: italic;
+            position: relative;
+        }
+
+        .testimonial-quote::before {
+            content: '"';
+            font-size: 4rem;
+            color: rgba(39, 174, 96, 0.3);
+            position: absolute;
+            top: -20px;
+            left: -10px;
+            font-family: serif;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        .author-info h4 {
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 0.2rem;
+        }
+
+        .author-info p {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+
+        .volunteer-section {
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+            color: #ffffff;
+        }
+
+        .volunteer-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .volunteer-info h3 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+        }
+
+        .volunteer-description {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            margin-bottom: 3rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .volunteer-opportunities {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .opportunity-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .opportunity-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(10px);
+        }
+
+        .opportunity-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            color: #ffffff;
+        }
+
+        .opportunity-info h4 {
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+
+        .opportunity-info p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+        }
+
+        .volunteer-form {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .form-title {
+            font-size: 2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            color: #ffffff;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: rgba(255, 255, 255, 0.6);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .form-input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            accent-color: #ffffff;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1.5rem;
+            background: #ffffff;
+            color: #27ae60;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            font-family: inherit;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: rgba(255, 255, 255, 0.9);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.2);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            color: #ffffff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: #ffffff;
+            color: #27ae60;
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: rgba(254, 254, 254, 0.98);
+                backdrop-filter: blur(15px);
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                padding-top: 3rem;
+                transition: all 0.3s ease;
+                gap: 2rem;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+
+            .volunteer-container {
+                grid-template-columns: 1fr;
+            }
+
+            .impact-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .heartbeat {
+            animation: heartbeat 2s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat {
+            0% {
+                transform: scale(1);
+            }
+
+            14% {
+                transform: scale(1.1);
+            }
+
+            28% {
+                transform: scale(1);
+            }
+
+            42% {
+                transform: scale(1.1);
+            }
+
+            70% {
+                transform: scale(1);
+            }
+        }
+
+        .hope-particles {
+            position: fixed;
+            pointer-events: none;
+            z-index: 10;
+            font-size: 1.5rem;
+            animation: hopeFloat 8s linear infinite;
+        }
+
+        @keyframes hopeFloat {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="hope-bg"></div>
+
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">Maria Santos</div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#causes">Causes</a></li>
+                <li><a href="#programs">Programs</a></li>
+                <li><a href="#testimonials">Stories</a></li>
+                <li><a href="#volunteer">Volunteer</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">🌟 Building Better Communities</div>
+                <h1 class="hero-title">
+                    Creating <span class="highlight">Hope</span><br>
+                    Through Action
+                </h1>
+                <p class="hero-subtitle">Community Organizer & Social Justice Advocate</p>
+                <p class="hero-description">
+                    Dedicated to empowering communities, fighting for social justice, and creating lasting positive
+                    change.
+                    With over 10 years of grassroots organizing experience, I work tirelessly to build bridges,
+                    advocate for the underserved, and transform lives through collective action.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#volunteer" class="btn btn-primary">Join Our Mission</a>
+                    <a href="#causes" class="btn btn-secondary">Support Our Causes</a>
+                </div>
+            </div>
+
+            <div class="hero-impact">
+                <div class="impact-title">Community Impact</div>
+                <div class="impact-stats">
+                    <div class="impact-item heartbeat">
+                        <span class="impact-number">15,000+</span>
+                        <span class="impact-label">Lives Touched</span>
+                    </div>
+                    <div class="impact-item">
+                        <span class="impact-number">25</span>
+                        <span class="impact-label">Programs Launched</span>
+                    </div>
+                    <div class="impact-item">
+                        <span class="impact-number">500+</span>
+                        <span class="impact-label">Volunteers</span>
+                    </div>
+                    <div class="impact-item">
+                        <span class="impact-number">$2.5M</span>
+                        <span class="impact-label">Funds Raised</span>
+                    </div>
+                </div>
+                <div class="mission-quote">
+                    "Change happens when ordinary people come together to do extraordinary things.
+                    Every voice matters, every action counts, and together we can build the world we want to see."
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="causes" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title fade-in">Active Causes</h2>
+                <p class="section-subtitle fade-in">Working together to address the most pressing challenges in our
+                    communities</p>
+            </div>
+
+            <div class="causes-grid">
+                <div class="cause-card fade-in">
+                    <div class="cause-image">
+                        <i class="fas fa-home"></i>
+                        <div class="cause-badge">Housing Justice</div>
+                    </div>
+                    <div class="cause-content">
+                        <h3 class="cause-title">Affordable Housing Initiative</h3>
+                        <p class="cause-description">
+                            Fighting for safe, affordable housing for all families. Our campaign has prevented
+                            hundreds of evictions and helped secure housing assistance for vulnerable communities.
+                        </p>
+                        <div class="cause-progress">
+                            <div class="progress-label">
+                                <span>Campaign Progress</span>
+                                <span>75%</span>
+                            </div>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        <div class="cause-action">
+                            <a href="#" class="cause-btn">Support Now</a>
+                            <span class="volunteers-needed">25 Volunteers Needed</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cause-card fade-in">
+                    <div class="cause-image">
+                        <i class="fas fa-utensils"></i>
+                        <div class="cause-badge">Food Security</div>
+                    </div>
+                    <div class="cause-content">
+                        <h3 class="cause-title">Community Food Program</h3>
+                        <p class="cause-description">
+                            Providing nutritious meals and food education to families in need. Our program serves
+                            over 500 families weekly and operates community gardens in underserved neighborhoods.
+                        </p>
+                        <div class="cause-progress">
+                            <div class="progress-label">
+                                <span>Program Reach</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div class="cause-action">
+                            <a href="#" class="cause-btn">Donate Food</a>
+                            <span class="volunteers-needed">40 Volunteers Needed</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cause-card fade-in">
+                    <div class="cause-image">
+                        <i class="fas fa-graduation-cap"></i>
+                        <div class="cause-badge">Education</div>
+                    </div>
+                    <div class="cause-content">
+                        <h3 class="cause-title">Youth Education Fund</h3>
+                        <p class="cause-description">
+                            Ensuring equal access to quality education through scholarships, after-school programs,
+                            and mentorship initiatives that support students from underserved communities.
+                        </p>
+                        <div class="cause-progress">
+                            <div class="progress-label">
+                                <span>Scholarship Goal</span>
+                                <span>60%</span>
+                            </div>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar" style="width: 60%"></div>
+                            </div>
+                        </div>
+                        <div class="cause-action">
+                            <a href="#" class="cause-btn">Sponsor a Student</a>
+                            <span class="volunteers-needed">30 Volunteers Needed</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="programs" class="section programs-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title fade-in">Community Programs</h2>
+                <p class="section-subtitle fade-in">Sustainable initiatives creating lasting change in our neighborhoods
+                </p>
+            </div>
+
+            <div class="programs-grid">
+                <div class="program-card fade-in">
+                    <div class="program-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h3 class="program-title">Neighbor-to-Neighbor</h3>
+                    <p class="program-description">
+                        Building community resilience through mutual aid networks that connect neighbors
+                        with resources, support, and opportunities for collective action.
+                    </p>
+                    <div class="program-stats">
+                        <div class="program-stat">
+                            <span class="program-stat-number">2,500+</span>
+                            <span class="program-stat-label">Families Served</span>
+                        </div>
+                        <div class="program-stat">
+                            <span class="program-stat-number">15</span>
+                            <span class="program-stat-label">Neighborhoods</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="program-card fade-in">
+                    <div class="program-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h3 class="program-title">Justice Advocacy</h3>
+                    <p class="program-description">
+                        Providing legal support, advocacy training, and policy education to empower
+                        community members to fight for their rights and influence systemic change.
+                    </p>
+                    <div class="program-stats">
+                        <div class="program-stat">
+                            <span class="program-stat-number">300+</span>
+                            <span class="program-stat-label">Cases Assisted</span>
+                        </div>
+                        <div class="program-stat">
+                            <span class="program-stat-number">12</span>
+                            <span class="program-stat-label">Policy Wins</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="program-card fade-in">
+                    <div class="program-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3 class="program-title">Green Futures</h3>
+                    <p class="program-description">
+                        Creating sustainable communities through urban farming, environmental education,
+                        and green job training programs that benefit both people and the planet.
+                    </p>
+                    <div class="program-stats">
+                        <div class="program-stat">
+                            <span class="program-stat-number">8</span>
+                            <span class="program-stat-label">Community Gardens</span>
+                        </div>
+                        <div class="program-stat">
+                            <span class="program-stat-number">150</span>
+                            <span class="program-stat-label">Jobs Created</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="section testimonials-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title fade-in">Community Stories</h2>
+                <p class="section-subtitle fade-in">Hear from the people whose lives have been transformed through
+                    collective action</p>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card fade-in">
+                    <p class="testimonial-quote">
+                        Maria's housing advocacy saved my family from eviction. She didn't just help us stay in our
+                        home;
+                        she taught us how to organize our neighbors and fight for our community's rights.
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">JR</div>
+                        <div class="author-info">
+                            <h4>Jamal Rodriguez</h4>
+                            <p>Community Member & Volunteer</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card fade-in">
+                    <p class="testimonial-quote">
+                        The youth education program gave my daughter opportunities I never had. Thanks to the
+                        scholarship
+                        and mentorship, she's now the first in our family to attend college.
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">SC</div>
+                        <div class="author-info">
+                            <h4>Sophia Chen</h4>
+                            <p>Parent & Community Advocate</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card fade-in">
+                    <p class="testimonial-quote">
+                        Maria's leadership has transformed our neighborhood. Through her programs, we've gone from
+                        feeling powerless to realizing our collective strength and ability to create real change.
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">MG</div>
+                        <div class="author-info">
+                            <h4>Marcus Green</h4>
+                            <p>Community Organizer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="volunteer" class="section volunteer-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title fade-in">Join Our Movement</h2>
+                <p class="section-subtitle fade-in">Your time and skills can help create lasting change in our community
+                </p>
+            </div>
+
+            <div class="volunteer-container">
+                <div class="volunteer-info">
+                    <h3 class="fade-in">Become a Changemaker</h3>
+                    <p class="volunteer-description fade-in">
+                        Whether you can give a few hours a week or want to take on a leadership role,
+                        there's a place for you in our community. Together, we can build a more just,
+                        equitable, and compassionate world.
+                    </p>
+                    <div class="volunteer-opportunities">
+                        <div class="opportunity-item fade-in">
+                            <div class="opportunity-icon">
+                                <i class="fas fa-hands"></i>
+                            </div>
+                            <div class="opportunity-info">
+                                <h4>Direct Service</h4>
+                                <p>Help distribute food, provide housing support, or assist with community events</p>
+                            </div>
+                        </div>
+                        <div class="opportunity-item fade-in">
+                            <div class="opportunity-icon">
+                                <i class="fas fa-bullhorn"></i>
+                            </div>
+                            <div class="opportunity-info">
+                                <h4>Advocacy & Outreach</h4>
+                                <p>Spread awareness, organize campaigns, and advocate for policy change</p>
+                            </div>
+                        </div>
+                        <div class="opportunity-item fade-in">
+                            <div class="opportunity-icon">
+                                <i class="fas fa-chalkboard-teacher"></i>
+                            </div>
+                            <div class="opportunity-info">
+                                <h4>Skills-Based Volunteering</h4>
+                                <p>Share your professional expertise in legal, education, or technical fields</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="volunteer-form fade-in">
+                    <h3 class="form-title">Volunteer Application</h3>
+                    <form id="volunteerForm">
+                        <div class="form-group">
+                            <label class="form-label">Full Name</label>
+                            <input type="text" class="form-input" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Email Address</label>
+                            <input type="email" class="form-input" placeholder="your.email@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Phone Number</label>
+                            <input type="tel" class="form-input" placeholder="(555) 123-4567">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Areas of Interest</label>
+                            <div class="checkbox-group">
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="housing">
+                                    <label for="housing">Housing Justice</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="food">
+                                    <label for="food">Food Security</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="education">
+                                    <label for="education">Education</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="advocacy">
+                                    <label for="advocacy">Advocacy</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Tell us about yourself</label>
+                            <textarea class="form-input" rows="4"
+                                placeholder="Why are you interested in volunteering with us?"></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Join Our Team</button>
+                    </form>
+                </div>
+            </div>
+            <div class="social-links">
+                <a href="#" class="social-link">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#" class="social-link">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" class="social-link">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" class="social-link">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function () {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+
+        hamburger.addEventListener('click', function () {
+            navMenu.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                hamburger.classList.remove('active');
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Fade-in animation on scroll
+        function checkFadeIn() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('visible');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', checkFadeIn);
+        window.addEventListener('load', checkFadeIn);
+
+        // Form submission
+        document.getElementById('volunteerForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert('Thank you for your interest in volunteering! We will contact you soon.');
+            this.reset();
+        });
+
+        // Create hope particles
+        function createHopeParticles() {
+            const particles = ['🤝', '🌟', '💚', '🌱', '✨', '🙌'];
+            const container = document.body;
+
+            for (let i = 0; i < 20; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('hope-particles');
+                particle.textContent = particles[Math.floor(Math.random() * particles.length)];
+
+                // Random position and animation delay
+                const left = Math.random() * 100;
+                const delay = Math.random() * 8;
+
+                particle.style.left = `${left}%`;
+                particle.style.animationDelay = `${delay}s`;
+
+                container.appendChild(particle);
+            }
+        }
+
+        // Initialize on page load
+        window.addEventListener('load', function () {
+            checkFadeIn();
+            createHopeParticles();
+        });
+    </script>
+</body>
+
+</html>

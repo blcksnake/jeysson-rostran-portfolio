@@ -1,0 +1,1681 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Jonathan Hayes - Professor of Artificial Intelligence & Machine Learning</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Times New Roman', 'Georgia', serif;
+            background: #fafbfc;
+            color: #2c3e50;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        .academic-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                linear-gradient(90deg, transparent 49px, rgba(52, 73, 94, 0.03) 49px, rgba(52, 73, 94, 0.03) 51px, transparent 51px),
+                linear-gradient(rgba(52, 73, 94, 0.02) 2em, transparent 2em);
+            background-size: 100% 2em;
+            z-index: -1;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 0;
+            background: rgba(250, 251, 252, 0.95);
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(52, 73, 94, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #34495e;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo::before {
+            content: '🎓';
+            font-size: 1.8rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-menu a {
+            color: #2c3e50;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #3498db;
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .nav-menu a:hover {
+            color: #3498db;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 2rem;
+            margin-top: 80px;
+            position: relative;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.3fr 0.7fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .hero-content {
+            animation: fadeInLeft 1s ease-out;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 0.6rem 1.5rem;
+            background: #3498db;
+            color: #ffffff;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero-title {
+            font-size: clamp(2.8rem, 6vw, 4.2rem);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: #2c3e50;
+        }
+
+        .hero-title .highlight {
+            color: #3498db;
+        }
+
+        .hero-position {
+            font-size: 1.4rem;
+            color: #7f8c8d;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .hero-institution {
+            font-size: 1.2rem;
+            color: #34495e;
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 3rem;
+            max-width: 580px;
+            color: #5d6d7e;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .btn-primary {
+            background: #3498db;
+            color: #ffffff;
+        }
+
+        .btn-primary:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #2c3e50;
+            border: 2px solid #2c3e50;
+        }
+
+        .btn-secondary:hover {
+            background: #2c3e50;
+            color: #ffffff;
+        }
+
+        .hero-academic-card {
+            background: #ffffff;
+            border: 1px solid #e1e8ed;
+            border-radius: 15px;
+            padding: 3rem;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+            animation: fadeInRight 1s ease-out 0.3s both;
+        }
+
+        .academic-photo {
+            width: 180px;
+            height: 220px;
+            background: linear-gradient(135deg, #34495e, #2c3e50);
+            border-radius: 10px;
+            margin: 0 auto 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            color: #ffffff;
+        }
+
+        .academic-info {
+            text-align: center;
+        }
+
+        .academic-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .academic-title {
+            color: #7f8c8d;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .academic-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem 1rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border: 1px solid #e1e8ed;
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            border-color: #3498db;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #3498db;
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        .stat-label {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .section {
+            padding: 6rem 2rem;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2.6rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: #3498db;
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #7f8c8d;
+            max-width: 600px;
+            margin: 0 auto;
+            font-style: italic;
+        }
+
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .research-card {
+            background: #ffffff;
+            border: 1px solid #e1e8ed;
+            border-radius: 12px;
+            padding: 2.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .research-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border-color: #3498db;
+        }
+
+        .research-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: #ffffff;
+            margin: 0 auto 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .research-card:hover .research-icon {
+            transform: scale(1.1);
+        }
+
+        .research-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .research-description {
+            color: #5d6d7e;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .research-keywords {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+        }
+
+        .keyword {
+            padding: 0.4rem 1rem;
+            background: rgba(52, 152, 219, 0.1);
+            color: #3498db;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid rgba(52, 152, 219, 0.2);
+        }
+
+        .publications-section {
+            background: linear-gradient(135deg, #ecf0f1 0%, #ffffff 100%);
+        }
+
+        .publications-list {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .publication-item {
+            background: #ffffff;
+            border: 1px solid #e1e8ed;
+            border-radius: 10px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .publication-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            border-color: #3498db;
+        }
+
+        .publication-year {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            background: #3498db;
+            color: #ffffff;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .publication-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 0.8rem;
+            line-height: 1.4;
+            padding-right: 5rem;
+        }
+
+        .publication-authors {
+            color: #7f8c8d;
+            margin-bottom: 0.8rem;
+            font-style: italic;
+        }
+
+        .publication-journal {
+            color: #3498db;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .publication-abstract {
+            color: #5d6d7e;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .publication-metrics {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .metric {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+
+        .metric i {
+            color: #3498db;
+        }
+
+        .teaching-section {
+            background: #2c3e50;
+            color: #ffffff;
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .course-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 2.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .course-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.15);
+            border-color: #3498db;
+        }
+
+        .course-code {
+            background: #3498db;
+            color: #ffffff;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+        }
+
+        .course-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+
+        .course-description {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .course-details {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .awards-section {
+            background: linear-gradient(135deg, #f39c12, #e67e22);
+            color: #ffffff;
+        }
+
+        .awards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .award-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 2.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .award-card:hover {
+            transform: scale(1.05);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .award-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: #ffffff;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+
+        .award-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #ffffff;
+        }
+
+        .award-organization {
+            color: rgba(255, 255, 255, 0.8);
+            font-style: italic;
+            margin-bottom: 0.5rem;
+        }
+
+        .award-year {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        .collaboration-section {
+            background: #ecf0f1;
+        }
+
+        .collaboration-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .collaboration-card {
+            background: #ffffff;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 1px solid #e1e8ed;
+        }
+
+        .collaboration-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+            border-color: #3498db;
+        }
+
+        .collaboration-logo {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: #ffffff;
+            margin: 0 auto 1.5rem;
+            font-weight: 700;
+        }
+
+        .collaboration-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .collaboration-role {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+
+        .contact-section {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: #ffffff;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .contact-info h3 {
+            font-size: 2.4rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+        }
+
+        .contact-description {
+            font-size: 1.2rem;
+            line-height: 1.7;
+            margin-bottom: 3rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(10px);
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            color: #ffffff;
+        }
+
+        .contact-item h4 {
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+
+        .contact-item p {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .form-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            color: #ffffff;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: rgba(255, 255, 255, 0.6);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .form-input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1.2rem;
+            background: #ffffff;
+            color: #3498db;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .submit-btn:hover {
+            background: rgba(255, 255, 255, 0.9);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.2);
+        }
+
+        .social-academic-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            color: #ffffff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: #ffffff;
+            color: #3498db;
+            transform: translateY(-3px);
+        }
+
+        .citation-section {
+            background: #f8f9fa;
+            border-left: 5px solid #3498db;
+            margin: 3rem 0;
+            padding: 2rem;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .citation-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            display: none;
+            /* Hidden as per request */
+        }
+
+        .citation-text {
+            font-family: 'Courier New', monospace;
+            background: #ffffff;
+            padding: 1rem;
+            border-radius: 5px;
+            color: #34495e;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .h-index-display {
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+            color: #ffffff;
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .h-index-number {
+            font-size: 3rem;
+            font-weight: 900;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .h-index-label {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .research-impact {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .impact-item {
+            text-align: center;
+            padding: 2rem 1rem;
+            background: #ffffff;
+            border-radius: 10px;
+            border: 1px solid #e1e8ed;
+            transition: all 0.3s ease;
+        }
+
+        .impact-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .impact-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #3498db;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .impact-label {
+            color: #7f8c8d;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .academic-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .research-impact {
+                grid-template-columns: 1fr;
+            }
+
+            .research-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .courses-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .awards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .collaboration-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="academic-bg"></div>
+
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">Dr. Hayes</div>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#research">Research</a></li>
+                <li><a href="#publications">Publications</a></li>
+                <li><a href="#teaching">Teaching</a></li>
+                <li><a href="#awards">Awards</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">🔬 Research Excellence</div>
+                <h1 class="hero-title">
+                    Advancing <span class="highlight">AI Research</span><br>
+                    for Tomorrow
+                </h1>
+                <p class="hero-position">Professor of Computer Science</p>
+                <p class="hero-institution">Stanford University</p>
+                <p class="hero-description">
+                    Leading groundbreaking research in artificial intelligence, machine learning, and neural networks.
+                    With over 15 years of academic experience, I focus on developing AI systems that can understand,
+                    learn, and adapt to complex real-world challenges.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#publications" class="btn btn-primary">View Publications</a>
+                    <a href="#contact" class="btn btn-secondary">Collaborate</a>
+                </div>
+            </div>
+
+            <div class="hero-academic-card">
+                <div class="academic-photo">
+                    <i class="fas fa-user-graduate"></i>
+                </div>
+                <div class="academic-info">
+                    <h3 class="academic-name">Dr. Jonathan Hayes</h3>
+                    <p class="academic-title">PhD in Computer Science, MIT</p>
+
+                    <div class="academic-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">150+</span>
+                            <span class="stat-label">Publications</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">8,500+</span>
+                            <span class="stat-label">Citations</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">42</span>
+                            <span class="stat-label">H-Index</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">15</span>
+                            <span class="stat-label">Years</span>
+                        </div>
+                    </div>
+
+                    <div class="h-index-display">
+                        <span class="h-index-number">42</span>
+                        <span class="h-index-label">H-Index Score</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="research" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title fade-in">Research Areas</h2>
+                <p class="section-subtitle fade-in">Exploring the frontiers of artificial intelligence and computational
+                    intelligence</p>
+            </div>
+
+            <div class="research-grid">
+                <div class="research-card fade-in">
+                    <div class="research-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="research-title">Neural Networks</h3>
+                    <p class="research-description">
+                        Developing advanced neural network architectures for complex pattern recognition,
+                        including convolutional networks, transformers, and hybrid models.
+                    </p>
+                    <div class="research-keywords">
+                        <span class="keyword">Deep Learning</span>
+                        <span class="keyword">CNNs</span>
+                        <span class="keyword">Transformers</span>
+                        <span class="keyword">Architecture</span>
+                    </div>
+                </div>
+
+                <div class="research-card fade-in">
+                    <div class="research-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3 class="research-title">Machine Learning</h3>
+                    <p class="research-description">
+                        Creating intelligent systems that can learn from data, adapt to new situations,
+                        and make decisions with minimal human intervention.
+                    </p>
+                    <div class="research-keywords">
+                        <span class="keyword">Supervised Learning</span>
+                        <span class="keyword">Reinforcement</span>
+                        <span class="keyword">Unsupervised</span>
+                        <span class="keyword">AutoML</span>
+                    </div>
+                </div>
+
+                <div class="research-card fade-in">
+                    <div class="research-icon">
+                        <i class="fas fa-language"></i>
+                    </div>
+                    <h3 class="research-title">Natural Language Processing</h3>
+                    <p class="research-description">
+                        Advancing language understanding through state-of-the-art NLP models,
+                        focusing on context-aware and multimodal language systems.
+                    </p>
+                    <div class="research-keywords">
+                        <span class="keyword">BERT</span>
+                        <span class="keyword">GPT</span>
+                        <span class="keyword">Multimodal</span>
+                        <span class="keyword">Semantics</span>
+                    </div>
+                </div>
+
+                <div class="research-card fade-in">
+                    <div class="research-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3 class="research-title">Computer Vision</h3>
+                    <p class="research-description">
+                        Enabling machines to interpret and understand visual information from the world,
+                        with applications in autonomous systems and medical imaging.
+                    </p>
+                    <div class="research-keywords">
+                        <span class="keyword">Object Detection</span>
+                        <span class="keyword">Segmentation</span>
+                        <span class="keyword">Medical Imaging</span>
+                        <span class="keyword">3D Vision</span>
+                    </div>
+                </div>
+
+                <div class="research-card fade-in">
+                    <div class="research-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="research-title">AI Ethics & Safety</h3>
+                    <p class="research-description">
+                        Ensuring AI systems are fair, transparent, and aligned with human values.
+                        Research in explainable AI and bias mitigation techniques.
+                    </p>
+                    <div class="research-keywords">
+                        <span class="keyword">Explainable AI</span>
+                        <span class="keyword">Fairness</span>
+                        <span class="keyword">Transparency</span>
+                        <span class="keyword">Alignment</span>
+                    </div>
+                </div>
+
+                <div class="research-card fade-in">
+                    <div class="research-icon">
+                        <i class="fas fa-atom"></i>
+                    </div>
+                    <h3 class="research-title">Quantum ML</h3>
+                    <p class="research-description">
+                        Exploring the intersection of quantum computing and machine learning
+                        to solve computationally intractable problems.
+                    </p>
+                    <div class="research-keywords">
+                        <span class="keyword">Quantum Algorithms</span>
+                        <span class="keyword">QAOA</span>
+                        <span class="keyword">Variational</span>
+                        <span class="keyword">Optimization</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="research-impact">
+                <div class="impact-item fade-in">
+                    <span class="impact-number">25</span>
+                    <span class="impact-label">Active Projects</span>
+                </div>
+                <div class="impact-item fade-in">
+                    <span class="impact-number">$5.2M</span>
+                    <span class="impact-label">Funding Secured</span>
+                </div>
+                <div class="impact-item fade-in">
+                    <span class="impact-number">12</span>
+                    <span class="impact-label">PhD Students</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="publications" class="section publications-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title fade-in">Recent Publications</h2>
+                <p class="section-subtitle fade-in">Selected peer-reviewed publications from leading conferences and
+                    journals</p>
+            </div>
+
+            <div class="publications-list">
+                <div class="publication-item fade-in">
+                    <div class="publication-year">2024</div>
+                    <h3 class="publication-title">
+                        Attention-Guided Neural Architecture Search for Efficient Transformer Models
+                    </h3>
+                    <p class="publication-authors">
+                        <strong>J. Hayes</strong>, M. Chen, S. Rodriguez, A. Patel
+                    </p>
+                    <p class="publication-journal">
+                        Proceedings of the International Conference on Machine Learning (ICML)
+                    </p>
+                    <p class="publication-abstract">
+                        We propose a novel neural architecture search method that leverages attention mechanisms
+                        to discover efficient transformer architectures. Our approach reduces computational costs
+                        by 40% while maintaining performance on benchmark tasks.
+                    </p>
+                    <div class="publication-metrics">
+                        <div class="metric">
+                            <i class="fas fa-quote-right"></i>
+                            <span>127 Citations</span>
+                        </div>
+                        <div class="metric">
+                            <i class="fas fa-download"></i>
+                            <span>2.3K Downloads</span>
+                        </div>
+                        <div class="metric">
+                            <i class="fas fa-star"></i>
+                            <span>Impact Factor: 8.9</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="publication-item fade-in">
+                    <div class="publication-year">2024</div>
+                    <h3 class="publication-title">
+                        Federated Learning with Differential Privacy for Healthcare Applications
+                    </h3>
+                    <p class="publication-authors">
+                        L. Kim, <strong>J. Hayes</strong>, R. Thompson, D. Wilson
+                    </p>
+                    <p class="publication-journal">
+                        Nature Machine Intelligence
+                    </p>
+                    <p class="publication-abstract">
+                        A comprehensive framework for federated learning in healthcare that ensures patient privacy
+                        while enabling collaborative model training across institutions. Demonstrated on COVID-19
+                        diagnosis and treatment prediction tasks.
+                    </p>
+                    <div class="publication-metrics">
+                        <div class="metric">
+                            <i class="fas fa-quote-right"></i>
+                            <span>89 Citations</span>
+                        </div>
+                        <div class="metric">
+                            <i class="fas fa-download"></i>
+                            <span>1.8K Downloads</span>
+                        </div>
+                        <div class="metric">
+                            <i class="fas fa-star"></i>
+                            <span>Impact Factor: 15.5</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="publication-item fade-in">
+                    <div class="publication-year">2023</div>
+                    <h3 class="publication-title">
+                        Quantum-Classical Hybrid Networks for Combinatorial Optimization
+                    </h3>
+                    <p class="publication-authors">
+                        <strong>J. Hayes</strong>, Q. Zhang, M. Johnson, T. Anderson
+                    </p>
+                    <p class="publication-journal">
+                        Physical Review X Quantum
+                    </p>
+                    <p class="publication-abstract">
+                        Novel hybrid quantum-classical neural network architecture that leverages quantum
+                        superposition for solving complex combinatorial optimization problems. Achieves
+                        significant speedup on NP-hard problems compared to classical approaches.
+                    </p>
+                    <div class="publication-metrics">
+                        <div class="metric">
+                            <i class="fas fa-quote-right"></i>
+                            <span>156 Citations</span>
+                        </div>
+                        <div class="metric">
+                            <i class="fas fa-download"></i>
+                            <span>3.1K Downloads</span>
+                        </div>
+                        <div class="metric">
+                            <i class="fas fa-star"></i>
+                            <span>Impact Factor: 12.7</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="citation-section fade-in">
+                <div class="citation-title">How to Cite My Work:</div>
+                <div class="citation-text">
+                    Hayes, J. et al. (2024). "Attention-Guided Neural Architecture Search for Efficient Transformer
+                    Models."
+                    Proceedings of the International Conference on Machine Learning, pp. 1234-1245.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="teaching" class="section teaching-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title fade-in" style="color: #ffffff;">Teaching & Courses</h2>
+                <p class="section-subtitle fade-in" style="color: rgba(255,255,255,0.8);">Educating the next generation
+                    of AI researchers and practitioners</p>
+            </div>
+
+            <div class="courses-grid">
+                <div class="course-card fade-in">
+                    <div class="course-code">CS 229</div>
+                    <h3 class="course-title">Machine Learning</h3>
+                    <p class="course-description">
+                        Comprehensive introduction to machine learning algorithms, including supervised learning,
+                        unsupervised learning, and reinforcement learning. Hands-on projects with real datasets.
+                    </p>
+                    <div class="course-details">
+                        <span>Fall 2024</span>
+                        <span>180 Students</span>
+                    </div>
+                </div>
+
+                <div class="course-card fade-in">
+                    <div class="course-code">CS 230</div>
+                    <h3 class="course-title">Deep Learning</h3>
+                    <p class="course-description">
+                        Advanced course covering neural network architectures, optimization techniques,
+                        and applications in computer vision, NLP, and generative models.
+                    </p>
+                    <div class="course-details">
+                        <span>Spring 2024</span>
+                        <span>145 Students</span>
+                    </div>
+                </div>
+
+                <div class="course-card fade-in">
+                    <div class="course-code">CS 330</div>
+                    <h3 class="course-title">Multi-Task & Meta-Learning</h3>
+                    <p class="course-description">
+                        Graduate-level course exploring meta-learning, few-shot learning, and transfer learning
+                        techniques for building adaptable AI systems.
+                    </p>
+                    <div class="course-details">
+                        <span>Fall 2023</span>
+                        <span>85 Students</span>
+                    </div>
+                </div>
+
+                <div class="course-card fade-in">
+                    <div class="course-code">CS 399</div>
+                    <h3 class="course-title">AI Ethics & Society</h3>
+                    <p class="course-description">
+                        Interdisciplinary course examining the societal impacts of AI, ethical considerations,
+                        and responsible AI development practices.
+                    </p>
+                    <div class="course-details">
+                        <span>Spring 2024</span>
+                        <span>120 Students</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="awards" class="section awards-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title fade-in" style="color: #ffffff;">Awards & Recognition</h2>
+                <p class="section-subtitle fade-in" style="color: rgba(255,255,255,0.8);">Honored for contributions to
+                    artificial intelligence research and education</p>
+            </div>
+
+            <div class="awards-grid">
+                <div class="award-card fade-in">
+                    <div class="award-icon">🏆</div>
+                    <h3 class="award-name">Turing Award</h3>
+                    <p class="award-organization">ACM</p>
+                    <p class="award-year">2023</p>
+                </div>
+
+                <div class="award-card fade-in">
+                    <div class="award-icon">⭐</div>
+                    <h3 class="award-name">National Science Medal</h3>
+                    <p class="award-organization">National Science Foundation</p>
+                    <p class="award-year">2022</p>
+                </div>
+
+                <div class="award-card fade-in">
+                    <div class="award-icon">🎓</div>
+                    <h3 class="award-name">Distinguished Teaching Award</h3>
+                    <p class="award-organization">Stanford University</p>
+                    <p class="award-year">2021</p>
+                </div>
+
+                <div class="award-card fade-in">
+                    <div class="award-icon">🔬</div>
+                    <h3 class="award-name">Pioneer in AI Research</h3>
+                    <p class="award-organization">AI Research Society</p>
+                    <p class="award-year">2020</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="collaboration" class="section collaboration-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title fade-in">Collaborations</h2>
+                <p class="section-subtitle fade-in">Working with leading institutions and organizations worldwide</p>
+            </div>
+
+            <div class="collaboration-grid">
+                <div class="collaboration-card fade-in">
+                    <div class="collaboration-logo">MIT</div>
+                    <h3 class="collaboration-name">MIT CSAIL</h3>
+                    <p class="collaboration-role">Research Partner</p>
+                </div>
+
+                <div class="collaboration-card fade-in">
+                    <div class="collaboration-logo">G</div>
+                    <h3 class="collaboration-name">Google Research</h3>
+                    <p class="collaboration-role">AI Advisor</p>
+                </div>
+
+                <div class="collaboration-card fade-in">
+                    <div class="collaboration-logo">O</div>
+                    <h3 class="collaboration-name">OpenAI</h3>
+                    <p class="collaboration-role">Research Collaborator</p>
+                </div>
+
+                <div class="collaboration-card fade-in">
+                    <div class="collaboration-logo">N</div>
+                    <h3 class="collaboration-name">NIH</h3>
+                    <p class="collaboration-role">Healthcare AI Consultant</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section contact-section">
+        <div class="container">
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Let's Advance AI Together</h3>
+                    <p class="contact-description">
+                        Interested in collaboration, research opportunities, or speaking engagements?
+                        I'm always open to discussing new projects and ideas that push the boundaries of AI.
+                    </p>
+
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4>Email</h4>
+                                <p>j.hayes@stanford.edu</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4>Phone</h4>
+                                <p>+1 (650) 123-4567</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h4>Office</h4>
+                                <p>Gates Building, Room 324<br>Stanford University</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div>
+                                <h4>Office Hours</h4>
+                                <p>Mon & Wed: 2-4 PM<br>By appointment</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <h3 class="form-title">Send a Message</h3>
+                    <div class="form-group">
+                        <label class="form-label" for="name">Name</label>
+                        <input type="text" id="name" class="form-input" placeholder="Your full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="email">Email</label>
+                        <input type="email" id="email" class="form-input" placeholder="your.email@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="subject">Subject</label>
+                        <select id="subject" class="form-input" required>
+                            <option value="">Select inquiry type</option>
+                            <option value="research">Research Collaboration</option>
+                            <option value="speaking">Speaking Engagement</option>
+                            <option value="phd">PhD Supervision</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="message">Message</label>
+                        <textarea id="message" class="form-input" rows="5"
+                            placeholder="Tell me about your inquiry or project..." required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+
+                    <div class="social-academic-links">
+                        <a href="#" class="social-link" title="Google Scholar">
+                            <i class="fas fa-graduation-cap"></i>
+                        </a>
+                        <a href="#" class="social-link" title="LinkedIn">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="#" class="social-link" title="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link" title="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Form submission
+        const contactForm = document.querySelector('.contact-form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+
+                const submitBtn = e.target.querySelector('.submit-btn');
+                const originalText = submitBtn.textContent;
+
+                submitBtn.textContent = 'Sending...';
+                submitBtn.style.background = '#7f8c8d';
+
+                setTimeout(() => {
+                    submitBtn.textContent = '✓ Message Sent!';
+                    submitBtn.style.background = '#27ae60';
+
+                    setTimeout(() => {
+                        alert('Thank you for your message! I will get back to you soon.');
+                        submitBtn.textContent = originalText;
+                        submitBtn.style.background = '#ffffff';
+                        e.target.reset();
+                    }, 2000);
+                }, 1500);
+            });
+        }
+
+        // Publication metrics animation
+        document.querySelectorAll('.publication-item').forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                const metrics = item.querySelectorAll('.metric');
+                metrics.forEach((metric, index) => {
+                    setTimeout(() => {
+                        metric.style.transform = 'scale(1.05)';
+                        metric.style.transition = 'transform 0.3s ease';
+                    }, index * 100);
+                });
+            });
+
+            item.addEventListener('mouseleave', () => {
+                const metrics = item.querySelectorAll('.metric');
+                metrics.forEach(metric => {
+                    metric.style.transform = 'scale(1)';
+                });
+            });
+        });
+
+        // Research card interaction
+        document.querySelectorAll('.research-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                const icon = card.querySelector('.research-icon');
+                icon.style.transform = 'scale(1.1) rotate(5deg)';
+
+                const keywords = card.querySelectorAll('.keyword');
+                keywords.forEach((keyword, index) => {
+                    setTimeout(() => {
+                        keyword.style.background = 'rgba(52, 152, 219, 0.2)';
+                    }, index * 100);
+                });
+            });
+
+            card.addEventListener('mouseleave', () => {
+                const icon = card.querySelector('.research-icon');
+                icon.style.transform = 'scale(1) rotate(0deg)';
+
+                const keywords = card.querySelectorAll('.keyword');
+                keywords.forEach(keyword => {
+                    keyword.style.background = 'rgba(52, 152, 219, 0.1)';
+                });
+            });
+        });
+
+        // Initialize animations on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            // Trigger initial fade-in for elements already in view
+            document.querySelectorAll('.fade-in').forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 50) {
+                    el.classList.add('visible');
+                }
+            });
+
+            // Add subtle animation to stats
+            const statNumbers = document.querySelectorAll('.stat-number');
+            statNumbers.forEach((number, index) => {
+                setTimeout(() => {
+                    number.style.transform = 'scale(1.1)';
+                    setTimeout(() => {
+                        number.style.transform = 'scale(1)';
+                    }, 300);
+                }, index * 200);
+            });
+        });
+    </script>
+</body>
+
+</html>

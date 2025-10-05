@@ -1,0 +1,1648 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chef Isabella Romano - Culinary Artist & Restaurant Consultant</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Georgia:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: #fdf8f3;
+            color: #3a3a3a;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .culinary-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(circle at 20% 20%, rgba(218, 165, 32, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(160, 82, 45, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 40% 60%, rgba(255, 69, 0, 0.02) 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 0;
+            background: rgba(253, 248, 243, 0.95);
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(218, 165, 32, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #d2691e;
+            font-style: italic;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo::before {
+            content: '👩‍🍳';
+            font-size: 1.8rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-menu a {
+            color: #3a3a3a;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #d2691e;
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .nav-menu a:hover {
+            color: #d2691e;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #3a3a3a;
+            cursor: pointer;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 2rem;
+            margin-top: 80px;
+            position: relative;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-content {
+            animation: fadeInLeft 1s ease-out;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 0.6rem 2rem;
+            background: linear-gradient(135deg, #d2691e, #cd853f);
+            color: #ffffff;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 15px rgba(210, 105, 30, 0.3);
+        }
+
+        .hero-title {
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: #3a3a3a;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-title .highlight {
+            color: #d2691e;
+            font-style: italic;
+        }
+
+        .hero-subtitle {
+            font-size: 1.6rem;
+            color: #8b4513;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            line-height: 1.7;
+            margin-bottom: 3rem;
+            max-width: 550px;
+            color: #5d5d5d;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #d2691e, #cd853f);
+            color: #ffffff;
+            box-shadow: 0 8px 25px rgba(210, 105, 30, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #b8860b, #daa520);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(210, 105, 30, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #3a3a3a;
+            border: 2px solid #3a3a3a;
+        }
+
+        .btn-secondary:hover {
+            background: #3a3a3a;
+            color: #ffffff;
+        }
+
+        .hero-chef-card {
+            background: #ffffff;
+            border-radius: 25px;
+            padding: 3rem 2rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInRight 1s ease-out 0.5s both;
+        }
+
+        .hero-chef-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #d2691e, #cd853f, #daa520);
+            border-radius: 25px 25px 0 0;
+        }
+
+        .chef-photo {
+            width: 200px;
+            height: 250px;
+            background: linear-gradient(135deg, #d2691e, #cd853f);
+            border-radius: 15px;
+            margin: 0 auto 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+            color: #ffffff;
+            box-shadow: 0 15px 30px rgba(210, 105, 30, 0.3);
+        }
+
+        .chef-info h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #3a3a3a;
+            margin-bottom: 0.5rem;
+        }
+
+        .chef-title {
+            color: #8b4513;
+            font-style: italic;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .chef-achievements {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .achievement-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #fdf8f3, #f5f5dc);
+            border-radius: 15px;
+            border: 1px solid rgba(210, 105, 30, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .achievement-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(210, 105, 30, 0.2);
+            border-color: #d2691e;
+        }
+
+        .achievement-icon {
+            font-size: 2rem;
+            color: #d2691e;
+            margin-bottom: 0.5rem;
+        }
+
+        .achievement-text {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #3a3a3a;
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .section {
+            padding: 8rem 2rem;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #3a3a3a;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #d2691e, #cd853f);
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            font-size: 1.3rem;
+            color: #8b4513;
+            max-width: 600px;
+            margin: 0 auto;
+            font-style: italic;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 5rem;
+        }
+
+        .menu-card {
+            background: #ffffff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(210, 105, 30, 0.1);
+        }
+
+        .menu-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            border-color: #d2691e;
+        }
+
+        .menu-image {
+            height: 250px;
+            background: linear-gradient(45deg, #d2691e, #cd853f, #daa520);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: #ffffff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .menu-badge {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 0.5rem 1rem;
+            background: rgba(0, 0, 0, 0.8);
+            color: #daa520;
+            border-radius: 25px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .menu-content {
+            padding: 2.5rem;
+        }
+
+        .menu-category {
+            color: #d2691e;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .menu-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #3a3a3a;
+            margin-bottom: 1rem;
+        }
+
+        .menu-description {
+            color: #5d5d5d;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .menu-ingredients {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .ingredient {
+            padding: 0.3rem 0.8rem;
+            background: rgba(210, 105, 30, 0.1);
+            color: #8b4513;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid rgba(210, 105, 30, 0.2);
+        }
+
+        .menu-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .menu-price {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #d2691e;
+        }
+
+        .menu-rating {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            color: #daa520;
+        }
+
+        .specialties-section {
+            background: linear-gradient(135deg, #3a3a3a 0%, #2c2c2c 100%);
+            color: #ffffff;
+        }
+
+        .specialties-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 5rem;
+        }
+
+        .specialty-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.4s ease;
+        }
+
+        .specialty-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.15);
+            border-color: #d2691e;
+        }
+
+        .specialty-icon {
+            font-size: 4rem;
+            margin-bottom: 2rem;
+            color: #d2691e;
+            text-shadow: 0 0 20px rgba(210, 105, 30, 0.5);
+        }
+
+        .specialty-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+
+        .specialty-description {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+        }
+
+        .experience-section {
+            background: linear-gradient(135deg, #f5f5dc 0%, #fdf8f3 100%);
+        }
+
+        .experience-timeline {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, #d2691e, #cd853f);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-content {
+            flex: 1;
+            padding: 2.5rem;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin: 0 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .timeline-date {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background: #d2691e;
+            color: #ffffff;
+            padding: 1rem;
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 0.9rem;
+            z-index: 2;
+        }
+
+        .experience-role {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #d2691e;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-restaurant {
+            font-size: 1.1rem;
+            color: #8b4513;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .experience-description {
+            color: #5d5d5d;
+            line-height: 1.6;
+        }
+
+        .testimonials-section {
+            background: linear-gradient(135deg, #cd853f, #d2691e);
+            color: #ffffff;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 5rem;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 1rem;
+            left: 2rem;
+            font-size: 4rem;
+            color: rgba(255, 255, 255, 0.3);
+            font-family: serif;
+        }
+
+        .testimonial-card:hover {
+            transform: scale(1.02);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .testimonial-text {
+            font-size: 1.2rem;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            font-style: italic;
+            padding-left: 2rem;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        .author-info h4 {
+            font-weight: 700;
+            margin-bottom: 0.2rem;
+            color: #ffffff;
+        }
+
+        .author-info p {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-style: italic;
+        }
+
+        .contact-section {
+            background: #3a3a3a;
+            color: #ffffff;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .contact-info h3 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: #d2691e;
+        }
+
+        .contact-description {
+            font-size: 1.2rem;
+            line-height: 1.7;
+            margin-bottom: 3rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(10px);
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: #d2691e;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #ffffff;
+        }
+
+        .contact-item h4 {
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+            color: #d2691e;
+        }
+
+        .contact-item p {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            padding: 3rem;
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .form-title {
+            font-size: 2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #d2691e;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 1.2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            color: #ffffff;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #d2691e;
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 15px rgba(210, 105, 30, 0.3);
+        }
+
+        .form-input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #d2691e, #cd853f);
+            color: #ffffff;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            font-family: inherit;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: linear-gradient(135deg, #b8860b, #daa520);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(210, 105, 30, 0.4);
+        }
+
+        footer {
+            background: #2c2c2c;
+            color: #ffffff;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            text-align: left;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #d2691e;
+            font-style: italic;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-logo::before {
+            content: '👩‍🍳';
+            font-size: 1.8rem;
+        }
+
+        .footer-about {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links h4 {
+            color: #d2691e;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #d2691e;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            color: #ffffff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: #d2691e;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(210, 105, 30, 0.4);
+        }
+
+        .copyright {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        @media (max-width: 1024px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background: rgba(253, 248, 243, 0.98);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+                padding: 2rem 0;
+                gap: 0;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-menu li {
+                margin: 1.5rem 0;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero-title {
+                font-size: 2.8rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .chef-achievements {
+                grid-template-columns: 1fr;
+            }
+
+            .menu-grid,
+            .specialties-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 5rem 1.5rem;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .menu-ingredients {
+                justify-content: center;
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .recipe-book {
+            background: #8b4513;
+            color: #ffffff;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            display: inline-block;
+            margin: 2rem 0;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .recipe-book:hover {
+            background: #a0522d;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(139, 69, 19, 0.3);
+        }
+
+        .spice-animation {
+            position: fixed;
+            pointer-events: none;
+            font-size: 1.5rem;
+            z-index: 100;
+            animation: spiceFloat 6s linear infinite;
+        }
+
+        @keyframes spiceFloat {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-50px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="culinary-bg"></div>
+
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">Isabella Romano</div>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#specialties">Specialties</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#testimonials">Reviews</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">🍴 Michelin Star Chef</div>
+                <h1 class="hero-title">
+                    Culinary <span class="highlight">Artistry</span><br>
+                    Meets Passion
+                </h1>
+                <p class="hero-subtitle">Chef Isabella Romano</p>
+                <p class="hero-description">
+                    With over 15 years of culinary excellence, I create unforgettable dining experiences that celebrate
+                    the finest ingredients, innovative techniques, and the timeless traditions of Italian cuisine.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#menu" class="btn btn-primary">Explore Menu</a>
+                    <a href="#contact" class="btn btn-secondary">Book Chef</a>
+                </div>
+                <a href="#" class="recipe-book">📚 Download Recipe Collection</a>
+            </div>
+
+            <div class="hero-chef-card">
+                <div class="chef-photo">
+                    <i class="fas fa-utensils"></i>
+                </div>
+                <div class="chef-info">
+                    <h3>Isabella Romano</h3>
+                    <p class="chef-title">Executive Chef & Consultant</p>
+                    <div class="chef-achievements">
+                        <div class="achievement-item">
+                            <div class="achievement-icon">⭐</div>
+                            <div class="achievement-text">3 Michelin Stars</div>
+                        </div>
+                        <div class="achievement-item">
+                            <div class="achievement-icon">🏆</div>
+                            <div class="achievement-text">15+ Awards</div>
+                        </div>
+                        <div class="achievement-item">
+                            <div class="achievement-icon">👨‍🍳</div>
+                            <div class="achievement-text">50+ Trainees</div>
+                        </div>
+                        <div class="achievement-item">
+                            <div class="achievement-icon">🌍</div>
+                            <div class="achievement-text">Worldwide Experience</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="menu" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title fade-in">Signature Dishes</h2>
+                <p class="section-subtitle fade-in">A curated selection of my most celebrated creations</p>
+            </div>
+
+            <div class="menu-grid">
+                <div class="menu-card fade-in">
+                    <div class="menu-image">
+                        <i class="fas fa-fish"></i>
+                        <div class="menu-badge">Chef's Choice</div>
+                    </div>
+                    <div class="menu-content">
+                        <div class="menu-category">Seafood</div>
+                        <h3 class="menu-title">Mediterranean Sea Bass</h3>
+                        <p class="menu-description">Pan-seared sea bass with sun-dried tomatoes, capers, and white wine
+                            sauce, served with roasted vegetables.</p>
+                        <div class="menu-ingredients">
+                            <span class="ingredient">Sea Bass</span>
+                            <span class="ingredient">Tomatoes</span>
+                            <span class="ingredient">Capers</span>
+                            <span class="ingredient">White Wine</span>
+                        </div>
+                        <div class="menu-footer">
+                            <div class="menu-price">$38</div>
+                            <div class="menu-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card fade-in">
+                    <div class="menu-image">
+                        <i class="fas fa-pasta"></i>
+                        <div class="menu-badge">Signature</div>
+                    </div>
+                    <div class="menu-content">
+                        <div class="menu-category">Pasta</div>
+                        <h3 class="menu-title">Truffle Mushroom Risotto</h3>
+                        <p class="menu-description">Creamy Arborio rice with wild mushrooms, black truffle, and Parmesan
+                            cheese, finished with truffle oil.</p>
+                        <div class="menu-ingredients">
+                            <span class="ingredient">Arborio Rice</span>
+                            <span class="ingredient">Truffle</span>
+                            <span class="ingredient">Mushrooms</span>
+                            <span class="ingredient">Parmesan</span>
+                        </div>
+                        <div class="menu-footer">
+                            <div class="menu-price">$32</div>
+                            <div class="menu-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card fade-in">
+                    <div class="menu-image">
+                        <i class="fas fa-cheese"></i>
+                        <div class="menu-badge">Vegetarian</div>
+                    </div>
+                    <div class="menu-content">
+                        <div class="menu-category">Vegetarian</div>
+                        <h3 class="menu-title">Eggplant Parmesan</h3>
+                        <p class="menu-description">Layered eggplant with homemade marinara sauce, fresh mozzarella, and
+                            basil, baked to perfection.</p>
+                        <div class="menu-ingredients">
+                            <span class="ingredient">Eggplant</span>
+                            <span class="ingredient">Mozzarella</span>
+                            <span class="ingredient">Tomato Sauce</span>
+                            <span class="ingredient">Basil</span>
+                        </div>
+                        <div class="menu-footer">
+                            <div class="menu-price">$26</div>
+                            <div class="menu-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="specialties" class="section specialties-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title fade-in">Culinary Specialties</h2>
+                <p class="section-subtitle fade-in">Areas of expertise and culinary philosophy</p>
+            </div>
+
+            <div class="specialties-grid">
+                <div class="specialty-card fade-in">
+                    <div class="specialty-icon">🍝</div>
+                    <h3 class="specialty-title">Italian Cuisine</h3>
+                    <p class="specialty-description">Authentic Italian dishes with modern interpretations, focusing on
+                        regional specialties and traditional techniques.</p>
+                </div>
+
+                <div class="specialty-card fade-in">
+                    <div class="specialty-icon">🎂</div>
+                    <h3 class="specialty-title">Pastry Arts</h3>
+                    <p class="specialty-description">Exquisite desserts and pastries, from classic French patisserie to
+                        innovative modern creations.</p>
+                </div>
+
+                <div class="specialty-card fade-in">
+                    <div class="specialty-icon">🍷</div>
+                    <h3 class="specialty-title">Wine Pairing</h3>
+                    <p class="specialty-description">Expert wine selection and pairing to complement and enhance the
+                        dining experience.</p>
+                </div>
+
+                <div class="specialty-card fade-in">
+                    <div class="specialty-icon">👨‍🍳</div>
+                    <h3 class="specialty-title">Culinary Training</h3>
+                    <p class="specialty-description">Professional development and training for aspiring chefs and
+                        culinary teams.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="section experience-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title fade-in">Professional Journey</h2>
+                <p class="section-subtitle fade-in">A timeline of my culinary career and achievements</p>
+            </div>
+
+            <div class="experience-timeline">
+                <div class="timeline-line"></div>
+
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2018-Present</div>
+                        <h3 class="experience-role">Executive Chef & Owner</h3>
+                        <p class="experience-restaurant">Bella Cucina | New York</p>
+                        <p class="experience-description">Leading my own restaurant to critical acclaim, earning two
+                            Michelin stars and numerous awards for culinary excellence.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2014-2018</div>
+                        <h3 class="experience-role">Head Chef</h3>
+                        <p class="experience-restaurant">La Trattoria | Paris</p>
+                        <p class="experience-description">Directed kitchen operations at this acclaimed Parisian
+                            restaurant, developing a menu that blended French and Italian influences.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2010-2014</div>
+                        <h3 class="experience-role">Sous Chef</h3>
+                        <p class="experience-restaurant">Ristorante Romano | Rome</p>
+                        <p class="experience-description">Trained under Master Chef Giovanni Bianchi, mastering
+                            traditional Italian techniques and regional specialties.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="section testimonials-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title fade-in">Client Testimonials</h2>
+                <p class="section-subtitle fade-in">What people say about my culinary creations</p>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card fade-in">
+                    <p class="testimonial-text">
+                        Chef Isabella transformed our wedding reception into an unforgettable culinary experience. Her
+                        attention to detail and creative menu exceeded all our expectations.
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">MR</div>
+                        <div class="author-info">
+                            <h4>Michael & Rachel</h4>
+                            <p>Wedding Clients</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card fade-in">
+                    <p class="testimonial-text">
+                        Working with Chef Romano elevated our restaurant to new heights. Her innovative menu design and
+                        staff training programs were worth every penny.
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">AL</div>
+                        <div class="author-info">
+                            <h4>Antonio Lombardi</h4>
+                            <p>Restaurant Owner</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card fade-in">
+                    <p class="testimonial-text">
+                        The cooking classes with Chef Isabella changed my approach to food completely. Her teaching
+                        style is both informative and inspiring.
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">SJ</div>
+                        <div class="author-info">
+                            <h4>Sarah Johnson</h4>
+                            <p>Cooking Class Student</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section contact-section">
+        <div class="container">
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Let's Create Something Delicious Together</h3>
+                    <p class="contact-description">
+                        Whether you're planning an event, seeking consultation, or interested in private dining
+                        experiences, I'm here to bring your culinary vision to life.
+                    </p>
+
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4>Phone</h4>
+                                <p>(555) 123-CHEF</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4>Email</h4>
+                                <p>chef@isabellaromano.com</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h4>Location</h4>
+                                <p>New York, NY</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div>
+                                <h4>Availability</h4>
+                                <p>By appointment</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <h3 class="form-title">Get In Touch</h3>
+                    <div class="form-group">
+                        <input type="text" class="form-input" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-input" placeholder="Email Address" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" class="form-input" placeholder="Phone Number">
+                    </div>
+                    <div class="form-group">
+                        <select class="form-input" required>
+                            <option value="">Service Interested In</option>
+                            <option value="catering">Private Dining & Catering</option>
+                            <option value="consultation">Restaurant Consultation</option>
+                            <option value="classes">Cooking Classes</option>
+                            <option value="events">Special Events</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-input" rows="4" placeholder="Tell me about your culinary needs..."
+                            required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </div>
+            </div>
+
+            <div class="social-links">
+                <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-about">
+                <div class="footer-logo">Isabella Romano</div>
+                <p class="footer-about">Award-winning chef specializing in Italian cuisine, culinary consultation, and
+                    unforgettable dining experiences.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#specialties">Specialties</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#testimonials">Reviews</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="#">Private Dining</a></li>
+                    <li><a href="#">Event Catering</a></li>
+                    <li><a href="#">Restaurant Consultation</a></li>
+                    <li><a href="#">Cooking Classes</a></li>
+                    <li><a href="#">Recipe Development</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links">
+                <h4>Contact Info</h4>
+                <ul>
+                    <li><i class="fas fa-phone"></i> (555) 123-CHEF</li>
+                    <li><i class="fas fa-envelope"></i> chef@isabellaromano.com</li>
+                    <li><i class="fas fa-map-marker-alt"></i> New York, NY</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>&copy; 2023 Chef Isabella Romano. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+
+                // Close mobile menu if open
+                navMenu.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navMenu = document.querySelector('.nav-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navMenu.classList.contains('active')
+                ? '<i class="fas fa-times"></i>'
+                : '<i class="fas fa-bars"></i>';
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Form submission
+        document.querySelector('.contact-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const submitBtn = e.target.querySelector('.submit-btn');
+            const originalText = submitBtn.textContent;
+
+            submitBtn.textContent = 'Sending...';
+            submitBtn.style.background = '#27ae60';
+
+            setTimeout(() => {
+                submitBtn.textContent = '✓ Message Sent!';
+                submitBtn.style.background = '#27ae60';
+
+                setTimeout(() => {
+                    submitBtn.textContent = originalText;
+                    submitBtn.style.background = 'linear-gradient(135deg, #d2691e, #cd853f)';
+                    e.target.reset();
+
+                    // Show success modal
+                    showSuccessModal();
+                }, 3000);
+            }, 2000);
+        });
+
+        // Success modal
+        function showSuccessModal() {
+            const modal = document.createElement('div');
+            modal.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.8);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 10000;
+                animation: fadeIn 0.3s ease;
+            `;
+
+            modal.innerHTML = `
+                <div style="background: white; padding: 3rem; border-radius: 20px; text-align: center; max-width: 500px; margin: 2rem;">
+                    <div style="font-size: 4rem; color: #d2691e; margin-bottom: 1rem;">👩‍🍳</div>
+                    <h3 style="color: #3a3a3a; margin-bottom: 1rem; font-size: 1.5rem;">Thank You!</h3>
+                    <p style="color: #5d5d5d; margin-bottom: 2rem;">I'll contact you within 24 hours to discuss your culinary needs.</p>
+                    <button onclick="this.parentElement.parentElement.remove()" style="background: #d2691e; color: white; border: none; padding: 1rem 2rem; border-radius: 8px; font-weight: 600; cursor: pointer;">Close</button>
+                </div>
+            `;
+
+            document.body.appendChild(modal);
+        }
+
+        // Spice animation effect
+        function createSpiceAnimation() {
+            const spices = ['🌶️', '🍋', '🧄', '🍃', '🍷', '🧀', '🍅', '🍆'];
+
+            setInterval(() => {
+                if (Math.random() < 0.1) {
+                    const spice = document.createElement('div');
+                    spice.className = 'spice-animation';
+                    spice.textContent = spices[Math.floor(Math.random() * spices.length)];
+                    spice.style.left = `${Math.random() * 100}%`;
+                    spice.style.animationDuration = `${6 + Math.random() * 4}s`;
+
+                    document.body.appendChild(spice);
+
+                    setTimeout(() => {
+                        spice.remove();
+                    }, 10000);
+                }
+            }, 1000);
+        }
+
+        // Initialize animations
+        document.addEventListener('DOMContentLoaded', () => {
+            createSpiceAnimation();
+        });
+    </script>
+</body>
+
+</html>

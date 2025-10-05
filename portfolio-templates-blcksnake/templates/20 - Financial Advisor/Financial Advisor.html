@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alexandra Chen - Financial Advisor</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0c0c0c 0%, #1a1a1a 50%, #0f0f0f 100%);
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .particle-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.06;
+            background:
+                radial-gradient(ellipse at top, rgba(5, 150, 105, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at bottom, rgba(37, 99, 235, 0.15) 0%, transparent 50%),
+                repeating-linear-gradient(90deg, rgba(5, 150, 105, 0.05) 0px, rgba(5, 150, 105, 0.05) 1px, transparent 1px, transparent 20px);
+            animation: waveMotion 25s ease-in-out infinite;
+        }
+
+        .nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 5%;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #059669;
+            text-shadow: 0 0 10px #059669;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #059669;
+            text-shadow: 0 0 5px #059669;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #059669, #2563eb);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content {
+            z-index: 2;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .glitch-text {
+            font-size: 4rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            position: relative;
+            color: #ffffff;
+        }
+
+        .glitch-text::before,
+        .glitch-text::after {
+            content: attr(data-text);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .glitch-text::before {
+            animation: glitch-1 0.5s infinite;
+            color: #059669;
+            z-index: -1;
+        }
+
+        .glitch-text::after {
+            animation: glitch-2 0.5s infinite;
+            color: #2563eb;
+            z-index: -2;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: #059669;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 0.5s forwards;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            color: #cccccc;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 1s forwards;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 1.5s forwards;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(45deg, #059669, #2563eb);
+            color: #000;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(5, 150, 105, 0.4);
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            border: 2px solid #059669;
+            color: #059669;
+        }
+
+        .cta-button.secondary:hover {
+            background: #059669;
+            color: #000;
+        }
+
+        .section {
+            padding: 5rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #ffffff;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, #059669, #2563eb);
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            position: relative;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #059669, #2563eb);
+            border-radius: 12px 12px 0 0;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: #059669;
+            box-shadow: 0 12px 24px rgba(5, 150, 105, 0.15);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            color: #059669;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-align: center;
+            color: #ffffff;
+        }
+
+        .card-description {
+            color: #cccccc;
+            line-height: 1.6;
+        }
+
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .kpi {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .kpi-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #059669;
+            margin-bottom: 0.5rem;
+        }
+
+        .kpi-label {
+            color: #cccccc;
+            font-size: 1.1rem;
+        }
+
+        .testimonial {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .testimonial::before {
+            content: '"';
+            font-size: 4rem;
+            color: #059669;
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            opacity: 0.3;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            color: #cccccc;
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+        }
+
+        .testimonial-author {
+            color: #059669;
+            font-weight: bold;
+        }
+
+        .insight {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .insight:hover {
+            transform: translateY(-5px);
+            border-color: #059669;
+        }
+
+        .insight-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #ffffff;
+            margin-bottom: 1rem;
+        }
+
+        .insight-description {
+            color: #cccccc;
+            line-height: 1.6;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            display: grid;
+            gap: 1rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-input {
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            color: #ffffff;
+            font-size: 1rem;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #059669;
+            box-shadow: 0 0 10px rgba(5, 150, 105, 0.3);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .submit-btn {
+            padding: 1rem 2rem;
+            background: linear-gradient(45deg, #059669, #2563eb);
+            color: #000;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(5, 150, 105, 0.4);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .social-link {
+            color: #ffffff;
+            font-size: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            color: #059669;
+            transform: scale(1.2);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 5%;
+            background: rgba(0, 0, 0, 0.5);
+            color: #cccccc;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes glitch-1 {
+
+            0%,
+            100% {
+                transform: translate(0);
+            }
+
+            20% {
+                transform: translate(-2px, 2px);
+            }
+
+            40% {
+                transform: translate(-2px, -2px);
+            }
+
+            60% {
+                transform: translate(2px, 2px);
+            }
+
+            80% {
+                transform: translate(2px, -2px);
+            }
+        }
+
+        @keyframes glitch-2 {
+
+            0%,
+            100% {
+                transform: translate(0);
+            }
+
+            20% {
+                transform: translate(2px, -2px);
+            }
+
+            40% {
+                transform: translate(2px, 2px);
+            }
+
+            60% {
+                transform: translate(-2px, -2px);
+            }
+
+            80% {
+                transform: translate(-2px, 2px);
+            }
+        }
+
+        @keyframes waveMotion {
+
+            0%,
+            100% {
+                background-position: 0 0, 0 100%, 0 0;
+            }
+
+            50% {
+                background-position: 50px 25px, 25px 75px, 10px 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .glitch-text {
+                font-size: 2.5rem;
+            }
+
+            .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .hero-description {
+                font-size: 1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .kpi-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="particle-bg" id="particles"></div>
+
+    <nav class="nav">
+        <div class="nav-content">
+            <div class="logo">ALEXANDRA CHEN</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#insights">Insights</a></li>
+                <li><a href="#success">Success</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="glitch-text" data-text="ALEXANDRA CHEN">ALEXANDRA CHEN</h1>
+            <p class="subtitle">Financial Advisor & Wealth Manager</p>
+            <p class="hero-description">
+                Certified financial advisor specializing in wealth management, investment planning, and retirement
+                strategies.
+                Helping individuals and families achieve financial independence through personalized strategies.
+            </p>
+            <div class="cta-buttons">
+                <a href="#insights" class="cta-button">Market Insights</a>
+                <a href="#contact" class="cta-button secondary">Schedule Consultation</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <h2 class="section-title">Portfolio Performance</h2>
+        <div class="kpi-grid">
+            <div class="kpi">
+                <div class="kpi-number">+12.8%</div>
+                <div class="kpi-label">Avg Annual Return</div>
+            </div>
+            <div class="kpi">
+                <div class="kpi-number">98%</div>
+                <div class="kpi-label">Client Retention</div>
+            </div>
+            <div class="kpi">
+                <div class="kpi-number">$45M</div>
+                <div class="kpi-label">Assets Under Management</div>
+            </div>
+            <div class="kpi">
+                <div class="kpi-number">200+</div>
+                <div class="kpi-label">Families Helped</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="insights" class="section">
+        <h2 class="section-title">Market Insights</h2>
+        <div class="cards-grid">
+            <div class="insight">
+                <h3 class="insight-title">Q4 Market Outlook</h3>
+                <p class="insight-description">
+                    Positive momentum expected with tech sector recovery. Diversification remains key for risk
+                    management in volatile markets.
+                </p>
+            </div>
+            <div class="insight">
+                <h3 class="insight-title">Retirement Planning Trends</h3>
+                <p class="insight-description">
+                    Hybrid work models are changing retirement timelines. Early planning now saves 20-30% more in tax
+                    optimization.
+                </p>
+            </div>
+            <div class="insight">
+                <h3 class="insight-title">Tax Optimization Strategies</h3>
+                <p class="insight-description">
+                    2024 tax changes favor Roth conversions. Review your strategy before year-end to maximize savings.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="section">
+        <h2 class="section-title">Client Testimonials</h2>
+        <div class="testimonial">
+            <p class="testimonial-text">
+                Alexandra helped us retire 5 years early. Her conservative approach protected our nest egg during market
+                volatility.
+            </p>
+            <p class="testimonial-author">— Robert & Maria S., Retired Couple</p>
+        </div>
+        <div class="testimonial">
+            <p class="testimonial-text">
+                Professional, knowledgeable, and always available. Our portfolio has grown 15% annually under her
+                guidance.
+            </p>
+            <p class="testimonial-author">— David L., Business Owner</p>
+        </div>
+        <div class="testimonial">
+            <p class="testimonial-text">
+                Simplified complex financial concepts and created a clear path to our financial goals. Highly recommend.
+            </p>
+            <p class="testimonial-author">— Jennifer K., Young Professional</p>
+        </div>
+    </section>
+
+    <section id="success" class="section">
+        <h2 class="section-title">Success Stories</h2>
+        <div class="cards-grid">
+            <div class="card">
+                <div class="card-icon">
+                    <i class="fas fa-home"></i>
+                </div>
+                <h3 class="card-title">Early Retirement Achieved</h3>
+                <p class="card-description">
+                    Helped a tech executive retire at 52 by optimizing investments and tax strategies, saving $500K in
+                    taxes.
+                </p>
+            </div>
+            <div class="card">
+                <div class="card-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h3 class="card-title">College Fund Secured</h3>
+                <p class="card-description">
+                    Created a comprehensive education savings plan that grew from $50K to $180K in 8 years for twin
+                    daughters.
+                </p>
+            </div>
+            <div class="card">
+                <div class="card-icon">
+                    <i class="fas fa-building"></i>
+                </div>
+                <h3 class="card-title">Business Succession Planning</h3>
+                <p class="card-description">
+                    Facilitated smooth business transition for family-owned company, preserving $2.3M in generational
+                    wealth.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <h2 class="section-title">Start Your Financial Journey</h2>
+        <form class="contact-form" onsubmit="handleSubmit(event)">
+            <div class="form-group">
+                <input type="text" name="name" class="form-input" placeholder="Your Name" required>
+            </div>
+            <div class="form-group">
+                <input type="email" name="email" class="form-input" placeholder="Email Address" required>
+            </div>
+            <div class="form-group">
+                <input type="text" name="phone" class="form-input" placeholder="Phone Number">
+            </div>
+            <div class="form-group">
+                <input type="text" name="assets" class="form-input" placeholder="Approximate Assets">
+            </div>
+            <div class="form-group">
+                <textarea name="goals" class="form-input form-textarea"
+                    placeholder="Tell me about your financial goals..." required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Schedule Free Consultation</button>
+        </form>
+
+        <div class="social-links">
+            <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Alexandra Chen. All rights reserved. | Financial Advisor | Building Wealth, Securing Futures</p>
+    </footer>
+
+    <script>
+        // Particle background effect
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.style.position = 'absolute';
+                particle.style.width = '2px';
+                particle.style.height = '2px';
+                particle.style.background = `hsl(${Math.random() * 120 + 120}, 100%, 70%)`;
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animation = `float ${Math.random() * 10 + 10}s linear infinite`;
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Form submission
+        function handleSubmit(e) {
+            e.preventDefault();
+            alert('Thanks for your message! I\'ll get back to you within 24 hours.');
+            e.target.reset();
+        }
+
+        // Initialize particles
+        createParticles();
+
+        // Add CSS for particle animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes float {
+                0% { transform: translateY(0px) rotate(0deg); opacity: 0; }
+                10% { opacity: 1; }
+                90% { opacity: 1; }
+                100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+
+</html>

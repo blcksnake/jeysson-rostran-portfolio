@@ -1,1141 +1,3 @@
-.track-artwork {
-width: 80px;
-height: 80px;
-background: linear-gradient(45deg, #ff6b35, #ffd23f);
-border-radius: 10px;
-display: flex;
-align-items: center;
-justify-content: center;
-font-size: 2rem;
-color: #0a0a0a;
-position: relative;
-overflow: hidden;
-}
-
-.track-artwork::before {
-content: '';
-position: absolute;
-top: 0;
-left: -100%;
-width: 100%;
-height: 100%;
-background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-transition: left 0.5s;
-}
-
-.track-card:hover .track-artwork::before {
-left: 100%;
-}
-
-.track-info h3 {
-font-size: 1.3rem;
-font-weight: bold;
-color: #ffffff;
-margin-bottom: 0.5rem;
-}
-
-.track-info p {
-color: #cccccc;
-font-size: 0.9rem;
-}
-
-.track-controls {
-display: flex;
-align-items: center;
-gap: 1rem;
-margin-bottom: 1.5rem;
-position: relative;
-z-index: 2;
-}
-
-.play-btn {
-width: 50px;
-height: 50px;
-border-radius: 50%;
-background: linear-gradient(45deg, #ff6b35, #ffd23f);
-border: none;
-color: #0a0a0a;
-font-size: 1.2rem;
-cursor: pointer;
-transition: all 0.3s ease;
-display: flex;
-align-items: center;
-justify-content: center;
-}
-
-.play-btn:hover {
-transform: scale(1.1);
-box-shadow: 0 0 20px rgba(255, 107, 53, 0.5);
-}
-
-.track-duration {
-color: #ff6b35;
-font-weight: bold;
-font-size: 1rem;
-}
-
-.track-progress {
-flex: 1;
-height: 4px;
-background: #333;
-border-radius: 2px;
-position: relative;
-overflow: hidden;
-}
-
-.progress-bar {
-height: 100%;
-background: linear-gradient(90deg, #ff6b35, #ffd23f);
-border-radius: 2px;
-width: 0%;
-transition: width 0.3s ease;
-}
-
-.track-card:hover .progress-bar {
-width: 60%;
-}
-
-.track-stats {
-display: flex;
-justify-content: space-between;
-color: #999;
-font-size: 0.9rem;
-position: relative;
-z-index: 2;
-}
-
-.stat-item {
-display: flex;
-align-items: center;
-gap: 0.3rem;
-}
-
-.services-grid {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-gap: 2.5rem;
-margin-top: 4rem;
-}
-
-.service-card {
-background: linear-gradient(145deg, #1a1a1a, #2a2a2a);
-padding: 3rem 2rem;
-border-radius: 20px;
-text-align: center;
-transition: all 0.4s ease;
-border: 2px solid transparent;
-position: relative;
-overflow: hidden;
-}
-
-.service-card::before {
-content: '';
-position: absolute;
-top: 0;
-left: 0;
-right: 0;
-height: 5px;
-background: linear-gradient(90deg, #ff6b35, #ffd23f);
-transform: scaleX(0);
-transform-origin: left;
-transition: transform 0.3s ease;
-}
-
-.service-card:hover::before {
-transform: scaleX(1);
-}
-
-.service-card:hover {
-transform: translateY(-10px);
-border-color: #ff6b35;
-box-shadow: 0 25px 50px rgba(255, 107, 53, 0.3);
-}
-
-.service-icon {
-width: 100px;
-height: 100px;
-border-radius: 20px;
-background: linear-gradient(45deg, #ff6b35, #ffd23f);
-margin: 0 auto 2rem;
-display: flex;
-align-items: center;
-justify-content: center;
-font-size: 2.5rem;
-color: #0a0a0a;
-transition: all 0.3s ease;
-}
-
-.service-card:hover .service-icon {
-transform: scale(1.1) rotateY(180deg);
-}
-
-.service-card h3 {
-font-size: 1.5rem;
-font-weight: bold;
-margin-bottom: 1rem;
-color: #ffffff;
-text-transform: uppercase;
-letter-spacing: 1px;
-}
-
-.service-card p {
-color: #cccccc;
-line-height: 1.6;
-}
-
-.events-section {
-background: linear-gradient(135deg, rgba(255, 107, 53, 0.1), rgba(255, 210, 63, 0.1));
-}
-
-.events-grid {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-gap: 2rem;
-margin-top: 4rem;
-}
-
-.event-card {
-background: linear-gradient(145deg, #1a1a1a, #2a2a2a);
-border-radius: 15px;
-overflow: hidden;
-transition: all 0.3s ease;
-border: 2px solid transparent;
-}
-
-.event-card:hover {
-transform: scale(1.02);
-border-color: #ff6b35;
-box-shadow: 0 20px 40px rgba(255, 107, 53, 0.4);
-}
-
-.event-image {
-height: 200px;
-background: linear-gradient(45deg, #ff6b35, #ffd23f);
-display: flex;
-align-items: center;
-justify-content: center;
-font-size: 4rem;
-color: #0a0a0a;
-position: relative;
-overflow: hidden;
-}
-
-.event-overlay {
-position: absolute;
-top: 0;
-left: 0;
-right: 0;
-bottom: 0;
-background: rgba(10, 10, 10, 0.8);
-opacity: 0;
-transition: opacity 0.3s ease;
-display: flex;
-align-items: center;
-justify-content: center;
-}
-
-.event-card:hover .event-overlay {
-opacity: 1;
-}
-
-.event-play {
-width: 80px;
-height: 80px;
-border-radius: 50%;
-background: linear-gradient(45deg, #ff6b35, #ffd23f);
-border: none;
-color: #0a0a0a;
-font-size: 2rem;
-cursor: pointer;
-transition: all 0.3s ease;
-display: flex;
-align-items: center;
-justify-content: center;
-}
-
-.event-content {
-padding: 2rem;
-}
-
-.event-date {
-color: #ff6b35;
-font-weight: bold;
-font-size: 0.9rem;
-text-transform: uppercase;
-letter-spacing: 1px;
-margin-bottom: 1rem;
-}
-
-.event-content h3 {
-font-size: 1.3rem;
-font-weight: bold;
-color: #ffffff;
-margin-bottom: 0.5rem;
-}
-
-.event-venue {
-color: #cccccc;
-margin-bottom: 1.5rem;
-display: flex;
-align-items: center;
-gap: 0.5rem;
-}
-
-.event-tags {
-display: flex;
-flex-wrap: wrap;
-gap: 0.5rem;
-}
-
-.event-tag {
-padding: 0.3rem 0.8rem;
-background: rgba(255, 107, 53, 0.2);
-color: #ff6b35;
-border-radius: 15px;
-font-size: 0.8rem;
-font-weight: bold;
-text-transform: uppercase;
-letter-spacing: 0.5px;
-}
-
-.contact-section {
-background: linear-gradient(135deg, #ff6b35, #ffd23f);
-color: #0a0a0a;
-}
-
-.contact-content {
-max-width: 800px;
-margin: 0 auto;
-text-align: center;
-}
-
-.contact-section .section-title {
-color: #0a0a0a;
-background: none;
--webkit-text-fill-color: #0a0a0a;
-}
-
-.contact-form {
-display: grid;
-grid-template-columns: 1fr 1fr;
-gap: 2rem;
-margin-top: 3rem;
-}
-
-.form-group {
-position: relative;
-}
-
-.form-group.full-width {
-grid-column: 1 / -1;
-}
-
-.form-input {
-width: 100%;
-padding: 1.2rem;
-background: rgba(10, 10, 10, 0.1);
-border: 2px solid rgba(10, 10, 10, 0.2);
-border-radius: 10px;
-color: #0a0a0a;
-font-size: 1rem;
-font-weight: 500;
-transition: all 0.3s ease;
-}
-
-.form-input:focus {
-outline: none;
-border-color: #0a0a0a;
-background: rgba(10, 10, 10, 0.05);
-}
-
-.form-input::placeholder {
-color: rgba(10, 10, 10, 0.6);
-font-weight: 500;
-}
-
-.submit-btn {
-grid-column: 1 / -1;
-justify-self: center;
-padding: 1.2rem 3rem;
-background: #0a0a0a;
-color: #ffffff;
-border: none;
-border-radius: 50px;
-font-size: 1.1rem;
-font-weight: bold;
-text-transform: uppercase;
-letter-spacing: 1px;
-cursor: pointer;
-transition: all 0.3s ease;
-}
-
-.submit-btn:hover {
-background: #1a1a1a;
-transform: translateY(-3px);
-box-shadow: 0 15px 35px rgba(10, 10, 10, 0.4);
-}
-
-.social-links {
-display: flex;
-justify-content: center;
-gap: 2rem;
-margin-top: 3rem;
-}
-
-.social-link {
-width: 60px;
-height: 60px;
-background: rgba(10, 10, 10, 0.1);
-border: 2px solid rgba(10, 10, 10, 0.2);
-border-radius: 50%;
-color: #0a0a0a;
-text-decoration: none;
-display: flex;
-align-items: center;
-justify-content: center;
-font-size: 1.5rem;
-transition: all 0.3s ease;
-font-weight: bold;
-}
-
-.social-link:hover {
-background: #0a0a0a;
-color: #ffffff;
-transform: translateY(-5px) rotate(360deg);
-border-color: #0a0a0a;
-}
-
-.floating-music-notes {
-position: fixed;
-font-size: 2rem;
-color: rgba(255, 107, 53, 0.3);
-animation: float-notes 10s linear infinite;
-z-index: 0;
-}
-
-@keyframes float-notes {
-0% {
-transform: translateY(100vh) rotate(0deg);
-opacity: 0;
-}
-10% {
-opacity: 1;
-}
-90% {
-opacity: 1;
-}
-100% {
-transform: translateY(-100px) rotate(360deg);
-opacity: 0;
-}
-}
-
-@media (max-width: 768px) {
-.nav-menu {
-display: none;
-}
-
-.hero-container {
-grid-template-columns: 1fr;
-text-align: center;
-gap: 2rem;
-}
-
-.hero-title {
-font-size: 3rem;
-}
-
-.contact-form {
-grid-template-columns: 1fr;
-}
-
-.hero-buttons {
-justify-content: center;
-}
-
-.dj-console {
-max-width: 300px;
-padding: 2rem;
-}
-
-.console-controls {
-grid-template-columns: repeat(3, 1fr);
-}
-}
-
-.fade-in {
-opacity: 0;
-transform: translateY(30px);
-transition: all 0.8s ease;
-}
-
-.fade-in.visible {
-opacity: 1;
-transform: translateY(0);
-}
-
-.beat-pulse {
-animation: beat 1.2s ease-in-out infinite;
-}
-
-@keyframes beat {
-0%, 100% { transform: scale(1); }
-50% { transform: scale(1.05); }
-}
-</style>
-</head>
-
-<body>
-    <canvas class="audio-visualizer" id="visualizer"></canvas>
-
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="logo beat-pulse">DJ PHOENIX</div>
-            <ul class="nav-menu">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#tracks">Tracks</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#events">Events</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <section id="home" class="hero">
-        <div class="hero-container">
-            <div class="hero-content">
-                <div class="hero-badge">🎵 Live & Direct</div>
-                <h1 class="hero-title">Feel The Beat</h1>
-                <p class="hero-subtitle">Music Producer & Audio Engineer</p>
-                <p class="hero-description">
-                    Creating sonic experiences that move souls and bodies. Specializing in electronic music production,
-                    live DJ sets, and audio engineering with over 8 years in the industry.
-                </p>
-                <div class="hero-buttons">
-                    <a href="#tracks" class="btn btn-primary">Listen Now</a>
-                    <a href="#contact" class="btn btn-secondary">Book Me</a>
-                </div>
-            </div>
-
-            <div class="hero-visual">
-                <div class="dj-console">
-                    <div class="console-screen">
-                        <div class="waveform">
-                            <div class="waveform-bar"></div>
-                            <div class="waveform-bar"></div>
-                            <div class="waveform-bar"></div>
-                            <div class="waveform-bar"></div>
-                            <div class="waveform-bar"></div>
-                            <div class="waveform-bar"></div>
-                            <div class="waveform-bar"></div>
-                            <div class="waveform-bar"></div>
-                            <div class="waveform-bar"></div>
-                            <div class="waveform-bar"></div>
-                        </div>
-                    </div>
-                    <div class="console-controls">
-                        <div class="control-knob"></div>
-                        <div class="control-knob"></div>
-                        <div class="control-knob"></div>
-                        <div class="control-knob"></div>
-                    </div>
-                    <div class="console-sliders">
-                        <div class="slider">
-                            <div class="slider-thumb"></div>
-                        </div>
-                        <div class="slider">
-                            <div class="slider-thumb"></div>
-                        </div>
-                        <div class="slider">
-                            <div class="slider-thumb"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="tracks" class="section">
-        <div class="container">
-            <h2 class="section-title fade-in">Latest Tracks</h2>
-            <p class="section-subtitle fade-in">Fresh beats and exclusive releases</p>
-
-            <div class="tracks-grid">
-                <div class="track-card fade-in">
-                    <div class="track-header">
-                        <div class="track-artwork">
-                            <i class="fas fa-music"></i>
-                        </div>
-                        <div class="track-info">
-                            <h3>Neon Nights</h3>
-                            <p>Electronic / House</p>
-                        </div>
-                    </div>
-                    <div class="track-controls">
-                        <button class="play-btn">
-                            <i class="fas fa-play"></i>
-                        </button>
-                        <div class="track-progress">
-                            <div class="progress-bar"></div>
-                        </div>
-                        <span class="track-duration">3:42</span>
-                    </div>
-                    <div class="track-stats">
-                        <div class="stat-item">
-                            <i class="fas fa-play"></i>
-                            <span>125K</span>
-                        </div>
-                        <div class="stat-item">
-                            <i class="fas fa-heart"></i>
-                            <span>8.2K</span>
-                        </div>
-                        <div class="stat-item">
-                            <i class="fas fa-download"></i>
-                            <span>2.1K</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="track-card fade-in">
-                    <div class="track-header">
-                        <div class="track-artwork">
-                            <i class="fas fa-bolt"></i>
-                        </div>
-                        <div class="track-info">
-                            <h3>Electric Storm</h3>
-                            <p>Dubstep / Bass</p>
-                        </div>
-                    </div>
-                    <div class="track-controls">
-                        <button class="play-btn">
-                            <i class="fas fa-play"></i>
-                        </button>
-                        <div class="track-progress">
-                            <div class="progress-bar"></div>
-                        </div>
-                        <span class="track-duration">4:15</span>
-                    </div>
-                    <div class="track-stats">
-                        <div class="stat-item">
-                            <i class="fas fa-play"></i>
-                            <span>89K</span>
-                        </div>
-                        <div class="stat-item">
-                            <i class="fas fa-heart"></i>
-                            <span>6.7K</span>
-                        </div>
-                        <div class="stat-item">
-                            <i class="fas fa-download"></i>
-                            <span>1.8K</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="track-card fade-in">
-                    <div class="track-header">
-                        <div class="track-artwork">
-                            <i class="fas fa-fire"></i>
-                        </div>
-                        <div class="track-info">
-                            <h3>Phoenix Rising</h3>
-                            <p>Progressive House</p>
-                        </div>
-                    </div>
-                    <div class="track-controls">
-                        <button class="play-btn">
-                            <i class="fas fa-play"></i>
-                        </button>
-                        <div class="track-progress">
-                            <div class="progress-bar"></div>
-                        </div>
-                        <span class="track-duration">6:28</span>
-                    </div>
-                    <div class="track-stats">
-                        <div class="stat-item">
-                            <i class="fas fa-play"></i>
-                            <span>156K</span>
-                        </div>
-                        <div class="stat-item">
-                            <i class="fas fa-heart"></i>
-                            <span>12.4K</span>
-                        </div>
-                        <div class="stat-item">
-                            <i class="fas fa-download"></i>
-                            <span>3.2K</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="services" class="section">
-        <div class="container">
-            <h2 class="section-title fade-in">Services</h2>
-            <p class="section-subtitle fade-in">Professional music production and DJ services</p>
-
-            <div class="services-grid">
-                <div class="service-card fade-in">
-                    <div class="service-icon">
-                        <i class="fas fa-headphones"></i>
-                    </div>
-                    <h3>Music Production</h3>
-                    <p>Full-scale music production from concept to final master. Specializing in electronic, house, and
-                        experimental genres.</p>
-                </div>
-                <div class="service-card fade-in">
-                    <div class="service-icon">
-                        <i class="fas fa-microphone"></i>
-                    </div>
-                    <h3>Audio Engineering</h3>
-                    <p>Professional mixing and mastering services using industry-standard equipment and techniques.</p>
-                </div>
-                <div class="service-card fade-in">
-                    <div class="service-icon">
-                        <i class="fas fa-compact-disc"></i>
-                    </div>
-                    <h3>DJ Sets</h3>
-                    <p>Live DJ performances for clubs, festivals, private events, and corporate functions worldwide.</p>
-                </div>
-                <div class="service-card fade-in">
-                    <div class="service-icon">
-                        <i class="fas fa-wave-square"></i>
-                    </div>
-                    <h3>Sound Design</h3>
-                    <p>Custom sound design for games, films, commercials, and multimedia projects.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="events" class="section events-section">
-        <div class="container">
-            <h2 class="section-title fade-in">Upcoming Events</h2>
-            <p class="section-subtitle fade-in">Catch me live at these venues</p>
-
-            <div class="events-grid">
-                <div class="event-card fade-in">
-                    <div class="event-image">
-                        <i class="fas fa-calendar"></i>
-                        <div class="event-overlay">
-                            <button class="event-play">
-                                <i class="fas fa-play"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="event-content">
-                        <div class="event-date">Dec 15, 2024</div>
-                        <h3>Electric Paradise Festival</h3>
-                        <div class="event-venue">
-                            <i class="fas fa-map-marker-alt"></i>
-                            Miami, FL - Bayfront Park
-                        </div>
-                        <div class="event-tags">
-                            <span class="event-tag">Festival</span>
-                            <span class="event-tag">Main Stage</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="event-card fade-in">
-                    <div class="event-image">
-                        <i class="fas fa-star"></i>
-                        <div class="event-overlay">
-                            <button class="event-play">
-                                <i class="fas fa-play"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="event-content">
-                        <div class="event-date">Jan 8, 2025</div>
-                        <h3>Underground Sessions</h3>
-                        <div class="event-venue">
-                            <i class="fas fa-map-marker-alt"></i>
-                            Berlin, DE - Berghain
-                        </div>
-                        <div class="event-tags">
-                            <span class="event-tag">Club</span>
-                            <span class="event-tag">Techno</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="event-card fade-in">
-                    <div class="event-image">
-                        <i class="fas fa-moon"></i>
-                        <div class="event-overlay">
-                            <button class="event-play">
-                                <i class="fas fa-play"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="event-content">
-                        <div class="event-date">Feb 14, 2025</div>
-                        <h3>Lunar Eclipse Party</h3>
-                        <div class="event-venue">
-                            <i class="fas fa-map-marker-alt"></i>
-                            Los Angeles, CA - Exchange LA
-                        </div>
-                        <div class="event-tags">
-                            <span class="event-tag">Special Event</span>
-                            <span class="event-tag">House</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="section contact-section">
-        <div class="container">
-            <div class="contact-content">
-                <h2 class="section-title">Let's Create Magic</h2>
-                <p class="section-subtitle">Ready to turn up the volume? Get in touch for bookings and collaborations.
-                </p>
-
-                <div class="contact-form">
-                    <div class="form-group">
-                        <input type="text" class="form-input" placeholder="Your Name" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" class="form-input" placeholder="Email Address" required>
-                    </div>
-                    <div class="form-group">
-                        <select class="form-input" required>
-                            <option value="">Service Type</option>
-                            <option value="dj-booking">DJ Booking</option>
-                            <option value="production">Music Production</option>
-                            <option value="mixing">Mixing/Mastering</option>
-                            <option value="collaboration">Collaboration</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <input type="date" class="form-input" required>
-                    </div>
-                    <div class="form-group full-width">
-                        <textarea class="form-input" rows="5" placeholder="Tell me about your project or event..."
-                            required></textarea>
-                    </div>
-                    <button type="submit" class="submit-btn">Drop The Beat</button>
-                </div>
-
-                <div class="social-links">
-                    <a href="#" class="social-link"><i class="fab fa-spotify"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-soundcloud"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
-                    <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <script>
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-        // Intersection Observer for animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Audio visualizer canvas
-        const canvas = document.getElementById('visualizer');
-        const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-
-        function drawVisualizer() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            const bars = 64;
-            const barWidth = canvas.width / bars;
-
-            for (let i = 0; i < bars; i++) {
-                const barHeight = Math.random() * canvas.height * 0.5;
-                const hue = (i / bars) * 360;
-
-                ctx.fillStyle = `hsla(${hue + 20}, 70%, 60%, 0.1)`;
-                ctx.fillRect(i * barWidth, canvas.height - barHeight, barWidth - 2, barHeight);
-            }
-        }
-
-        setInterval(drawVisualizer, 100);
-
-        // Interactive DJ controls
-        document.querySelectorAll('.control-knob').forEach(knob => {
-            knob.addEventListener('click', () => {
-                const rotation = Math.random() * 360;
-                knob.style.transform = `rotate(${rotation}deg)`;
-            });
-        });
-
-        // Slider interactions
-        document.querySelectorAll('.slider').forEach(slider => {
-            const thumb = slider.querySelector('.slider-thumb');
-            slider.addEventListener('click', (e) => {
-                const rect = slider.getBoundingClientRect();
-                const y = e.clientY - rect.top;
-                const percentage = Math.max(0, Math.min(100, ((rect.height - y) / rect.height) * 100));
-                thumb.style.top = `${100 - percentage}%`;
-            });
-        });
-
-        // Track play buttons
-        document.querySelectorAll('.play-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const isPlaying = btn.innerHTML.includes('pause');
-                if (isPlaying) {
-                    btn.innerHTML = '<i class="fas fa-play"></i>';
-                } else {
-                    // Reset all other buttons
-                    document.querySelectorAll('.play-btn').forEach(otherBtn => {
-                        otherBtn.innerHTML = '<i class="fas fa-play"></i>';
-                    });
-                    btn.innerHTML = '<i class="fas fa-pause"></i>';
-                }
-            });
-        });
-
-        // Floating music notes
-        function createFloatingNotes() {
-            const notes = ['♪', '♫', '♬', '♩', '♭', '♯'];
-
-            setInterval(() => {
-                if (Math.random() < 0.3) {
-                    const note = document.createElement('div');
-                    note.className = 'floating-music-notes';
-                    note.textContent = notes[Math.floor(Math.random() * notes.length)];
-                    note.style.left = Math.random() * 100 + '%';
-                    note.style.animationDuration = (Math.random() * 5 + 8) + 's';
-                    document.body.appendChild(note);
-
-                    setTimeout(() => {
-                        note.remove();
-                    }, 15000);
-                }
-            }, 2000);
-        }
-
-        // Form submission
-        document.querySelector('.contact-form').addEventListener('submit', (e) => {
-            e.preventDefault();
-
-            // Create beat drop effect
-            document.body.style.filter = 'hue-rotate(180deg)';
-            setTimeout(() => {
-                document.body.style.filter = 'none';
-                alert('🎵 Message sent! I\'ll drop you a line soon! 🎵');
-            }, 500);
-        });
-
-        // Beat synchronization effect
-        function syncToBeat() {
-            const beatElements = document.querySelectorAll('.beat-pulse');
-            const bpm = 128; // beats per minute
-            const interval = (60 / bpm) * 1000; // milliseconds per beat
-
-            setInterval(() => {
-                beatElements.forEach(el => {
-                    el.style.transform = 'scale(1.1)';
-                    setTimeout(() => {
-                        el.style.transform = 'scale(1)';
-                    }, 100);
-                });
-            }, interval);
-        }
-
-        // Waveform animation with mouse interaction
-        document.addEventListener('mousemove', (e) => {
-            const waveformBars = document.querySelectorAll('.waveform-bar');
-            const mouseX = e.clientX / window.innerWidth;
-
-            waveformBars.forEach((bar, index) => {
-                const intensity = Math.abs(mouseX - (index / waveformBars.length));
-                const height = 20 + (1 - intensity) * 60;
-                bar.style.height = height + 'px';
-            });
-        });
-
-        // Console screen glow effect
-        const consoleScreen = document.querySelector('.console-screen');
-        if (consoleScreen) {
-            setInterval(() => {
-                const intensity = Math.random();
-                consoleScreen.style.boxShadow = `inset 0 0 ${20 + intensity * 30}px rgba(255, 107, 53, ${0.3 + intensity * 0.4})`;
-            }, 2000);
-        }
-
-        // Dynamic background color shifts
-        function createColorShifts() {
-            const colors = [
-                'rgba(255, 107, 53, 0.1)',
-                'rgba(255, 210, 63, 0.1)',
-                'rgba(247, 147, 30, 0.1)'
-            ];
-
-            let currentColor = 0;
-            setInterval(() => {
-                document.body.style.background = `linear-gradient(135deg, #0a0a0a 0%, ${colors[currentColor]} 50%, #0a0a0a 100%)`;
-                currentColor = (currentColor + 1) % colors.length;
-            }, 5000);
-        }
-
-        // Event card hover effects
-        document.querySelectorAll('.event-card').forEach(card => {
-            card.addEventListener('mouseenter', () => {
-                const overlay = card.querySelector('.event-overlay');
-                if (overlay) {
-                    overlay.style.background = 'linear-gradient(45deg, rgba(255, 107, 53, 0.9), rgba(255, 210, 63, 0.9))';
-                }
-            });
-
-            card.addEventListener('mouseleave', () => {
-                const overlay = card.querySelector('.event-overlay');
-                if (overlay) {
-                    overlay.style.background = 'rgba(10, 10, 10, 0.8)';
-                }
-            });
-        });
-
-        // Track card sound visualization simulation
-        document.querySelectorAll('.track-card').forEach(card => {
-            card.addEventListener('mouseenter', () => {
-                const progressBar = card.querySelector('.progress-bar');
-                if (progressBar) {
-                    let width = 0;
-                    const interval = setInterval(() => {
-                        width += Math.random() * 10;
-                        if (width > 100) width = 100;
-                        progressBar.style.width = width + '%';
-                        if (width >= 100) clearInterval(interval);
-                    }, 100);
-                }
-            });
-        });
-
-        // Resize handler for canvas
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        });
-
-        // Keyboard shortcuts for DJ controls
-        document.addEventListener('keydown', (e) => {
-            switch (e.code) {
-                case 'Space':
-                    e.preventDefault();
-                    const firstPlayBtn = document.querySelector('.play-btn');
-                    if (firstPlayBtn) firstPlayBtn.click();
-                    break;
-                case 'KeyM':
-                    // Mute/unmute simulation
-                    document.querySelectorAll('.waveform-bar').forEach(bar => {
-                        bar.style.animationPlayState =
-                            bar.style.animationPlayState === 'paused' ? 'running' : 'paused';
-                    });
-                    break;
-                case 'KeyR':
-                    // Random track simulation
-                    const trackCards = document.querySelectorAll('.track-card');
-                    const randomCard = trackCards[Math.floor(Math.random() * trackCards.length)];
-                    randomCard.scrollIntoView({ behavior: 'smooth' });
-                    break;
-            }
-        });
-
-        // Initialize all effects
-        document.addEventListener('DOMContentLoaded', () => {
-            createFloatingNotes();
-            syncToBeat();
-            createColorShifts();
-
-            // Add initial delay for dramatic effect
-            setTimeout(() => {
-                document.body.style.opacity = '1';
-            }, 500);
-        });
-
-        // Party mode easter egg (Konami code style)
-        const partySequence = ['p', 'a', 'r', 't', 'y'];
-        let currentSequence = [];
-
-        document.addEventListener('keydown', (e) => {
-            currentSequence.push(e.key.toLowerCase());
-            currentSequence = currentSequence.slice(-5);
-
-            if (currentSequence.join('') === partySequence.join('')) {
-                // Activate party mode
-                document.body.style.animation = 'rainbow 0.5s infinite';
-                document.body.style.filter = 'hue-rotate(0deg)';
-
-                let hue = 0;
-                const partyInterval = setInterval(() => {
-                    hue += 10;
-                    document.body.style.filter = `hue-rotate(${hue}deg)`;
-                }, 50);
-
-                setTimeout(() => {
-                    clearInterval(partyInterval);
-                    document.body.style.filter = 'none';
-                    document.body.style.animation = 'none';
-                    alert('🎉 PARTY MODE ACTIVATED! 🎉');
-                }, 5000);
-            }
-        });
-    </script>
-
-    <style>
-        @keyframes rainbow {
-            0% {
-                filter: hue-rotate(0deg) saturate(200%);
-            }
-
-            25% {
-                filter: hue-rotate(90deg) saturate(200%);
-            }
-
-            50% {
-                filter: hue-rotate(180deg) saturate(200%);
-            }
-
-            75% {
-                filter: hue-rotate(270deg) saturate(200%);
-            }
-
-            100% {
-                filter: hue-rotate(360deg) saturate(200%);
-            }
-        }
-
-        body {
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-    </style>
-</body>
-
-</html>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -1576,4 +438,1072 @@ animation: beat 1.2s ease-in-out infinite;
             width: 80px;
             height: 80px;
             background: linear-gradient(45deg, #ff6b35, #ffd23f);
-            border
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: #0a0a0a;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .track-artwork::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .track-card:hover .track-artwork::before {
+            left: 100%;
+        }
+
+        .track-info h3 {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+
+        .track-info p {
+            color: #cccccc;
+            font-size: 0.9rem;
+        }
+
+        .track-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .play-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ff6b35, #ffd23f);
+            border: none;
+            color: #0a0a0a;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .play-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(255, 107, 53, 0.5);
+        }
+
+        .track-duration {
+            color: #ff6b35;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .track-progress {
+            flex: 1;
+            height: 4px;
+            background: #333;
+            border-radius: 2px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #ff6b35, #ffd23f);
+            border-radius: 2px;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .track-card:hover .progress-bar {
+            width: 60%;
+        }
+
+        .track-stats {
+            display: flex;
+            justify-content: space-between;
+            color: #999;
+            font-size: 0.9rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .service-card {
+            background: linear-gradient(145deg, #1a1a1a, #2a2a2a);
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.4s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #ff6b35, #ffd23f);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: #ff6b35;
+            box-shadow: 0 25px 50px rgba(255, 107, 53, 0.3);
+        }
+
+        .service-icon {
+            width: 100px;
+            height: 100px;
+            border-radius: 20px;
+            background: linear-gradient(45deg, #ff6b35, #ffd23f);
+            margin: 0 auto 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: #0a0a0a;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.1) rotateY(180deg);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .service-card p {
+            color: #cccccc;
+            line-height: 1.6;
+        }
+
+        .events-section {
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.1), rgba(255, 210, 63, 0.1));
+        }
+
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .event-card {
+            background: linear-gradient(145deg, #1a1a1a, #2a2a2a);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .event-card:hover {
+            transform: scale(1.02);
+            border-color: #ff6b35;
+            box-shadow: 0 20px 40px rgba(255, 107, 53, 0.4);
+        }
+
+        .event-image {
+            height: 200px;
+            background: linear-gradient(45deg, #ff6b35, #ffd23f);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: #0a0a0a;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .event-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(10, 10, 10, 0.8);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .event-card:hover .event-overlay {
+            opacity: 1;
+        }
+
+        .event-play {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ff6b35, #ffd23f);
+            border: none;
+            color: #0a0a0a;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .event-content {
+            padding: 2rem;
+        }
+
+        .event-date {
+            color: #ff6b35;
+            font-weight: bold;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .event-content h3 {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+
+        .event-venue {
+            color: #cccccc;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .event-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .event-tag {
+            padding: 0.3rem 0.8rem;
+            background: rgba(255, 107, 53, 0.2);
+            color: #ff6b35;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .contact-section {
+            background: linear-gradient(135deg, #ff6b35, #ffd23f);
+            color: #0a0a0a;
+        }
+
+        .contact-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-section .section-title {
+            color: #0a0a0a;
+            background: none;
+            -webkit-text-fill-color: #0a0a0a;
+        }
+
+        .contact-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .form-group {
+            position: relative;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 1.2rem;
+            background: rgba(10, 10, 10, 0.1);
+            border: 2px solid rgba(10, 10, 10, 0.2);
+            border-radius: 10px;
+            color: #0a0a0a;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #0a0a0a;
+            background: rgba(10, 10, 10, 0.05);
+        }
+
+        .form-input::placeholder {
+            color: rgba(10, 10, 10, 0.6);
+            font-weight: 500;
+        }
+
+        .submit-btn {
+            grid-column: 1 / -1;
+            justify-self: center;
+            padding: 1.2rem 3rem;
+            background: #0a0a0a;
+            color: #ffffff;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: #1a1a1a;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(10, 10, 10, 0.4);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .social-link {
+            width: 60px;
+            height: 60px;
+            background: rgba(10, 10, 10, 0.1);
+            border: 2px solid rgba(10, 10, 10, 0.2);
+            border-radius: 50%;
+            color: #0a0a0a;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        .social-link:hover {
+            background: #0a0a0a;
+            color: #ffffff;
+            transform: translateY(-5px) rotate(360deg);
+            border-color: #0a0a0a;
+        }
+
+        .floating-music-notes {
+            position: fixed;
+            font-size: 2rem;
+            color: rgba(255, 107, 53, 0.3);
+            animation: float-notes 10s linear infinite;
+            z-index: 0;
+        }
+
+        @keyframes float-notes {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .hero-title {
+                font-size: 3rem;
+            }
+
+            .contact-form {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .dj-console {
+                max-width: 300px;
+                padding: 2rem;
+            }
+
+            .console-controls {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .beat-pulse {
+            animation: beat 1.2s ease-in-out infinite;
+        }
+
+        @keyframes beat {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <canvas class="audio-visualizer" id="visualizer"></canvas>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo beat-pulse">DJ PHOENIX</div>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#tracks">Tracks</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#events">Events</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">🎵 Live & Direct</div>
+                <h1 class="hero-title">Feel The Beat</h1>
+                <p class="hero-subtitle">Music Producer & Audio Engineer</p>
+                <p class="hero-description">
+                    Creating sonic experiences that move souls and bodies. Specializing in electronic music production,
+                    live DJ sets, and audio engineering with over 8 years in the industry.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#tracks" class="btn btn-primary">Listen Now</a>
+                    <a href="#contact" class="btn btn-secondary">Book Me</a>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="dj-console">
+                    <div class="console-screen">
+                        <div class="waveform">
+                            <div class="waveform-bar"></div>
+                            <div class="waveform-bar"></div>
+                            <div class="waveform-bar"></div>
+                            <div class="waveform-bar"></div>
+                            <div class="waveform-bar"></div>
+                            <div class="waveform-bar"></div>
+                            <div class="waveform-bar"></div>
+                            <div class="waveform-bar"></div>
+                            <div class="waveform-bar"></div>
+                            <div class="waveform-bar"></div>
+                        </div>
+                    </div>
+                    <div class="console-controls">
+                        <div class="control-knob"></div>
+                        <div class="control-knob"></div>
+                        <div class="control-knob"></div>
+                        <div class="control-knob"></div>
+                    </div>
+                    <div class="console-sliders">
+                        <div class="slider">
+                            <div class="slider-thumb"></div>
+                        </div>
+                        <div class="slider">
+                            <div class="slider-thumb"></div>
+                        </div>
+                        <div class="slider">
+                            <div class="slider-thumb"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="tracks" class="section">
+        <div class="container">
+            <h2 class="section-title fade-in">Latest Tracks</h2>
+            <p class="section-subtitle fade-in">Fresh beats and exclusive releases</p>
+
+            <div class="tracks-grid">
+                <div class="track-card fade-in">
+                    <div class="track-header">
+                        <div class="track-artwork">
+                            <i class="fas fa-music"></i>
+                        </div>
+                        <div class="track-info">
+                            <h3>Neon Nights</h3>
+                            <p>Electronic / House</p>
+                        </div>
+                    </div>
+                    <div class="track-controls">
+                        <button class="play-btn">
+                            <i class="fas fa-play"></i>
+                        </button>
+                        <div class="track-progress">
+                            <div class="progress-bar"></div>
+                        </div>
+                        <span class="track-duration">3:42</span>
+                    </div>
+                    <div class="track-stats">
+                        <div class="stat-item">
+                            <i class="fas fa-play"></i>
+                            <span>125K</span>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-heart"></i>
+                            <span>8.2K</span>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-download"></i>
+                            <span>2.1K</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="track-card fade-in">
+                    <div class="track-header">
+                        <div class="track-artwork">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <div class="track-info">
+                            <h3>Electric Storm</h3>
+                            <p>Dubstep / Bass</p>
+                        </div>
+                    </div>
+                    <div class="track-controls">
+                        <button class="play-btn">
+                            <i class="fas fa-play"></i>
+                        </button>
+                        <div class="track-progress">
+                            <div class="progress-bar"></div>
+                        </div>
+                        <span class="track-duration">4:15</span>
+                    </div>
+                    <div class="track-stats">
+                        <div class="stat-item">
+                            <i class="fas fa-play"></i>
+                            <span>89K</span>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-heart"></i>
+                            <span>6.7K</span>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-download"></i>
+                            <span>1.8K</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="track-card fade-in">
+                    <div class="track-header">
+                        <div class="track-artwork">
+                            <i class="fas fa-fire"></i>
+                        </div>
+                        <div class="track-info">
+                            <h3>Phoenix Rising</h3>
+                            <p>Progressive House</p>
+                        </div>
+                    </div>
+                    <div class="track-controls">
+                        <button class="play-btn">
+                            <i class="fas fa-play"></i>
+                        </button>
+                        <div class="track-progress">
+                            <div class="progress-bar"></div>
+                        </div>
+                        <span class="track-duration">6:28</span>
+                    </div>
+                    <div class="track-stats">
+                        <div class="stat-item">
+                            <i class="fas fa-play"></i>
+                            <span>156K</span>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-heart"></i>
+                            <span>12.4K</span>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-download"></i>
+                            <span>3.2K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="section">
+        <div class="container">
+            <h2 class="section-title fade-in">Services</h2>
+            <p class="section-subtitle fade-in">Professional music production and DJ services</p>
+
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-headphones"></i>
+                    </div>
+                    <h3>Music Production</h3>
+                    <p>Full-scale music production from concept to final master. Specializing in electronic, house, and
+                        experimental genres.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-microphone"></i>
+                    </div>
+                    <h3>Audio Engineering</h3>
+                    <p>Professional mixing and mastering services using industry-standard equipment and techniques.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-compact-disc"></i>
+                    </div>
+                    <h3>DJ Sets</h3>
+                    <p>Live DJ performances for clubs, festivals, private events, and corporate functions worldwide.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-wave-square"></i>
+                    </div>
+                    <h3>Sound Design</h3>
+                    <p>Custom sound design for games, films, commercials, and multimedia projects.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="events" class="section events-section">
+        <div class="container">
+            <h2 class="section-title fade-in">Upcoming Events</h2>
+            <p class="section-subtitle fade-in">Catch me live at these venues</p>
+
+            <div class="events-grid">
+                <div class="event-card fade-in">
+                    <div class="event-image">
+                        <i class="fas fa-calendar"></i>
+                        <div class="event-overlay">
+                            <button class="event-play">
+                                <i class="fas fa-play"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="event-content">
+                        <div class="event-date">Dec 15, 2024</div>
+                        <h3>Electric Paradise Festival</h3>
+                        <div class="event-venue">
+                            <i class="fas fa-map-marker-alt"></i>
+                            Miami, FL - Bayfront Park
+                        </div>
+                        <div class="event-tags">
+                            <span class="event-tag">Festival</span>
+                            <span class="event-tag">Main Stage</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="event-card fade-in">
+                    <div class="event-image">
+                        <i class="fas fa-star"></i>
+                        <div class="event-overlay">
+                            <button class="event-play">
+                                <i class="fas fa-play"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="event-content">
+                        <div class="event-date">Jan 8, 2025</div>
+                        <h3>Underground Sessions</h3>
+                        <div class="event-venue">
+                            <i class="fas fa-map-marker-alt"></i>
+                            Berlin, DE - Berghain
+                        </div>
+                        <div class="event-tags">
+                            <span class="event-tag">Club</span>
+                            <span class="event-tag">Techno</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="event-card fade-in">
+                    <div class="event-image">
+                        <i class="fas fa-moon"></i>
+                        <div class="event-overlay">
+                            <button class="event-play">
+                                <i class="fas fa-play"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="event-content">
+                        <div class="event-date">Feb 14, 2025</div>
+                        <h3>Lunar Eclipse Party</h3>
+                        <div class="event-venue">
+                            <i class="fas fa-map-marker-alt"></i>
+                            Los Angeles, CA - Exchange LA
+                        </div>
+                        <div class="event-tags">
+                            <span class="event-tag">Special Event</span>
+                            <span class="event-tag">House</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section contact-section">
+        <div class="container">
+            <div class="contact-content">
+                <h2 class="section-title">Let's Create Magic</h2>
+                <p class="section-subtitle">Ready to turn up the volume? Get in touch for bookings and collaborations.
+                </p>
+
+                <div class="contact-form">
+                    <div class="form-group">
+                        <input type="text" class="form-input" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-input" placeholder="Email Address" required>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-input" required>
+                            <option value="">Service Type</option>
+                            <option value="dj-booking">DJ Booking</option>
+                            <option value="production">Music Production</option>
+                            <option value="mixing">Mixing/Mastering</option>
+                            <option value="collaboration">Collaboration</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="date" class="form-input" required>
+                    </div>
+                    <div class="form-group full-width">
+                        <textarea class="form-input" rows="5" placeholder="Tell me about your project or event..."
+                            required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Drop The Beat</button>
+                </div>
+
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-spotify"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-soundcloud"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Audio visualizer canvas
+        const canvas = document.getElementById('visualizer');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        function drawVisualizer() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            const bars = 64;
+            const barWidth = canvas.width / bars;
+
+            for (let i = 0; i < bars; i++) {
+                const barHeight = Math.random() * canvas.height * 0.5;
+                const hue = (i / bars) * 360;
+
+                ctx.fillStyle = `hsla(${hue + 20}, 70%, 60%, 0.1)`;
+                ctx.fillRect(i * barWidth, canvas.height - barHeight, barWidth - 2, barHeight);
+            }
+        }
+
+        setInterval(drawVisualizer, 100);
+
+        // Interactive DJ controls
+        document.querySelectorAll('.control-knob').forEach(knob => {
+            knob.addEventListener('click', () => {
+                const rotation = Math.random() * 360;
+                knob.style.transform = `rotate(${rotation}deg)`;
+            });
+        });
+
+        // Slider interactions
+        document.querySelectorAll('.slider').forEach(slider => {
+            const thumb = slider.querySelector('.slider-thumb');
+            slider.addEventListener('click', (e) => {
+                const rect = slider.getBoundingClientRect();
+                const y = e.clientY - rect.top;
+                const percentage = Math.max(0, Math.min(100, ((rect.height - y) / rect.height) * 100));
+                thumb.style.top = `${100 - percentage}%`;
+            });
+        });
+
+        // Track play buttons
+        document.querySelectorAll('.play-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const isPlaying = btn.innerHTML.includes('pause');
+                if (isPlaying) {
+                    btn.innerHTML = '<i class="fas fa-play"></i>';
+                } else {
+                    // Reset all other buttons
+                    document.querySelectorAll('.play-btn').forEach(otherBtn => {
+                        otherBtn.innerHTML = '<i class="fas fa-play"></i>';
+                    });
+                    btn.innerHTML = '<i class="fas fa-pause"></i>';
+                }
+            });
+        });
+
+        // Floating music notes
+        function createFloatingNotes() {
+            const notes = ['♪', '♫', '♬', '♩', '♭', '♯'];
+
+            setInterval(() => {
+                if (Math.random() < 0.3) {
+                    const note = document.createElement('div');
+                    note.className = 'floating-music-notes';
+                    note.textContent = notes[Math.floor(Math.random() * notes.length)];
+                    note.style.left = Math.random() * 100 + '%';
+                    note.style.animationDuration = (Math.random() * 5 + 8) + 's';
+                    document.body.appendChild(note);
+
+                    setTimeout(() => {
+                        note.remove();
+                    }, 15000);
+                }
+            }, 2000);
+        }
+
+        // Form submission
+        const contactForm = document.querySelector('.contact-form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+
+                // Create beat drop effect
+                document.body.style.filter = 'hue-rotate(180deg)';
+                setTimeout(() => {
+                    document.body.style.filter = 'none';
+                    alert('🎵 Message sent! I\'ll drop you a line soon! 🎵');
+                }, 500);
+            });
+        }
+
+        // Beat synchronization effect
+        function syncToBeat() {
+            const beatElements = document.querySelectorAll('.beat-pulse');
+            const bpm = 128; // beats per minute
+            const interval = (60 / bpm) * 1000; // milliseconds per beat
+
+            setInterval(() => {
+                beatElements.forEach(el => {
+                    el.style.transform = 'scale(1.1)';
+                    setTimeout(() => {
+                        el.style.transform = 'scale(1)';
+                    }, 100);
+                });
+            }, interval);
+        }
+
+        // Waveform animation with mouse interaction
+        document.addEventListener('mousemove', (e) => {
+            const waveformBars = document.querySelectorAll('.waveform-bar');
+            const mouseX = e.clientX / window.innerWidth;
+
+            waveformBars.forEach((bar, index) => {
+                const intensity = Math.abs(mouseX - (index / waveformBars.length));
+                const height = 20 + (1 - intensity) * 60;
+                bar.style.height = height + 'px';
+            });
+        });
+
+        // Console screen glow effect
+        const consoleScreen = document.querySelector('.console-screen');
+        if (consoleScreen) {
+            setInterval(() => {
+                const intensity = Math.random();
+                consoleScreen.style.boxShadow = `inset 0 0 ${20 + intensity * 30}px rgba(255, 107, 53, ${0.3 + intensity * 0.4})`;
+            }, 2000);
+        }
+
+        // Dynamic background color shifts
+        function createColorShifts() {
+            const colors = [
+                'rgba(255, 107, 53, 0.1)',
+                'rgba(255, 210, 63, 0.1)',
+                'rgba(247, 147, 30, 0.1)'
+            ];
+
+            let currentColor = 0;
+            setInterval(() => {
+                document.body.style.background = `linear-gradient(135deg, #0a0a0a 0%, ${colors[currentColor]} 50%, #0a0a0a 100%)`;
+                currentColor = (currentColor + 1) % colors.length;
+            }, 5000);
+        }
+
+        // Event card hover effects
+        document.querySelectorAll('.event-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                const overlay = card.querySelector('.event-overlay');
+                if (overlay) {
+                    overlay.style.background = 'linear-gradient(45deg, rgba(255, 107, 53, 0.9), rgba(255, 210, 63, 0.9))';
+                }
+            });
+
+            card.addEventListener('mouseleave', () => {
+                const overlay = card.querySelector('.event-overlay');
+                if (overlay) {
+                    overlay.style.background = 'rgba(10, 10, 10, 0.8)';
+                }
+            });
+        });
+
+        // Track card sound visualization simulation
+        document.querySelectorAll('.track-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                const progressBar = card.querySelector('.progress-bar');
+                if (progressBar) {
+                    let width = 0;
+                    const interval = setInterval(() => {
+                        width += Math.random() * 10;
+                        if (width > 100) width = 100;
+                        progressBar.style.width = width + '%';
+                        if (width >= 100) clearInterval(interval);
+                    }, 100);
+                }
+            });
+        });
+
+        // Resize handler for canvas
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        // Initialize all effects
+        document.addEventListener('DOMContentLoaded', () => {
+            createFloatingNotes();
+            syncToBeat();
+            createColorShifts();
+
+            // Add initial delay for dramatic effect
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 500);
+        });
+    </script>
+</body>
+
+</html>

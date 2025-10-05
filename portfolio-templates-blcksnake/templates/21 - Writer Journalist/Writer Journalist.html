@@ -1,0 +1,1550 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emma Clarke - Investigative Journalist & Author</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background: #fefefe;
+            color: #2c3e50;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        .typewriter-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                linear-gradient(90deg, transparent 79px, rgba(52, 73, 94, 0.02) 79px, rgba(52, 73, 94, 0.02) 81px, transparent 81px),
+                linear-gradient(rgba(52, 73, 94, 0.02) 1.5em, transparent 1.5em);
+            background-size: 100% 1.5em;
+            z-index: -1;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 0;
+            background: rgba(254, 254, 254, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(52, 73, 94, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #c0392b;
+            font-style: italic;
+            position: relative;
+        }
+
+        .logo::after {
+            content: '✒';
+            margin-left: 0.5rem;
+            color: #34495e;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-menu a {
+            color: #2c3e50;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #c0392b;
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .nav-menu a:hover {
+            color: #c0392b;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 2rem;
+            margin-top: 80px;
+            position: relative;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .hero-content {
+            animation: fadeInLeft 1s ease-out;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: #c0392b;
+            color: #ffffff;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: #2c3e50;
+        }
+
+        .hero-title .highlight {
+            color: #c0392b;
+            font-style: italic;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: #7f8c8d;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 3rem;
+            max-width: 500px;
+            color: #5d6d7e;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .btn-primary {
+            background: #c0392b;
+            color: #ffffff;
+        }
+
+        .btn-primary:hover {
+            background: #a93226;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(192, 57, 43, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #2c3e50;
+            border: 2px solid #2c3e50;
+        }
+
+        .btn-secondary:hover {
+            background: #2c3e50;
+            color: #ffffff;
+        }
+
+        .hero-quote {
+            background: #ecf0f1;
+            border-left: 5px solid #c0392b;
+            padding: 2rem;
+            margin: 3rem 0;
+            border-radius: 0 10px 10px 0;
+            font-style: italic;
+            font-size: 1.1rem;
+            color: #34495e;
+            animation: fadeInRight 1s ease-out 0.5s both;
+        }
+
+        .quote-author {
+            text-align: right;
+            margin-top: 1rem;
+            font-weight: 600;
+            color: #c0392b;
+        }
+
+        .hero-awards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+            animation: fadeInRight 1s ease-out 1s both;
+        }
+
+        .award-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: #ffffff;
+            border: 1px solid #bdc3c7;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .award-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border-color: #c0392b;
+        }
+
+        .award-icon {
+            font-size: 2rem;
+            color: #c0392b;
+            margin-bottom: 1rem;
+        }
+
+        .award-title {
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .award-year {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .section {
+            padding: 6rem 2rem;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: #c0392b;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #7f8c8d;
+            max-width: 600px;
+            margin: 0 auto;
+            font-style: italic;
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .article-card {
+            background: #ffffff;
+            border: 1px solid #ecf0f1;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .article-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            border-color: #c0392b;
+        }
+
+        .article-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid #ecf0f1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .article-publication {
+            font-weight: 700;
+            color: #c0392b;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .article-date {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+
+        .article-content {
+            padding: 2rem;
+        }
+
+        .article-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+
+        .article-excerpt {
+            color: #5d6d7e;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .article-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tag {
+            padding: 0.3rem 0.8rem;
+            background: #ecf0f1;
+            color: #34495e;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .article-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .read-more {
+            color: #c0392b;
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .read-more:hover {
+            color: #a93226;
+            transform: translateX(5px);
+        }
+
+        .article-stats {
+            display: flex;
+            gap: 1rem;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .featured-article {
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-bottom: 2rem;
+        }
+
+        .featured-content {
+            padding: 3rem;
+            background: #2c3e50;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .featured-badge {
+            background: #c0392b;
+            color: #ffffff;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
+            width: fit-content;
+            margin-bottom: 1.5rem;
+        }
+
+        .featured-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .featured-excerpt {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            color: #bdc3c7;
+        }
+
+        .featured-image {
+            background: linear-gradient(135deg, #c0392b, #e74c3c);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            color: #ffffff;
+        }
+
+        .about-section {
+            background: linear-gradient(135deg, #ecf0f1 0%, #ffffff 100%);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image {
+            text-align: center;
+        }
+
+        .author-photo {
+            width: 300px;
+            height: 400px;
+            background: linear-gradient(135deg, #34495e, #2c3e50);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8rem;
+            color: #ffffff;
+            margin: 0 auto;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: #5d6d7e;
+        }
+
+        .expertise-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .expertise-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        .expertise-item i {
+            color: #c0392b;
+        }
+
+        .publications-section {
+            background: #2c3e50;
+            color: #ffffff;
+        }
+
+        .publications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .publication-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2.5rem 2rem;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .publication-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.15);
+            border-color: #c0392b;
+        }
+
+        .publication-logo {
+            width: 80px;
+            height: 80px;
+            background: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: #2c3e50;
+            margin: 0 auto 1.5rem;
+            font-weight: 900;
+        }
+
+        .publication-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #ffffff;
+        }
+
+        .publication-role {
+            color: #c0392b;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .publication-period {
+            color: #bdc3c7;
+            font-size: 0.9rem;
+        }
+
+        .contact-section {
+            background: linear-gradient(135deg, #c0392b, #e74c3c);
+            color: #ffffff;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .contact-info h3 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+        }
+
+        .contact-description {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 3rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(10px);
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            color: #ffffff;
+        }
+
+        .contact-item h4 {
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+
+        .contact-item p {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .form-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            color: #ffffff;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: rgba(255, 255, 255, 0.6);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .form-input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1.2rem;
+            background: #ffffff;
+            color: #c0392b;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .submit-btn:hover {
+            background: rgba(255, 255, 255, 0.9);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.2);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            color: #ffffff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: #ffffff;
+            color: #c0392b;
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+
+            .hero-awards {
+                grid-template-columns: 1fr;
+            }
+
+            .featured-article {
+                grid-template-columns: 1fr;
+            }
+
+            .about-content,
+            .contact-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .expertise-list {
+                grid-template-columns: 1fr;
+            }
+
+            .featured-content {
+                padding: 2rem;
+            }
+
+            .featured-title {
+                font-size: 1.8rem;
+            }
+
+            .author-photo {
+                width: 250px;
+                height: 350px;
+                font-size: 6rem;
+            }
+
+            .contact-form {
+                padding: 2rem;
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .typewriter-effect {
+            overflow: hidden;
+            border-right: 2px solid #c0392b;
+            white-space: nowrap;
+            animation: typewriter 3s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+
+        @keyframes typewriter {
+            from {
+                width: 0;
+            }
+
+            to {
+                width: 100%;
+            }
+        }
+
+        @keyframes blink-caret {
+
+            from,
+            to {
+                border-color: transparent;
+            }
+
+            50% {
+                border-color: #c0392b;
+            }
+        }
+
+        .quote-marks {
+            font-size: 3rem;
+            color: #c0392b;
+            line-height: 1;
+            font-family: serif;
+        }
+
+        .quote-marks.open {
+            float: left;
+            margin-right: 0.5rem;
+            margin-top: -0.2rem;
+        }
+
+        .quote-marks.close {
+            float: right;
+            margin-left: 0.5rem;
+            margin-bottom: -0.8rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="typewriter-bg"></div>
+
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">Emma Clarke</div>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#articles">Articles</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#publications">Work</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">📰 Award-Winning Journalist</div>
+                <h1 class="hero-title">
+                    Stories That <span class="highlight">Matter</span>
+                </h1>
+                <p class="hero-subtitle">Investigative Journalist & Author</p>
+                <p class="hero-description">
+                    With over 12 years of experience uncovering the truth, I specialize in investigative journalism,
+                    political reporting, and human interest stories that drive social change and inform the public.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#articles" class="btn btn-primary">Read My Work</a>
+                    <a href="#contact" class="btn btn-secondary">Commission Story</a>
+                </div>
+            </div>
+
+            <div class="hero-quote">
+                <span class="quote-marks open">"</span>
+                Journalism is not a crime, but silence in the face of injustice is.
+                <span class="quote-marks close">"</span>
+                <div class="quote-author">— Emma Clarke, 2023</div>
+            </div>
+
+            <div class="hero-awards">
+                <div class="award-item">
+                    <div class="award-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <div class="award-title">Pulitzer Prize Finalist</div>
+                    <div class="award-year">2023</div>
+                </div>
+                <div class="award-item">
+                    <div class="award-icon">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <div class="award-title">Polk Award Winner</div>
+                    <div class="award-year">2022</div>
+                </div>
+                <div class="award-item">
+                    <div class="award-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="award-title">SPJ Excellence Award</div>
+                    <div class="award-year">2021</div>
+                </div>
+                <div class="award-item">
+                    <div class="award-icon">
+                        <i class="fas fa-pen-fancy"></i>
+                    </div>
+                    <div class="award-title">Press Club Award</div>
+                    <div class="award-year">2020</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="articles" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title fade-in">Featured Articles</h2>
+                <p class="section-subtitle fade-in">Investigative pieces that exposed corruption, sparked debate, and
+                    drove change</p>
+            </div>
+
+            <div class="articles-grid">
+                <div class="article-card featured-article fade-in">
+                    <div class="featured-content">
+                        <div class="featured-badge">Featured Investigation</div>
+                        <h3 class="featured-title">The Silicon Valley Cover-Up</h3>
+                        <p class="featured-excerpt">
+                            A year-long investigation that uncovered systematic data privacy violations at major tech
+                            companies,
+                            leading to congressional hearings and $2.8 billion in fines.
+                        </p>
+                        <a href="#" class="read-more" style="color: #c0392b;">
+                            Read Full Investigation <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    <div class="featured-image">
+                        <i class="fas fa-newspaper"></i>
+                    </div>
+                </div>
+
+                <div class="article-card fade-in">
+                    <div class="article-header">
+                        <div class="article-publication">The Guardian</div>
+                        <div class="article-date">March 15, 2024</div>
+                    </div>
+                    <div class="article-content">
+                        <h3 class="article-title">Climate Finance: Following the Money</h3>
+                        <p class="article-excerpt">
+                            An investigation into how climate funding promised by wealthy nations is falling short of
+                            commitments,
+                            leaving vulnerable countries without crucial adaptation resources.
+                        </p>
+                        <div class="article-tags">
+                            <span class="tag">Climate</span>
+                            <span class="tag">Politics</span>
+                            <span class="tag">International</span>
+                        </div>
+                        <div class="article-footer">
+                            <a href="#" class="read-more">
+                                Read Article <i class="fas fa-external-link-alt"></i>
+                            </a>
+                            <div class="article-stats">
+                                <div class="stat-item">
+                                    <i class="fas fa-eye"></i>
+                                    <span>125K</span>
+                                </div>
+                                <div class="stat-item">
+                                    <i class="fas fa-share"></i>
+                                    <span>8.2K</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="article-card fade-in">
+                    <div class="article-header">
+                        <div class="article-publication">Washington Post</div>
+                        <div class="article-date">February 8, 2024</div>
+                    </div>
+                    <div class="article-content">
+                        <h3 class="article-title">Healthcare Monopoly Exposed</h3>
+                        <p class="article-excerpt">
+                            How a network of private equity firms quietly bought up medical practices across rural
+                            America,
+                            driving up costs and reducing care quality for millions.
+                        </p>
+                        <div class="article-tags">
+                            <span class="tag">Healthcare</span>
+                            <span class="tag">Economics</span>
+                            <span class="tag">Investigation</span>
+                        </div>
+                        <div class="article-footer">
+                            <a href="#" class="read-more">
+                                Read Article <i class="fas fa-external-link-alt"></i>
+                            </a>
+                            <div class="article-stats">
+                                <div class="stat-item">
+                                    <i class="fas fa-eye"></i>
+                                    <span>89K</span>
+                                </div>
+                                <div class="stat-item">
+                                    <i class="fas fa-share"></i>
+                                    <span>5.7K</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="article-card fade-in">
+                    <div class="article-header">
+                        <div class="article-publication">New York Times</div>
+                        <div class="article-date">January 22, 2024</div>
+                    </div>
+                    <div class="article-content">
+                        <h3 class="article-title">The Election Security Gap</h3>
+                        <p class="article-excerpt">
+                            A comprehensive look at vulnerabilities in America's voting infrastructure and the
+                            grassroots
+                            efforts to protect democracy ahead of the 2024 elections.
+                        </p>
+                        <div class="article-tags">
+                            <span class="tag">Politics</span>
+                            <span class="tag">Democracy</span>
+                            <span class="tag">Security</span>
+                        </div>
+                        <div class="article-footer">
+                            <a href="#" class="read-more">
+                                Read Article <i class="fas fa-external-link-alt"></i>
+                            </a>
+                            <div class="article-stats">
+                                <div class="stat-item">
+                                    <i class="fas fa-eye"></i>
+                                    <span>156K</span>
+                                </div>
+                                <div class="stat-item">
+                                    <i class="fas fa-share"></i>
+                                    <span>12K</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section about-section">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-image fade-in">
+                    <div class="author-photo">
+                        <i class="fas fa-user-edit"></i>
+                    </div>
+                </div>
+                <div class="about-text fade-in">
+                    <h3>About Emma Clarke</h3>
+                    <p>
+                        Emma Clarke is an award-winning investigative journalist with over 12 years of experience
+                        covering politics, corporate accountability, and social justice issues. Her work has appeared
+                        in major publications including The New York Times, The Guardian, and The Washington Post.
+                    </p>
+                    <p>
+                        Known for her meticulous research and compelling storytelling, Emma has broken numerous
+                        high-profile stories that have led to policy changes, criminal investigations, and corporate
+                        reforms.
+                        Her dedication to uncovering the truth has earned her recognition from the journalism community
+                        and beyond.
+                    </p>
+                    <p>
+                        Emma holds a Master's degree in Journalism from Columbia University and a Bachelor's in
+                        Political Science
+                        from Yale. When not investigating stories, she teaches journalism ethics at NYU and mentors
+                        young reporters.
+                    </p>
+
+                    <div class="expertise-list">
+                        <div class="expertise-item">
+                            <i class="fas fa-search"></i>
+                            <span>Investigative Reporting</span>
+                        </div>
+                        <div class="expertise-item">
+                            <i class="fas fa-balance-scale"></i>
+                            <span>Political Coverage</span>
+                        </div>
+                        <div class="expertise-item">
+                            <i class="fas fa-building"></i>
+                            <span>Corporate Accountability</span>
+                        </div>
+                        <div class="expertise-item">
+                            <i class="fas fa-globe"></i>
+                            <span>International Affairs</span>
+                        </div>
+                        <div class="expertise-item">
+                            <i class="fas fa-heart"></i>
+                            <span>Human Rights</span>
+                        </div>
+                        <div class="expertise-item">
+                            <i class="fas fa-leaf"></i>
+                            <span>Environmental Issues</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="publications" class="section publications-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title fade-in" style="color: #ffffff;">Publications & Experience</h2>
+                <p class="section-subtitle fade-in" style="color: rgba(255,255,255,0.8);">Major publications where my
+                    work has appeared</p>
+            </div>
+
+            <div class="publications-grid">
+                <div class="publication-card fade-in">
+                    <div class="publication-logo">NYT</div>
+                    <h3 class="publication-name">The New York Times</h3>
+                    <div class="publication-role">Contributing Writer</div>
+                    <div class="publication-period">2020 - Present</div>
+                </div>
+
+                <div class="publication-card fade-in">
+                    <div class="publication-logo">GRD</div>
+                    <h3 class="publication-name">The Guardian</h3>
+                    <div class="publication-role">Investigative Reporter</div>
+                    <div class="publication-period">2018 - Present</div>
+                </div>
+
+                <div class="publication-card fade-in">
+                    <div class="publication-logo">WPO</div>
+                    <h3 class="publication-name">Washington Post</h3>
+                    <div class="publication-role">Staff Writer</div>
+                    <div class="publication-period">2016 - 2020</div>
+                </div>
+
+                <div class="publication-card fade-in">
+                    <div class="publication-logo">CNN</div>
+                    <h3 class="publication-name">CNN</h3>
+                    <div class="publication-role">Political Correspondent</div>
+                    <div class="publication-period">2014 - 2016</div>
+                </div>
+
+                <div class="publication-card fade-in">
+                    <div class="publication-logo">BBC</div>
+                    <h3 class="publication-name">BBC News</h3>
+                    <div class="publication-role">International Reporter</div>
+                    <div class="publication-period">2012 - 2014</div>
+                </div>
+
+                <div class="publication-card fade-in">
+                    <div class="publication-logo">REU</div>
+                    <h3 class="publication-name">Reuters</h3>
+                    <div class="publication-role">Junior Reporter</div>
+                    <div class="publication-period">2010 - 2012</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section contact-section">
+        <div class="container">
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Let's Tell Important Stories</h3>
+                    <p class="contact-description">
+                        Do you have a tip, story idea, or commission opportunity? I'm always looking for stories
+                        that matter and sources who want to make a difference through journalism.
+                    </p>
+
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope-open"></i>
+                            </div>
+                            <div>
+                                <h4>Email</h4>
+                                <p>emma@emmaclarke.com</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div>
+                                <h4>Secure Contact</h4>
+                                <p>Signal: +1-555-STORIES</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h4>Location</h4>
+                                <p>New York, NY</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div>
+                                <h4>Response Time</h4>
+                                <p>Within 24 hours</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <h3 class="form-title">Share Your Story</h3>
+                    <div class="form-group">
+                        <label class="form-label" for="name">Name</label>
+                        <input type="text" id="name" class="form-input" placeholder="Your name (anonymous tips welcome)"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="email">Email</label>
+                        <input type="email" id="email" class="form-input" placeholder="your.email@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="subject">Subject</label>
+                        <select id="subject" class="form-input" required>
+                            <option value="">Select inquiry type</option>
+                            <option value="tip">Story Tip</option>
+                            <option value="commission">Commission Work</option>
+                            <option value="interview">Interview Request</option>
+                            <option value="collaboration">Collaboration</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="message">Message</label>
+                        <textarea id="message" class="form-input" rows="6"
+                            placeholder="Tell me about your story, tip, or inquiry..." required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+
+                    <div class="social-links">
+                        <a href="#" class="social-link" title="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link" title="LinkedIn">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="#" class="social-link" title="Email">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        if (navbar) {
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 100) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+        }
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Form submission with journalist-themed feedback
+        const contactForm = document.querySelector('.contact-form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+
+                const submitBtn = e.target.querySelector('.submit-btn');
+                const originalText = submitBtn.textContent;
+
+                submitBtn.textContent = 'Sending...';
+                submitBtn.style.background = '#7f8c8d';
+
+                setTimeout(() => {
+                    submitBtn.textContent = '✓ Message Sent!';
+                    submitBtn.style.background = '#27ae60';
+
+                    setTimeout(() => {
+                        showJournalistModal();
+                        submitBtn.textContent = originalText;
+                        submitBtn.style.background = '#ffffff';
+                        e.target.reset();
+                    }, 2000);
+                }, 1500);
+            });
+        }
+
+        // Journalist-themed success modal
+        function showJournalistModal() {
+            const modal = document.createElement('div');
+            modal.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(44, 62, 80, 0.9);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 10000;
+                animation: fadeIn 0.3s ease;
+            `;
+
+            modal.innerHTML = `
+                <div style="background: #ffffff; padding: 3rem; border-radius: 15px; text-align: center; max-width: 500px; margin: 2rem; box-shadow: 0 20px 60px rgba(0,0,0,0.3);">
+                    <div style="font-size: 4rem; color: #c0392b; margin-bottom: 1rem;">📰</div>
+                    <h3 style="color: #2c3e50; margin-bottom: 1rem; font-size: 1.8rem;">Thank You!</h3>
+                    <p style="color: #5d6d7e; margin-bottom: 2rem; line-height: 1.6;">Your message has been received. I'll review it carefully and get back to you within 24 hours. If this is time-sensitive, please use the secure contact methods listed.</p>
+                    <button onclick="this.parentElement.parentElement.remove()" style="background: #c0392b; color: white; border: none; padding: 1rem 2rem; border-radius: 5px; font-weight: 600; cursor: pointer; font-family: Georgia, serif;">Close</button>
+                </div>
+            `;
+
+            document.body.appendChild(modal);
+        }
+
+        // Article card interactions
+        document.querySelectorAll('.article-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                const readMore = card.querySelector('.read-more');
+                if (readMore && !readMore.style.color.includes('192')) {
+                    readMore.style.transform = 'translateX(10px)';
+                }
+
+                const title = card.querySelector('.article-title, .featured-title');
+                if (title) {
+                    title.style.color = '#c0392b';
+                }
+            });
+
+            card.addEventListener('mouseleave', () => {
+                const readMore = card.querySelector('.read-more');
+                if (readMore && !readMore.style.color.includes('192')) {
+                    readMore.style.transform = 'translateX(0)';
+                }
+
+                const title = card.querySelector('.article-title');
+                if (title) {
+                    title.style.color = '#2c3e50';
+                }
+
+                const featuredTitle = card.querySelector('.featured-title');
+                if (featuredTitle) {
+                    featuredTitle.style.color = '#ffffff';
+                }
+            });
+        });
+
+        // Publication card hover effects
+        document.querySelectorAll('.publication-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                const logo = card.querySelector('.publication-logo');
+                if (logo) {
+                    logo.style.transform = 'scale(1.1) rotate(5deg)';
+                    logo.style.background = '#c0392b';
+                    logo.style.color = '#ffffff';
+                }
+            });
+
+            card.addEventListener('mouseleave', () => {
+                const logo = card.querySelector('.publication-logo');
+                if (logo) {
+                    logo.style.transform = 'scale(1) rotate(0deg)';
+                    logo.style.background = '#ffffff';
+                    logo.style.color = '#2c3e50';
+                }
+            });
+        });
+
+        // Award items pulse effect
+        document.querySelectorAll('.award-item').forEach((award, index) => {
+            setTimeout(() => {
+                award.style.animation = 'pulse 2s infinite';
+            }, index * 500);
+        });
+
+        // Add pulse animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes pulse {
+                0% { transform: scale(1); }
+                50% { transform: scale(1.02); }
+                100% { transform: scale(1); }
+            }
+            
+            @keyframes fadeIn {
+                from { opacity: 0; }
+                to { opacity: 1; }
+            }
+            
+            @keyframes slideIn {
+                from { transform: translateX(100px); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Reading progress indicator
+        function createReadingProgress() {
+            const progressBar = document.createElement('div');
+            progressBar.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 0;
+                height: 3px;
+                background: linear-gradient(90deg, #c0392b, #e74c3c);
+                z-index: 1001;
+                transition: width 0.3s ease;
+            `;
+
+            document.body.appendChild(progressBar);
+
+            window.addEventListener('scroll', () => {
+                const scrollPercent = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+                progressBar.style.width = `${Math.min(scrollPercent, 100)}%`;
+            });
+        }
+
+        // Initialize all features
+        document.addEventListener('DOMContentLoaded', () => {
+            createReadingProgress();
+
+            // Show journalism tips periodically
+            setInterval(showJournalismTip, 12000);
+
+            // Initial journalism tip
+            setTimeout(showJournalismTip, 5000);
+        });
+
+        // Journalism tips in console
+        const journalismTips = [
+            "💡 TIP: Always verify information with at least two independent sources",
+            "💡 TIP: Follow the money trail in investigations - finances often reveal the truth",
+            "💡 TIP: Build trust with sources through consistency and confidentiality",
+            "💡 TIP: Keep detailed notes and backup everything digitally and physically",
+            "💡 TIP: Ask 'What would the public want to know?' to guide story decisions"
+        ];
+
+        function showJournalismTip() {
+            const tip = journalismTips[Math.floor(Math.random() * journalismTips.length)];
+            console.log(`%c${tip}`, 'color: #c0392b; font-weight: bold; font-size: 14px;');
+        }
+    </script>
+</body>
+
+</html>
