@@ -298,13 +298,21 @@
             margin-bottom: 20px;
         }
 
-        .tag {
-            background: rgba(253, 185, 19, 0.15);
+        .template-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
             color: var(--primary);
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 500;
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: var(--dark);
         }
 
         /* Template Specific Styles */
@@ -593,8 +601,8 @@
             <p>30 professionally designed portfolio templates for every profession and style. Showcase your work with
                 our stunning, fully responsive HTML templates.</p>
             <div class="hero-buttons">
-                <a href="#" class="btn btn-primary">View All Templates</a>
-                <a href="#" class="btn btn-secondary">Download Collection</a>
+                <a href="#templates" class="btn btn-primary">View All Templates</a>
+                <a href="#" class="btn btn-secondary" id="downloadAll">Download All Templates</a>
             </div>
         </div>
     </section>
@@ -608,15 +616,19 @@
                 <button class="filter-btn">Minimal</button>
                 <button class="filter-btn">Creative</button>
                 <button class="filter-btn">Corporate</button>
-                <button class="filter-btn">Gaming</button>
+                <button class="filter-btn">Software</button>
+                <button class="filter-btn">Startup</button>
+                <button class="filter-btn">Medical</button>
                 <button class="filter-btn">Photography</button>
+                <button class="filter-btn">Music</button>
+                <button class="filter-btn">Gaming</button>
             </div>
         </div>
     </section>
 
     <!-- Templates Grid -->
-    <section class="container">
-        <div class="templates-grid">
+    <section class="container" id="templates">
+        <div class="templates-grid" id="templatesGrid">
             <!-- Template 1 -->
             <div class="template-card cyber">
                 <div class="template-img">
@@ -631,7 +643,12 @@
                         <span class="tag">Dark</span>
                         <span class="tag">Tech</span>
                     </div>
-                    <a href="#" class="btn btn-secondary">Preview</a>
+                    <div class="template-actions">
+                        <a href="templates/01 - Cyber Dark/Cyber Dark.html" class="btn btn-secondary"
+                            target="_blank">Preview</a>
+                        <a href="templates/01 - Cyber Dark/Cyber Dark.html" class="btn btn-outline"
+                            download>Download</a>
+                    </div>
                 </div>
             </div>
 
@@ -649,7 +666,12 @@
                         <span class="tag">Clean</span>
                         <span class="tag">Design</span>
                     </div>
-                    <a href="#" class="btn btn-secondary">Preview</a>
+                    <div class="template-actions">
+                        <a href="templates/02 - Minimal Clean/Minimal Clean.html" class="btn btn-secondary"
+                            target="_blank">Preview</a>
+                        <a href="templates/02 - Minimal Clean/Minimal Clean.html" class="btn btn-outline"
+                            download>Download</a>
+                    </div>
                 </div>
             </div>
 
@@ -667,7 +689,12 @@
                         <span class="tag">Vibrant</span>
                         <span class="tag">Art</span>
                     </div>
-                    <a href="#" class="btn btn-secondary">Preview</a>
+                    <div class="template-actions">
+                        <a href="templates/03 - Creative Vibrant/Creative Vibrant.html" class="btn btn-secondary"
+                            target="_blank">Preview</a>
+                        <a href="templates/03 - Creative Vibrant/Creative Vibrant.html" class="btn btn-outline"
+                            download>Download</a>
+                    </div>
                 </div>
             </div>
 
@@ -685,7 +712,12 @@
                         <span class="tag">Professional</span>
                         <span class="tag">Business</span>
                     </div>
-                    <a href="#" class="btn btn-secondary">Preview</a>
+                    <div class="template-actions">
+                        <a href="templates/04 - Corporate Professional/Corporate Professional.html"
+                            class="btn btn-secondary" target="_blank">Preview</a>
+                        <a href="templates/04 - Corporate Professional/Corporate Professional.html"
+                            class="btn btn-outline" download>Download</a>
+                    </div>
                 </div>
             </div>
 
@@ -702,7 +734,12 @@
                         <span class="tag">Retro</span>
                         <span class="tag">80s</span>
                     </div>
-                    <a href="#" class="btn btn-secondary">Preview</a>
+                    <div class="template-actions">
+                        <a href="templates/05 - Gaming Retro 80s/Gaming Retro 80s.html" class="btn btn-secondary"
+                            target="_blank">Preview</a>
+                        <a href="templates/05 - Gaming Retro 80s/Gaming Retro 80s.html" class="btn btn-outline"
+                            download>Download</a>
+                    </div>
                 </div>
             </div>
 
@@ -719,7 +756,12 @@
                         <span class="tag">Gallery</span>
                         <span class="tag">Visual</span>
                     </div>
-                    <a href="#" class="btn btn-secondary">Preview</a>
+                    <div class="template-actions">
+                        <a href="templates/06 - Photography Portfolio/Photography Portfolio.html"
+                            class="btn btn-secondary" target="_blank">Preview</a>
+                        <a href="templates/06 - Photography Portfolio/Photography Portfolio.html"
+                            class="btn btn-outline" download>Download</a>
+                    </div>
                 </div>
             </div>
 
@@ -736,7 +778,12 @@
                         <span class="tag">Modern</span>
                         <span class="tag">Dynamic</span>
                     </div>
-                    <a href="#" class="btn btn-secondary">Preview</a>
+                    <div class="template-actions">
+                        <a href="templates/07 - Startup Modern/Startup Modern.html" class="btn btn-secondary"
+                            target="_blank">Preview</a>
+                        <a href="templates/07 - Startup Modern/Startup Modern.html" class="btn btn-outline"
+                            download>Download</a>
+                    </div>
                 </div>
             </div>
 
@@ -754,7 +801,12 @@
                         <span class="tag">Healthcare</span>
                         <span class="tag">Clean</span>
                     </div>
-                    <a href="#" class="btn btn-secondary">Preview</a>
+                    <div class="template-actions">
+                        <a href="templates/08 - Medical Healthcare/Medical Healthcare.html" class="btn btn-secondary"
+                            target="_blank">Preview</a>
+                        <a href="templates/08 - Medical Healthcare/Medical Healthcare.html" class="btn btn-outline"
+                            download>Download</a>
+                    </div>
                 </div>
             </div>
 
@@ -771,7 +823,12 @@
                         <span class="tag">Audio</span>
                         <span class="tag">DJ</span>
                     </div>
-                    <a href="#" class="btn btn-secondary">Preview</a>
+                    <div class="template-actions">
+                        <a href="templates/09 - Music Producer DJ/Music Producer DJ.html" class="btn btn-secondary"
+                            target="_blank">Preview</a>
+                        <a href="templates/09 - Music Producer DJ/Music Producer DJ.html" class="btn btn-outline"
+                            download>Download</a>
+                    </div>
                 </div>
             </div>
 
@@ -788,7 +845,468 @@
                         <span class="tag">Terminal</span>
                         <span class="tag">Code</span>
                     </div>
-                    <a href="#" class="btn btn-secondary">Preview</a>
+                    <div class="template-actions">
+                        <a href="templates/10 - Software Engineer Terminal/Software Engineer Terminal.html"
+                            class="btn btn-secondary" target="_blank">Preview</a>
+                        <a href="templates/10 - Software Engineer Terminal/Software Engineer Terminal.html"
+                            class="btn btn-outline" download>Download</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Template 11 -->
+            <div class="template-card corporate">
+                <div class="template-img">
+                    <i class="fas fa-gavel"></i>
+                </div>
+                <div class="template-content">
+                    <h3>Lawyer Legal Professional</h3>
+                    <p>Professional legal design with case studies and client testimonials. Perfect for attorneys and
+                        legal professionals.</p>
+                    <div class="template-tags">
+                        <span class="tag">Legal</span>
+                        <span class="tag">Professional</span>
+                        <span class="tag">Law</span>
+                    </div>
+                    <div class="template-actions">
+                        <a href="templates/11 - Lawyer Legal/Lawyer.html" class="btn btn-secondary"
+                            target="_blank">Preview</a>
+                        <a href="templates/11 - Lawyer Legal/Lawyer.html" class="btn btn-outline" download>Download</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Template 12 -->
+            <div class="template-card creative">
+                <div class="template-img">
+                    <i class="fas fa-palette"></i>
+                </div>
+                <div class="template-content">
+                    <h3>Artist Painter Portfolio</h3>
+                    <p>Artistic gallery design with portfolio showcase and creative layouts. Ideal for painters and
+                        visual artists.</p>
+                    <div class="template-tags">
+                        <span class="tag">Art</span>
+                        <span class="tag">Gallery</span>
+                        <span class="tag">Creative</span>
+                    </div>
+                    <div class="template-actions">
+                        <a href="templates/12 - Artist Painter/Painter.html" class="btn btn-secondary"
+                            target="_blank">Preview</a>
+                        <a href="templates/12 - Artist Painter/Painter.html" class="btn btn-outline"
+                            download>Download</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Template 13 -->
+            <div class="template-card corporate">
+                <div class="template-img">
+                    <i class="fas fa-home"></i>
+                </div>
+                <div class="template-content">
+                    <h3>Real Estate Professional</h3>
+                    <p>Property-focused design with listings and market insights. Perfect for real estate agents and
+                        brokers.</p>
+                    <div class="template-tags">
+                        <span class="tag">Real Estate</span>
+                        <span class="tag">Property</span>
+                        <span class="tag">Sales</span>
+                    </div>
+                    <div class="template-actions">
+                        <a href="templates/13 - Real Estate Professional/Real Estate Luxury.html"
+                            class="btn btn-secondary" target="_blank">Preview</a>
+                        <a href="templates/13 - Real Estate Professional/Real Estate Luxury.html"
+                            class="btn btn-outline" download>Download</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Template 14 -->
+            <div class="template-card startup">
+                <div class="template-img">
+                    <i class="fas fa-dumbbell"></i>
+                </div>
+                <div class="template-content">
+                    <h3>Fitness Trainer Coach</h3>
+                    <p>Dynamic fitness design with workout plans and client transformations. Great for personal
+                        trainers.</p>
+                    <div class="template-tags">
+                        <span class="tag">Fitness</span>
+                        <span class="tag">Health</span>
+                        <span class="tag">Training</span>
+                    </div>
+                    <div class="template-actions">
+                        <a href="templates/14 - Fitness Trainer Coach/Fitness Trainer Coach.html"
+                            class="btn btn-secondary" target="_blank">Preview</a>
+                        <a href="templates/14 - Fitness Trainer Coach/Fitness Trainer Coach.html"
+                            class="btn btn-outline" download>Download</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Template 15 -->
+            <div class="template-card startup">
+                <div class="template-img">
+                    <i class="fas fa-shopping-cart"></i>
+                </div>
+                <div class="template-content">
+                    <h3>E-commerce Specialist</h3>
+                    <p>E-commerce focused design with conversion optimization and sales metrics. Perfect for online
+                        business experts.</p>
+                    <div class="template-tags">
+                        <span class="tag">E-commerce</span>
+                        <span class="tag">Sales</span>
+                        <span class="tag">Online</span>
+                    </div>
+                    <div class="template-actions">
+                        <a href="templates/15- E-commerce Specialist/E-commerce .html" class="btn btn-secondary"
+                            target="_blank">Preview</a>
+                        <a href="templates/15- E-commerce Specialist/E-commerce .html" class="btn btn-outline"
+                            download>Download</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Template 16 -->
+            <div class="template-card software">
+                <div class="template-img">
+                    <i class="fas fa-chart-bar"></i>
+                </div>
+                <div class="template-content">
+                    <h3>Data Scientist Analyst</h3>
+                    <p>Data visualization and analytics portfolio with project showcases. Ideal for data professionals.
+                    </p>
+                    <div class="template-tags">
+                        <span class="tag">Data</span>
+                        <span class="tag">Analytics</span>
+                        <span class="tag">Science</span>
+                    </div>
+                    <div class="template-actions">
+                        <a href="templates/16 - Data Scientist Analyst/DataScientist.html" class="btn btn-secondary"
+                            target="_blank">Preview</a>
+                        <a href="templates/16 - Data Scientist Analyst/DataScientist.html" class="btn btn-outline"
+                            download>Download</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Template 17 -->
+            <div class="template-card creative">
+                <div class="template-img">
+                    <i class="fas fa-couch"></i>
+                </div>
+                <div class="template-content">
+                    <h3>Interior Designer</h3>
+                    <p>Design portfolio with project galleries and style inspiration. Perfect for interior designers.
+                    </p>
+                    <div class="template-tags">
+                        <span class="tag">Design</span>
+                        <span class="tag">Interior</span>
+                        <span class="tag">Creative</span>
+                    </div>
+                    <div class="template-actions">
+                        <a href="templates/17 - Interior Designer/Interior Designer.html" class="btn btn-secondary"
+                            target="_blank">Preview</a>
+                        <a href="templates/17 - Interior Designer/Interior Designer.html" class="btn btn-outline"
+                            download>Download</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Template 18 -->
+            <div class="template-card creative">
+                <div class="template-img">
+                    <i class="fas fa-utensils"></i>
+                </div>
+                <div class="template-content">
+                    <h3>Chef Culinary Professional</h3>
+                    <p>Culinary portfolio with recipe showcases and restaurant experience. Great for chefs and food
+                        professionals.</p>
+                    <div class="template-tags">
+                        <span class="tag">Chef</span>
+                        <span class="tag">Culinary</span>
+                        <span class="tag">Food</span>
+                    </div>
+                    <div class="template-actions">
+                        <a href="templates/18 - Chef Culinary Professional/Chef Culinary.html" class="btn btn-secondary"
+                            target="_blank">Preview</a>
+                        <a href="templates/18 - Chef Culinary Professional/Chef Culinary.html" class="btn btn-outline"
+                            download>Download</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Template 19 -->
+            <div class="template-card creative">
+                <div class="template-img">
+                    <i class="fas fa-bullhorn"></i>
+                </div>
+                <div class="template-content">
+                    <h3>Marketing Specialist</h3>
+                    <p>Marketing portfolio with campaign results and growth strategies. Perfect for marketing
+                        professionals.</p>
+                    <div class="template-tags">
+                        <span class="tag">Marketing</span>
+                        <span class="tag">Growth</span>
+                        <span class="tag">Digital</span>
+                    </div>
+                    <div class="template-actions">
+                        <a href="templates/19 - Marketing Specialist/Marketing Specialist.html"
+                            class="btn btn-secondary" target="_blank">Preview</a>
+                        <a href="templates/19 - Marketing Specialist/Marketing Specialist.html" class="btn btn-outline"
+                            download>Download</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Template 20 -->
+            <div class="template-card corporate">
+                <div class="template-img">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <div class="template-content">
+                    <h3>Financial Advisor</h3>
+                    <p>Financial planning portfolio with investment strategies and client success stories. Ideal for
+                        financial advisors.</p>
+                    <div class="template-tags">
+                        <span class="tag">Finance</span>
+                        <span class="tag">Investment</span>
+                        <span class="tag">Planning</span>
+                    </div>
+                    <div class="template-actions">
+                        <a href="templates/20 - Financial Advisor/Financial Advisor.html" class="btn btn-secondary"
+                            target="_blank">Preview</a>
+                        <a href="templates/20 - Financial Advisor/Financial Advisor.html" class="btn btn-outline"
+                            download>Download</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Template 21 -->
+            <div class="template-card minimal">
+                <div class="template-img">
+                    <i class="fas fa-pen"></i>
+                </div>
+                <div class="template-content">
+                    <h3>Writer Journalist</h3>
+                    <p>Writing portfolio with published articles and editorial experience. Perfect for writers and
+                        journalists.</p>
+                    <div class="template-tags">
+                        <span class="tag">Writing</span>
+                        <span class="tag">Journalism</span>
+                        <span class="tag">Editorial</span>
+                    </div>
+                    <div class="template-actions">
+                        <a href="templates/21 - Writer Journalist/Writer Journalist.html" class="btn btn-secondary"
+                            target="_blank">Preview</a>
+                        <a href="templates/21 - Writer Journalist/Writer Journalist.html" class="btn btn-outline"
+                            download>Download</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Template 22 -->
+            <div class="template-card software">
+                <div class="template-img">
+                    <i class="fas fa-microscope"></i>
+                </div>
+                <div class="template-content">
+                    <h3>Academic Researcher</h3>
+                    <p>Research portfolio with publications and academic achievements. Great for researchers and
+                        academics.</p>
+                    <div class="template-tags">
+                        <span class="tag">Academic</span>
+                        <span class="tag">Research</span>
+                        <span class="tag">Science</span>
+                    </div>
+                    <div class="template-actions">
+                        <a href="templates/22 - Academic Researcher/Academic Researcher.html" class="btn btn-secondary"
+                            target="_blank">Preview</a>
+                        <a href="templates/22 - Academic Researcher/Academic Researcher.html" class="btn btn-outline"
+                            download>Download</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Template 23 -->
+            <div class="template-card creative">
+                <div class="template-img">
+                    <i class="fab fa-youtube"></i>
+                </div>
+                <div class="template-content">
+                    <h3>YouTube Creator Influencer</h3>
+                    <p>Content creator portfolio with video showcases and audience growth metrics. Perfect for
+                        YouTubers.</p>
+                    <div class="template-tags">
+                        <span class="tag">YouTube</span>
+                        <span class="tag">Content</span>
+                        <span class="tag">Influencer</span>
+                    </div>
+                    <div class="template-actions">
+                        <a href="templates/23 - YouTube Creator Influencer/Youtube Creator.html"
+                            class="btn btn-secondary" target="_blank">Preview</a>
+                        <a href="templates/23 - YouTube Creator Influencer/Youtube Creator.html" class="btn btn-outline"
+                            download>Download</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Template 24 -->
+            <div class="template-card creative">
+                <div class="template-img">
+                    <i class="fas fa-tshirt"></i>
+                </div>
+                <div class="template-content">
+                    <h3>Fashion Designer</h3>
+                    <p>Fashion portfolio with design collections and runway experience. Ideal for fashion designers.</p>
+                    <div class="template-tags">
+                        <span class="tag">Fashion</span>
+                        <span class="tag">Design</span>
+                        <span class="tag">Style</span>
+                    </div>
+                    <div class="template-actions">
+                        <a href="templates/24 - Fashion Designer/Fashion Designer.html" class="btn btn-secondary"
+                            target="_blank">Preview</a>
+                        <a href="templates/24 - Fashion Designer/Fashion Designer.html" class="btn btn-outline"
+                            download>Download</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Template 25 -->
+            <div class="template-card startup">
+                <div class="template-img">
+                    <i class="fas fa-tools"></i>
+                </div>
+                <div class="template-content">
+                    <h3>Freelancer Multi-Service</h3>
+                    <p>Multi-service freelancer portfolio showcasing diverse skills and projects. Perfect for
+                        freelancers.</p>
+                    <div class="template-tags">
+                        <span class="tag">Freelance</span>
+                        <span class="tag">Multi-service</span>
+                        <span class="tag">Skills</span>
+                    </div>
+                    <div class="template-actions">
+                        <a href="templates/25 - Freelancer Multi-Service/Freelancer.html" class="btn btn-secondary"
+                            target="_blank">Preview</a>
+                        <a href="templates/25 - Freelancer Multi-Service/Freelancer.html" class="btn btn-outline"
+                            download>Download</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Template 26 -->
+            <div class="template-card medical">
+                <div class="template-img">
+                    <i class="fas fa-hands-helping"></i>
+                </div>
+                <div class="template-content">
+                    <h3>Non-Profit Social Worker</h3>
+                    <p>Social impact portfolio with community projects and volunteer work. Great for non-profit
+                        professionals.</p>
+                    <div class="template-tags">
+                        <span class="tag">Non-Profit</span>
+                        <span class="tag">Social</span>
+                        <span class="tag">Community</span>
+                    </div>
+                    <div class="template-actions">
+                        <a href="templates/26 - Non-Profit Social Worker/Non-Profit Social Worker.html"
+                            class="btn btn-secondary" target="_blank">Preview</a>
+                        <a href="templates/26 - Non-Profit Social Worker/Non-Profit Social Worker.html"
+                            class="btn btn-outline" download>Download</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Template 27 -->
+            <div class="template-card creative">
+                <div class="template-img">
+                    <i class="fas fa-calendar-alt"></i>
+                </div>
+                <div class="template-content">
+                    <h3>Event Planner</h3>
+                    <p>Event planning portfolio with past events and client testimonials. Perfect for event
+                        coordinators.</p>
+                    <div class="template-tags">
+                        <span class="tag">Events</span>
+                        <span class="tag">Planning</span>
+                        <span class="tag">Coordination</span>
+                    </div>
+                    <div class="template-actions">
+                        <a href="templates/27 - Event Planner/Eventplanner.html" class="btn btn-secondary"
+                            target="_blank">Preview</a>
+                        <a href="templates/27 - Event Planner/Eventplanner.html" class="btn btn-outline"
+                            download>Download</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Template 28 -->
+            <div class="template-card corporate">
+                <div class="template-img">
+                    <i class="fas fa-building"></i>
+                </div>
+                <div class="template-content">
+                    <h3>Architect</h3>
+                    <p>Architecture portfolio with project galleries and design philosophy. Ideal for architects and
+                        designers.</p>
+                    <div class="template-tags">
+                        <span class="tag">Architecture</span>
+                        <span class="tag">Design</span>
+                        <span class="tag">Projects</span>
+                    </div>
+                    <div class="template-actions">
+                        <a href="templates/28 - Architect/Architect.html" class="btn btn-secondary"
+                            target="_blank">Preview</a>
+                        <a href="templates/28 - Architect/Architect.html" class="btn btn-outline" download>Download</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Template 29 -->
+            <div class="template-card startup">
+                <div class="template-img">
+                    <i class="fas fa-handshake"></i>
+                </div>
+                <div class="template-content">
+                    <h3>Sales Professional</h3>
+                    <p>Sales portfolio with performance metrics and client success stories. Great for sales
+                        representatives.</p>
+                    <div class="template-tags">
+                        <span class="tag">Sales</span>
+                        <span class="tag">Business</span>
+                        <span class="tag">Performance</span>
+                    </div>
+                    <div class="template-actions">
+                        <a href="templates/29 - Sales Professional/Sales Professional.html" class="btn btn-secondary"
+                            target="_blank">Preview</a>
+                        <a href="templates/29 - Sales Professional/Sales Professional.html" class="btn btn-outline"
+                            download>Download</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Template 30 -->
+            <div class="template-card minimal">
+                <div class="template-img">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="template-content">
+                    <h3>Student Portfolio</h3>
+                    <p>Student portfolio showcasing projects, skills, and academic achievements. Perfect for students.
+                    </p>
+                    <div class="template-tags">
+                        <span class="tag">Student</span>
+                        <span class="tag">Academic</span>
+                        <span class="tag">Projects</span>
+                    </div>
+                    <div class="template-actions">
+                        <a href="templates/30 - Student/Student.html" class="btn btn-secondary"
+                            target="_blank">Preview</a>
+                        <a href="templates/30 - Student/Student.html" class="btn btn-outline" download>Download</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -837,6 +1355,46 @@
         // Filter functionality
         document.addEventListener('DOMContentLoaded', function () {
             const filterButtons = document.querySelectorAll('.filter-btn');
+            const templateCards = document.querySelectorAll('.template-card');
+            const templatesGrid = document.getElementById('templatesGrid');
+            const downloadAllBtn = document.getElementById('downloadAll');
+
+            // Download All functionality
+            downloadAllBtn.addEventListener('click', function (e) {
+                e.preventDefault();
+                const downloadLinks = document.querySelectorAll('.template-actions a[download]');
+                let downloadedCount = 0;
+                const totalTemplates = downloadLinks.length;
+
+                // Show progress message
+                const originalText = downloadAllBtn.textContent;
+                downloadAllBtn.textContent = 'Downloading... (0/' + totalTemplates + ')';
+                downloadAllBtn.disabled = true;
+
+                downloadLinks.forEach((link, index) => {
+                    setTimeout(() => {
+                        // Create a temporary link to trigger download
+                        const tempLink = document.createElement('a');
+                        tempLink.href = link.href;
+                        tempLink.download = link.download || 'template.html';
+                        tempLink.style.display = 'none';
+                        document.body.appendChild(tempLink);
+                        tempLink.click();
+                        document.body.removeChild(tempLink);
+
+                        downloadedCount++;
+                        downloadAllBtn.textContent = 'Downloading... (' + downloadedCount + '/' + totalTemplates + ')';
+
+                        if (downloadedCount === totalTemplates) {
+                            downloadAllBtn.textContent = 'Download Complete!';
+                            setTimeout(() => {
+                                downloadAllBtn.textContent = originalText;
+                                downloadAllBtn.disabled = false;
+                            }, 2000);
+                        }
+                    }, index * 1000); // Stagger downloads by 1 second each
+                });
+            });
 
             filterButtons.forEach(button => {
                 button.addEventListener('click', () => {
@@ -846,9 +1404,32 @@
                     // Add active class to clicked button
                     button.classList.add('active');
 
-                    // Here you would normally filter the templates
-                    // For this demo, we'll just show an alert
-                    alert(`Filtering by: ${button.textContent}`);
+                    const filterValue = button.textContent.toLowerCase();
+
+                    if (filterValue === 'all templates') {
+                        // Show all templates
+                        templateCards.forEach(card => {
+                            card.style.display = 'block';
+                        });
+                    } else {
+                        // Filter templates based on category
+                        templateCards.forEach(card => {
+                            const cardClass = card.className.split(' ')[1]; // Get the second class (category)
+                            if (cardClass === filterValue) {
+                                card.style.display = 'block';
+                            } else {
+                                card.style.display = 'none';
+                            }
+                        });
+                    }
+                });
+            });
+
+            // Smooth scroll for hero button
+            document.querySelector('a[href="#templates"]').addEventListener('click', function (e) {
+                e.preventDefault();
+                document.getElementById('templates').scrollIntoView({
+                    behavior: 'smooth'
                 });
             });
         });
