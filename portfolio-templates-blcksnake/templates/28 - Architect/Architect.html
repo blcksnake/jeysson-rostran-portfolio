@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Structural Form - Architect Profile</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        /* Custom Styles and Font Setup */
+        :root {
+            --color-blue: #1D4ED8;
+            /* Blueprint Blue - Tailwind Blue-700 */
+            --color-grey-dark: #1F2937;
+            /* Architectural Dark Grey - Tailwind Gray-800 */
+            --color-grey-light: #F3F4F6;
+            /* Architectural Light Grey - Tailwind Gray-100 */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--color-grey-dark);
+            background-color: white;
+        }
+
+        .section-title {
+            color: var(--color-blue);
+            text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.1);
+            border-bottom: 2px solid var(--color-blue);
+            display: inline-block;
+            padding-bottom: 4px;
+        }
+
+        .project-card {
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            /* Added cursor for better UX */
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(29, 78, 216, 0.2);
+            /* Blue shadow on hover */
+        }
+
+        .gallery-item {
+            cursor: pointer;
+            /* Added cursor for better UX */
+        }
+    </style>
+</head>
+
+<body class="bg-white">
+
+    <!-- Navigation Bar -->
+    <header class="sticky top-0 z-50 bg-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <a href="#" class="text-3xl font-extrabold text-gray-800 tracking-tight">STRUCTURAL <span
+                    class="text-blue-700">FORM</span></a>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#portfolio"
+                    class="text-gray-600 hover:text-blue-700 font-medium transition duration-150">Portfolio</a>
+                <a href="#services"
+                    class="text-gray-600 hover:text-blue-700 font-medium transition duration-150">Services</a>
+                <a href="#gallery"
+                    class="text-gray-600 hover:text-blue-700 font-medium transition duration-150">Gallery</a>
+                <a href="#contact"
+                    class="text-gray-600 hover:text-blue-700 font-medium transition duration-150">Contact</a>
+            </nav>
+            <button class="md:hidden text-gray-800 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                    </path>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section - Focus on Precision -->
+        <section class="bg-gray-100 py-20 sm:py-32 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h1 class="text-4xl sm:text-6xl font-extrabold leading-tight text-gray-900">
+                        Designing the <span class="text-blue-700">Future</span>. Built on <span
+                            class="text-blue-700">Precision</span>.
+                    </h1>
+                    <p class="mt-6 text-xl text-gray-600 max-w-lg">
+                        We transform complex challenges into enduring architectural solutions. Specializing in
+                        sustainable urban planning and high-fidelity structural design.
+                    </p>
+                    <a href="#portfolio"
+                        class="mt-8 inline-block bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg shadow-xl hover:bg-blue-800 transition duration-300">
+                        View Key Projects
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <!-- Placeholder for an abstract architectural element -->
+                    <div class="w-full h-80 bg-gray-300 rounded-xl overflow-hidden shadow-2xl relative">
+                        <!-- Blueprint overlay effect -->
+                        <div class="absolute inset-0 bg-blue-700 opacity-20"></div>
+                        <div class="p-8 h-full flex flex-col justify-end">
+                            <h2 class="text-white text-3xl font-bold">The Art of Engineering</h2>
+                            <p class="text-white text-opacity-80 mt-2">Where aesthetics meet physics.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Showcases (Portfolio) -->
+        <section id="portfolio" class="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-white">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="text-4xl font-bold mb-12 section-title">Selected Projects</h2>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                    <!-- Project 1 -->
+                    <div class="project-card bg-gray-50 border border-gray-200 rounded-xl shadow-lg overflow-hidden">
+                        <div
+                            class="h-48 bg-gray-300 flex items-center justify-center text-gray-600 text-sm font-semibold">
+
+
+                            [Image of Urban Development]
+
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-2xl font-semibold text-blue-700">Coastal City Redevelopment</h3>
+                            <p class="text-gray-500 text-sm mt-1">Urban Planning | 2024</p>
+                            <p class="mt-4 text-gray-700">A masterplan focusing on seismic resilience and public
+                                transport integration in a high-density zone.</p>
+                            <!-- Updated: Added onclick handler for interaction -->
+                            <a onclick="showCaseStudy('Coastal City Redevelopment')" role="button"
+                                class="mt-4 inline-block text-blue-700 hover:text-blue-900 font-medium text-sm cursor-pointer">Case
+                                Study &rarr;</a>
+                        </div>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div class="project-card bg-gray-50 border border-gray-200 rounded-xl shadow-lg overflow-hidden">
+                        <div
+                            class="h-48 bg-gray-300 flex items-center justify-center text-gray-600 text-sm font-semibold">
+
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-2xl font-semibold text-blue-700">The Meridian Tower</h3>
+                            <p class="text-gray-500 text-sm mt-1">Structural Design | 2023</p>
+                            <p class="mt-4 text-gray-700">A 60-story mixed-use building utilizing advanced modular
+                                construction techniques and passive cooling.</p>
+                            <!-- Updated: Added onclick handler for interaction -->
+                            <a onclick="showCaseStudy('The Meridian Tower')" role="button"
+                                class="mt-4 inline-block text-blue-700 hover:text-blue-900 font-medium text-sm cursor-pointer">Case
+                                Study &rarr;</a>
+                        </div>
+                    </div>
+
+                    <!-- Project 3 -->
+                    <div class="project-card bg-gray-50 border border-gray-200 rounded-xl shadow-lg overflow-hidden">
+                        <div
+                            class="h-48 bg-gray-300 flex items-center justify-center text-gray-600 text-sm font-semibold">
+
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-2xl font-semibold text-blue-700">National Art Museum Annex</h3>
+                            <p class="text-gray-500 text-sm mt-1">Architectural Design | 2022</p>
+                            <p class="mt-4 text-gray-700">An extension featuring a signature cantilevered roof,
+                                minimizing environmental impact on the surrounding parkland.</p>
+                            <!-- Updated: Added onclick handler for interaction -->
+                            <a onclick="showCaseStudy('National Art Museum Annex')" role="button"
+                                class="mt-4 inline-block text-blue-700 hover:text-blue-900 font-medium text-sm cursor-pointer">Case
+                                Study &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Architectural Drawings & Building Gallery -->
+        <section id="gallery" class="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-gray-100">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="text-4xl font-bold mb-12 section-title">Blueprints & Visuals</h2>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <!-- Gallery Item 1: Blueprint - Added onclick for detailed view -->
+                    <div onclick="showBlueprintDetail('Foundation Plan (2D)', {spec1: 'Concrete: C30/37, Class XC4', spec2: 'Rebar Schedule: ACI 318 Compliant'})"
+                        class="gallery-item bg-white border-2 border-blue-700 p-4 rounded-lg shadow-md aspect-square flex flex-col items-center justify-center transition hover:scale-[1.02]">
+                        <svg class="w-12 h-12 text-blue-700 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
+                            </path>
+                        </svg>
+                        <p class="text-center font-semibold text-sm text-gray-800">Foundation Plan (2D)</p>
+                        <p class="text-center text-xs text-blue-600">Blueprint Series</p>
+                    </div>
+                    <!-- Gallery Item 2: 3D Model - Added onclick for detailed view -->
+                    <div onclick="showBlueprintDetail('Volume Render (3D)', {spec1: 'Modeling Software: Revit/Rhino', spec2: 'Rendering Engine: V-Ray'})"
+                        class="gallery-item bg-white border-2 border-gray-300 p-4 rounded-lg shadow-md aspect-square flex flex-col items-center justify-center transition hover:scale-[1.02]">
+                        <svg class="w-12 h-12 text-gray-600 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10">
+                            </path>
+                        </svg>
+                        <p class="text-center font-semibold text-sm text-gray-800">Volume Render (3D)</p>
+                        <p class="text-center text-xs text-gray-500">Visualization</p>
+                    </div>
+                    <!-- Gallery Item 3: Elevation - Added onclick for detailed view -->
+                    <div onclick="showBlueprintDetail('North Elevation', {spec1: 'Facade System: Unitized Curtain Wall', spec2: 'Thermal Performance: U-Value 0.25 W/m²K'})"
+                        class="gallery-item bg-white border-2 border-gray-300 p-4 rounded-lg shadow-md aspect-square flex flex-col items-center justify-center transition hover:scale-[1.02]">
+                        <svg class="w-12 h-12 text-gray-600 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 8V4m0 4h4M4 8l4-4m4 8v1a3 3 0 003 3h2a3 3 0 003-3v-1m-4 4h2M12 8h.01M12 6h.01M12 10h.01M12 12h.01">
+                            </path>
+                        </svg>
+                        <p class="text-center font-semibold text-sm text-gray-800">North Elevation</p>
+                        <p class="text-center text-xs text-gray-500">Technical Detail</p>
+                    </div>
+                    <!-- Gallery Item 4: Material Sample - Added onclick for detailed view -->
+                    <div onclick="showBlueprintDetail('Facade System Detail', {spec1: 'Cladding Material: Reinforced Fiber Cement', spec2: 'Joint Sealing: EPDM Gaskets'})"
+                        class="gallery-item bg-white border-2 border-gray-300 p-4 rounded-lg shadow-md aspect-square flex flex-col items-center justify-center transition hover:scale-[1.02]">
+                        <svg class="w-12 h-12 text-gray-600 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m-1 4h1m-1 4h1">
+                            </path>
+                        </svg>
+                        <p class="text-center font-semibold text-sm text-gray-800">Facade System Detail</p>
+                        <p class="text-center text-xs text-gray-500">Building Section</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services -->
+        <section id="services" class="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-white">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="text-4xl font-bold mb-12 section-title">Core Services</h2>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Service 1 -->
+                    <div class="p-8 border-t-4 border-blue-700 bg-gray-50 rounded-lg shadow-lg">
+                        <h3 class="text-2xl font-bold mb-3 text-gray-900">Structural Design</h3>
+                        <p class="text-gray-600">Advanced engineering for complex loads, seismic analysis, and efficient
+                            material use, ensuring safety and longevity.</p>
+                    </div>
+                    <!-- Service 2 -->
+                    <div class="p-8 border-t-4 border-blue-700 bg-gray-50 rounded-lg shadow-lg">
+                        <h3 class="text-2xl font-bold mb-3 text-gray-900">Urban & Master Planning</h3>
+                        <p class="text-gray-600">Creating resilient, pedestrian-friendly, and sustainable frameworks for
+                            metropolitan growth and public spaces.</p>
+                    </div>
+                    <!-- Service 3 -->
+                    <div class="p-8 border-t-4 border-blue-700 bg-gray-50 rounded-lg shadow-lg">
+                        <h3 class="text-2xl font-bold mb-3 text-gray-900">Construction Consultation</h3>
+                        <p class="text-gray-600">Expert oversight on site, value engineering, risk mitigation, and
+                            compliance checks from concept to handover.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Form -->
+        <section id="contact" class="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-gray-100">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-4xl font-bold mb-12 section-title">Start a Project</h2>
+                <div class="bg-white p-8 sm:p-12 rounded-xl shadow-2xl border-t-8 border-blue-700">
+                    <form action="#" method="POST" class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700">Full Name</label>
+                            <input type="text" name="name" id="name" required
+                                class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
+                            <input type="email" name="email" id="email" required
+                                class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        <div>
+                            <label for="project_type" class="block text-sm font-medium text-gray-700">Project
+                                Type</label>
+                            <select id="project_type" name="project_type"
+                                class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                                <option>Structural Analysis</option>
+                                <option>New Architectural Design</option>
+                                <option>Urban Planning/Consulting</option>
+                                <option>Other Inquiry</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700">Project Details</label>
+                            <textarea id="message" name="message" rows="4" required
+                                class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500"></textarea>
+                        </div>
+                        <button type="submit"
+                            class="w-full py-3 px-4 border border-transparent rounded-lg shadow-lg text-lg font-medium text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-150">
+                            Submit Inquiry
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <!-- Brand Info -->
+                <div>
+                    <h3 class="text-xl font-bold mb-4 text-blue-400">STRUCTURAL FORM</h3>
+                    <p class="text-gray-400 text-sm">Architectural & Structural Engineers.</p>
+                    <p class="text-gray-400 text-sm mt-2">License ID: ARC-4782-SF</p>
+                </div>
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#portfolio" class="text-gray-400 hover:text-blue-400 transition">Portfolio</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-blue-400 transition">Services
+                                Breakdown</a></li>
+                        <li><a href="#gallery" class="text-gray-400 hover:text-blue-400 transition">Drawings Gallery</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Contact Info -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Office</h4>
+                    <p class="text-gray-400 text-sm">1400 Blueprint Ave, Suite 201</p>
+                    <p class="text-gray-400 text-sm">Metro City, CA 90210</p>
+                </div>
+                <!-- Connect -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Connect</h4>
+                    <p class="text-gray-400 text-sm">Email: contact@structuralform.com</p>
+                    <p class="text-gray-400 text-sm">Phone: (555) 123-ARCH</p>
+                </div>
+            </div>
+
+            <div class="mt-12 border-t border-gray-700 pt-8 text-center text-gray-500 text-sm">
+                &copy; 2024 Structural Form. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactivity Modal (Hidden by Default) -->
+    <div id="detailModal"
+        class="fixed inset-0 z-[100] bg-gray-900 bg-opacity-70 hidden flex items-center justify-center p-4"
+        onclick="closeModal()">
+        <div class="bg-white rounded-xl shadow-2xl max-w-lg w-full p-8 relative" onclick="event.stopPropagation()">
+            <h3 id="modalTitle" class="text-2xl font-bold mb-4 text-blue-700">Project Detail</h3>
+            <p id="modalContent" class="text-gray-700 mb-6">This is a detailed view of the selected item.</p>
+
+            <!-- Specific blueprint detail section -->
+            <div id="blueprintDetail"
+                class="hidden mt-4 p-4 border-2 border-dashed border-blue-200 rounded-lg bg-gray-50">
+                <h4 class="font-semibold text-gray-800 mb-3 border-b border-gray-200 pb-1">Technical Specifications</h4>
+                <ul class="list-disc list-inside text-sm text-gray-600 space-y-1">
+                    <li id="spec1"></li>
+                    <li id="spec2"></li>
+                </ul>
+            </div>
+
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-800 transition">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                    </path>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- JavaScript for Interactivity -->
+    <script>
+        const modal = document.getElementById('detailModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalContent = document.getElementById('modalContent');
+        const blueprintDetail = document.getElementById('blueprintDetail');
+        const spec1 = document.getElementById('spec1');
+        const spec2 = document.getElementById('spec2');
+
+        /**
+         * Opens the custom modal with dynamic content.
+         * @param {string} title - The title for the modal.
+         * @param {string} content - The main body content.
+         * @param {boolean} isBlueprint - Whether to show the technical specs section.
+         * @param {object | null} detailSpecs - Technical specifications object {spec1, spec2}.
+         */
+        function openModal(title, content, isBlueprint = false, detailSpecs = null) {
+            modalTitle.textContent = title;
+            modalContent.textContent = content;
+
+            if (isBlueprint && detailSpecs) {
+                blueprintDetail.classList.remove('hidden');
+                spec1.textContent = detailSpecs.spec1;
+                spec2.textContent = detailSpecs.spec2;
+            } else {
+                blueprintDetail.classList.add('hidden');
+            }
+
+            modal.classList.remove('hidden');
+        }
+
+        // Hides the modal
+        function closeModal() {
+            modal.classList.add('hidden');
+        }
+
+        // Project Card Interactivity Handler
+        function showCaseStudy(projectTitle) {
+            openModal(
+                `Viewing Case Study: ${projectTitle}`,
+                `This feature would link to a dedicated external page containing detailed architectural drawings, BIM models, material specifications, and project outcomes. This placeholder confirms the link's functionality.`,
+                false
+            );
+        }
+
+        // Blueprint Gallery Interactivity Handler
+        function showBlueprintDetail(title, detail) {
+            openModal(
+                `Technical Document: ${title}`,
+                `This document provides a crucial, high-fidelity view of the engineering requirements, demonstrating our commitment to structural integrity and code adherence.`,
+                true,
+                detail
+            );
+        }
+    </script>
+</body>
+
+</html>
